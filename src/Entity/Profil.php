@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
+ * @ORM\Table(name="profils")
  */
 class Profil
 {
@@ -16,11 +17,6 @@ class Profil
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $cvPath;
 
     /**
      * @ORM\Column(type="array", nullable=true)
@@ -35,18 +31,6 @@ class Profil
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCvPath(): ?string
-    {
-        return $this->cvPath;
-    }
-
-    public function setCvPath(string $cvPath): self
-    {
-        $this->cvPath = $cvPath;
-
-        return $this;
     }
 
     public function getCompetences(): ?array

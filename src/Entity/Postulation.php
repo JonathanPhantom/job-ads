@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PostulationRepository::class)
+ * @ORM\Table(name="postutlations")
  */
 class Postulation
 {
