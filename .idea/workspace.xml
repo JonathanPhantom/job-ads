@@ -147,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -170,7 +170,7 @@
       <workItem from="1603737206652" duration="876000" />
       <workItem from="1603799192514" duration="359000" />
       <workItem from="1603800023090" duration="7532000" />
-      <workItem from="1603825678366" duration="2879000" />
+      <workItem from="1603825678366" duration="3190000" />
     </task>
     <servers />
   </component>

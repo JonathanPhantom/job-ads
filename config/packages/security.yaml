@@ -21,7 +21,7 @@ security:
             entity:
                 class: App\Entity\Admin
                 property: email
-        # on chain ces différents providers, doctrine va chercher le user dans chacun des providers 
+        # on chain ces différents providers, doctrine va chercher le user dans chacun des providers
         chain_provider :
             chain :
                 providers : [app_candidat_provider,app_entreprise_provider,app_admin_provider]
