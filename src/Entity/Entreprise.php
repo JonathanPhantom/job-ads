@@ -1,0 +1,251 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\EntrepriseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
+ */
+class Entreprise
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomEntreprise;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $emailContact;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomContact;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numeroContact;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $siteWeb;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $localite;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Candidat::class, mappedBy="entreprise")
+     */
+    private $candidats;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Candidat::class, inversedBy="entreprisesRecruteurs")
+     */
+    private $candidatsRecrutes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="proprietaire", orphanRemoval=true)
+     */
+    private $annonces;
+
+    public function __construct()
+    {
+        $this->candidats = new ArrayCollection();
+        $this->candidatsRecrutes = new ArrayCollection();
+        $this->annonces = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNomEntreprise(): ?string
+    {
+        return $this->nomEntreprise;
+    }
+
+    public function setNomEntreprise(string $nomEntreprise): self
+    {
+        $this->nomEntreprise = $nomEntreprise;
+
+        return $this;
+    }
+
+    public function getEmailContact(): ?string
+    {
+        return $this->emailContact;
+    }
+
+    public function setEmailContact(string $emailContact): self
+    {
+        $this->emailContact = $emailContact;
+
+        return $this;
+    }
+
+    public function getNomContact(): ?string
+    {
+        return $this->nomContact;
+    }
+
+    public function setNomContact(string $nomContact): self
+    {
+        $this->nomContact = $nomContact;
+
+        return $this;
+    }
+
+    public function getNumeroContact(): ?string
+    {
+        return $this->numeroContact;
+    }
+
+    public function setNumeroContact(string $numeroContact): self
+    {
+        $this->numeroContact = $numeroContact;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getSiteWeb(): ?string
+    {
+        return $this->siteWeb;
+    }
+
+    public function setSiteWeb(?string $siteWeb): self
+    {
+        $this->siteWeb = $siteWeb;
+
+        return $this;
+    }
+
+    public function getLocalite(): ?string
+    {
+        return $this->localite;
+    }
+
+    public function setLocalite(string $localite): self
+    {
+        $this->localite = $localite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Candidat[]
+     */
+    public function getCandidats(): Collection
+    {
+        return $this->candidats;
+    }
+
+    public function addCandidat(Candidat $candidat): self
+    {
+        if (!$this->candidats->contains($candidat)) {
+            $this->candidats[] = $candidat;
+            $candidat->setEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidat(Candidat $candidat): self
+    {
+        if ($this->candidats->removeElement($candidat)) {
+            // set the owning side to null (unless already changed)
+            if ($candidat->getEntreprise() === $this) {
+                $candidat->setEntreprise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Candidat[]
+     */
+    public function getCandidatsRecrutes(): Collection
+    {
+        return $this->candidatsRecrutes;
+    }
+
+    public function addCandidatsRecrute(Candidat $candidatsRecrute): self
+    {
+        if (!$this->candidatsRecrutes->contains($candidatsRecrute)) {
+            $this->candidatsRecrutes[] = $candidatsRecrute;
+        }
+
+        return $this;
+    }
+
+    public function removeCandidatsRecrute(Candidat $candidatsRecrute): self
+    {
+        $this->candidatsRecrutes->removeElement($candidatsRecrute);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annonce[]
+     */
+    public function getAnnonces(): Collection
+    {
+        return $this->annonces;
+    }
+
+    public function addAnnonce(Annonce $annonce): self
+    {
+        if (!$this->annonces->contains($annonce)) {
+            $this->annonces[] = $annonce;
+            $annonce->setProprietaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonce(Annonce $annonce): self
+    {
+        if ($this->annonces->removeElement($annonce)) {
+            // set the owning side to null (unless already changed)
+            if ($annonce->getProprietaire() === $this) {
+                $annonce->setProprietaire(null);
+            }
+        }
+
+        return $this;
+    }
+}
