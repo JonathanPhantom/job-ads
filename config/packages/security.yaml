@@ -6,10 +6,26 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        # provider du candidat
+        app_candidat_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Candidat
                 property: email
+        # provider de l'entreprise
+        app_entreprise_provider:
+            entity:
+                class: App\Entity\Entreprise
+                property: email
+        # provider de l'admin
+        app_admin_provider:
+            entity:
+                class: App\Entity\Admin
+                property: email
+        # on chain ces différents providers, doctrine va chercher le user dans chacun des providers 
+        chain_provider :
+            chain :
+                providers : [app_candidat_provider,app_entreprise_provider,app_admin_provider]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,7 +33,7 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: app_user_provider
+            provider: chain_provider
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
