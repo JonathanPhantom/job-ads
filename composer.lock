@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b184ca700fecdaee9df358903fecf7a4",
+    "content-hash": "d2faaaa106ab3190aecfe1b45076f1e9",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1399,6 +1399,90 @@
                 "validator"
             ],
             "time": "2020-09-26T15:48:38+00:00"
+        },
+        {
+            "name": "elao/enum",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Elao/PhpEnums.git",
+                "reference": "89600f4d20ddd8cc024fbfd4d885f7545d3da236"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Elao/PhpEnums/zipball/89600f4d20ddd8cc024fbfd4d885f7545d3da236",
+                "reference": "89600f4d20ddd8cc024fbfd4d885f7545d3da236",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "api-platform/core": "^2.5.1",
+                "doctrine/data-fixtures": "^1.2",
+                "doctrine/doctrine-bundle": "^1.4|^2.0",
+                "doctrine/orm": "^2.4",
+                "friendsofphp/php-cs-fixer": "^2.12.0",
+                "nelmio/alice": "^3.0",
+                "phpspec/prophecy": "~1.0",
+                "symfony/browser-kit": "^3.4|^4.4|^5.0",
+                "symfony/console": "^3.4|^4.4|^5.0",
+                "symfony/css-selector": "^3.4|^4.4|^5.0",
+                "symfony/form": "^3.4|^4.4|^5.0",
+                "symfony/framework-bundle": "^3.4|^4.4|^5.0",
+                "symfony/phpunit-bridge": "^3.4|^4.4|^5.0",
+                "symfony/serializer": "^3.4|^4.4|^5.0",
+                "symfony/translation": "^3.4|^4.4|^5.0",
+                "symfony/twig-bundle": "^3.4|^4.4|^5.0",
+                "symfony/validator": "^3.4|^4.4|^5.0",
+                "symfony/yaml": "^3.4|^4.4|^5.0"
+            },
+            "bin": [
+                "bin/elao-enum-dump-js"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elao\\Enum\\": "src/"
+                },
+                "files": [
+                    "src/Bridge/Symfony/VarDumper/Resources/register_caster.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elao",
+                    "homepage": "https://www.elao.com"
+                },
+                {
+                    "name": "Maxime Steinhausser",
+                    "email": "maxime.steinhausser@gmail.com",
+                    "homepage": "https://github.com/ogizanagi"
+                }
+            ],
+            "description": "Enumerations for PHP and frameworks integrations",
+            "homepage": "https://github.com/Elao/PhpEnums",
+            "keywords": [
+                "doctrine",
+                "enum",
+                "symfony"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/ogizanagi",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-05T08:55:41+00:00"
         },
         {
             "name": "laminas/laminas-code",
