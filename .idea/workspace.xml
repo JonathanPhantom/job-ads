@@ -19,6 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
       <change afterPath="$PROJECT_DIR$/config/packages/elao_enum.yaml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Entity/DomaineActivite.php" afterDir="false" />
@@ -26,13 +27,20 @@
       <change afterPath="$PROJECT_DIR$/src/Entity/NiveauFormation.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Entity/TypeAbonnement.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Entity/TypeContrat.php" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/templates/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/translations/security.en.yaml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +160,9 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/elao/enum" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/theofidry/psysh-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -160,6 +171,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -173,9 +185,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller" />
+    </key>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -190,6 +208,7 @@
       <workItem from="1603800023090" duration="7532000" />
       <workItem from="1603825678366" duration="3190000" />
       <workItem from="1603836830820" duration="13430000" />
+
     </task>
     <servers />
   </component>
@@ -214,6 +233,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Ajout des 5 classes énum" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="555" y="218" width="800" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603837457824">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="555" y="218" width="800" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1603837457824" />
     <state x="695" y="427" width="519" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1603737193700">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
@@ -222,25 +245,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="588" y="64" width="753" height="760" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603893949290" />
+
     <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl" timestamp="1603737187846">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1603737187846" />
+    <state width="1288" height="262" key="GridCell.Tab.0.bottom" timestamp="1603837526272">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1288" height="262" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526272" />
+    <state width="1288" height="262" key="GridCell.Tab.0.center" timestamp="1603837526271">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1288" height="262" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
+    <state width="1288" height="262" key="GridCell.Tab.0.left" timestamp="1603837526270">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1288" height="262" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526270" />
+    <state width="1288" height="262" key="GridCell.Tab.0.right" timestamp="1603837526271">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
     <state x="750" y="183" width="1037" height="736" key="SettingsEditor" timestamp="1603830897836">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1603830897836" />
-    <state width="498" height="448" key="SwitcherDM" timestamp="1603831731089">
+    <state width="498" height="448" key="SwitcherDM" timestamp="1603842708069">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1603831731089" />
+    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1603842708069" />
     <state x="737" y="469" width="436" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603830278601">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="737" y="469" width="436" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1920.1046@0.34.1920.1046" timestamp="1603830278601" />
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1603831693306">
+    <state x="624" y="254" key="run.anything.popup" timestamp="1603842555016">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603831693306" />
+    <state x="624" y="254" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603842555016" />
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1603838577126">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603838577126" />
   </component>
 </project>
