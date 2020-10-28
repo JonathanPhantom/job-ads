@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum" />
+    <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
