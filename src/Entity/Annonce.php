@@ -21,7 +21,7 @@ class Annonce
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $titreAnnonce;
 
@@ -70,6 +70,57 @@ class Annonce
      * @ORM\OneToMany(targetEntity=Postulation::class, mappedBy="annonce", orphanRemoval=true)
      */
     private $candidatures;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $datePublication;
+
+    /**
+     * @ORM\Column(type="domaineEtude")
+     */
+    private $domaineEtude;
+
+    /**
+     * @return mixed
+     */
+    public function getDomaineEtude()
+    {
+        return $this->domaineEtude;
+    }
+
+    /**
+     * @param mixed $domaineEtude
+     * @return Annonce
+     */
+    public function setDomaineEtude($domaineEtude)
+    {
+        $this->domaineEtude = $domaineEtude;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNiveauFormation()
+    {
+        return $this->niveauFormation;
+    }
+
+    /**
+     * @param mixed $niveauFormation
+     * @return Annonce
+     */
+    public function setNiveauFormation($niveauFormation)
+    {
+        $this->niveauFormation = $niveauFormation;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="niveauFormation")
+     */
+    private $niveauFormation;
 
     public function __construct()
     {
@@ -231,6 +282,18 @@ class Annonce
                 $candidature->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDatePublication(): ?\DateTimeInterface
+    {
+        return $this->datePublication;
+    }
+
+    public function setDatePublication(\DateTimeInterface $datePublication): self
+    {
+        $this->datePublication = $datePublication;
 
         return $this;
     }
