@@ -21,7 +21,7 @@ class Categorie
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Annonce::class, inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity=Annonce::class, inversedBy="categories", cascade={"persist"})
      */
     private $annonces;
 

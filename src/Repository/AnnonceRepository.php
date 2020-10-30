@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Annonce;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,20 @@ class AnnonceRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    //Trouver toutes les annonces
+
+    /**
+     * @return Annonce[]
+     */
+    public function findAllQuery(): array {
+        return $this->findAdsQuery()
+            ->getQuery()
+            ->getResult();
+    }
+
+    //creation d'une requete
+    public function findAdsQuery(): QueryBuilder{
+        return $this->createQueryBuilder('p');
+    }
 }
