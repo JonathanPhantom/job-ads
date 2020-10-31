@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -12,6 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\DiscriminatorColumn(name="acteur", type="string")
  * @ORM\DiscriminatorMap({"candidat"="Candidat", "entreprise"="Entreprise","admin"="Admin"})
  * @ORM\Table(name="users")
+ * @Vich\Uploadable
  */
 abstract class User implements UserInterface
 {
@@ -42,6 +46,25 @@ abstract class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $telephone;
+
+    /**
+     * @Vich\UploadableField(mapping="image_user", fileNameProperty="photoProfil")
+     * @var File
+     */
+    private $photoProfilFile;
+
+    //update pour gérer l'insertion des fichiers
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updateAt;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $photoProfil;
 
     /**
      * @ORM\Column(type="boolean")
@@ -149,4 +172,69 @@ abstract class User implements UserInterface
 
         return $this;
     }
+    //getters et setter de l'image
+
+    /**
+     * @return File
+     */
+    public function getPhotoProfilFile(): File
+    {
+        return $this->photoProfilFile;
+    }
+
+    /**
+     * @param File $photoProfilFile
+     * @return User
+     * @throws \Exception
+     */
+    public function setPhotoProfilFile(File $photoProfilFile): User
+    {
+        $this->photoProfilFile = $photoProfilFile;
+        if ($this->photoProfilFile instanceof UploadedFile){
+            $this->updateAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param mixed $updateAt
+     * @return User
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoProfil(): string
+    {
+        return $this->photoProfil;
+    }
+
+    /**
+     * @param string $photoProfil
+     * @return User
+     */
+    public function setPhotoProfil(string $photoProfil): User
+    {
+        $this->photoProfil = $photoProfil;
+        return $this;
+    }
+
+
+
+
+
+
 }
