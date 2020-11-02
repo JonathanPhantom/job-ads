@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use App\Repository\DiplomeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -29,7 +29,7 @@ class Diplome
 
     /**
      * @Vich\UploadableField(mapping="diplomes_files", fileNameProperty="justificatifName")
-     * @var File
+     * @var File|null
      */
     private $justificatifFile;
 
@@ -54,6 +54,12 @@ class Diplome
      * @ORM\Column(type="datetime")
      */
     private $updateAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="diplomes", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profil;
 
 
     public function getId(): ?int
@@ -90,7 +96,7 @@ class Diplome
         return $this;
     }
     /**
-     * @return File
+     * @return File|null
      */
     public function getJustificatifFile(): ?File
     {
@@ -166,6 +172,18 @@ class Diplome
         return $this;
     }
 
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
 
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    
 
 }
