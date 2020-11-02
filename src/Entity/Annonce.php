@@ -122,10 +122,16 @@ class Annonce
      */
     private $niveauFormation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Signaler::class, mappedBy="annonce")
+     */
+    private $signales;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->candidatures = new ArrayCollection();
+        $this->signales = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -294,6 +300,36 @@ class Annonce
     public function setDatePublication(\DateTimeInterface $datePublication): self
     {
         $this->datePublication = $datePublication;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Signaler[]
+     */
+    public function getSignales(): Collection
+    {
+        return $this->signales;
+    }
+
+    public function addSignale(Signaler $signale): self
+    {
+        if (!$this->signales->contains($signale)) {
+            $this->signales[] = $signale;
+            $signale->setAnnonce($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSignale(Signaler $signale): self
+    {
+        if ($this->signales->removeElement($signale)) {
+            // set the owning side to null (unless already changed)
+            if ($signale->getAnnonce() === $this) {
+                $signale->setAnnonce(null);
+            }
+        }
 
         return $this;
     }

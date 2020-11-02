@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProfilRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -23,9 +25,9 @@ class Profil
     private $id;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $competences = [];
+    private $competences;
 
     /**
      * @ORM\Column(type="integer")
@@ -36,7 +38,7 @@ class Profil
 
     /**
      * @Vich\UploadableField(mapping="cv_files", fileNameProperty="cvName")
-     * @var File
+     * @var File|null
      */
     private $cvFile;
 
@@ -62,22 +64,47 @@ class Profil
      */
     private $typeContrat;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="profils")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $candidat;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Diplome::class, mappedBy="profil", cascade={"persist"})
+     *
+     */
+    private $diplomes;
+
+    public function __construct()
+    {
+        $this->diplomes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCompetences(): ?array
+    /**
+     * @return mixed
+     */
+    public function getCompetences()
     {
         return $this->competences;
     }
 
-    public function setCompetences(?array $competences): self
+    /**
+     * @param mixed $competences
+     * @return Profil
+     */
+    public function setCompetences($competences)
     {
         $this->competences = $competences;
-
         return $this;
     }
+
+
 
     public function getAnneeExperience(): ?int
     {
@@ -92,15 +119,15 @@ class Profil
     }
 
     /**
-     * @return File
+     * @return File|null
      */
-    public function getCvFile(): File
+    public function getCvFile(): ?File
     {
         return $this->cvFile;
     }
 
     /**
-     * @param File $cvFile
+     * @param File|null $cvFile
      * @return Profil
      * @throws \Exception
      */
@@ -182,6 +209,48 @@ class Profil
     public function setTypeContrat($typeContrat)
     {
         $this->typeContrat = $typeContrat;
+        return $this;
+    }
+
+    public function getCandidat(): ?Candidat
+    {
+        return $this->candidat;
+    }
+
+    public function setCandidat(?Candidat $candidat): self
+    {
+        $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Diplome[]
+     */
+    public function getDiplomes(): Collection
+    {
+        return $this->diplomes;
+    }
+
+    public function addDiplome(Diplome $diplome): self
+    {
+        if (!$this->diplomes->contains($diplome)) {
+            $this->diplomes[] = $diplome;
+            $diplome->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiplome(Diplome $diplome): self
+    {
+        if ($this->diplomes->removeElement($diplome)) {
+            // set the owning side to null (unless already changed)
+            if ($diplome->getProfil() === $this) {
+                $diplome->setProfil(null);
+            }
+        }
+
         return $this;
     }
 

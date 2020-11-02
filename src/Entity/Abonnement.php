@@ -28,6 +28,11 @@ class Abonnement
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="typeAbonnement")
+     */
+    private $typeAbonnement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,4 +61,24 @@ class Abonnement
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeAbonnement()
+    {
+        return $this->typeAbonnement;
+    }
+
+    /**
+     * @param mixed $typeAbonnement
+     * @return Abonnement
+     */
+    public function setTypeAbonnement($typeAbonnement)
+    {
+        $this->typeAbonnement = $typeAbonnement;
+        return $this;
+    }
+
+
 }

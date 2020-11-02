@@ -56,7 +56,7 @@ class Candidat extends User
     private $dateDisponibilite;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="localites")
      */
     private $localite;
 
@@ -75,10 +75,22 @@ class Candidat extends User
      */
     private $candidatures;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Profil::class, mappedBy="candidat", orphanRemoval=true)
+     */
+    private $profils;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Signaler::class, mappedBy="candidat")
+     */
+    private $annonceSignales;
+
     public function __construct()
     {
         $this->entreprisesRecruteurs = new ArrayCollection();
         $this->candidatures = new ArrayCollection();
+        $this->profils = new ArrayCollection();
+        $this->annonceSignales = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,17 +182,25 @@ class Candidat extends User
         return $this;
     }
 
-    public function getLocalite(): ?string
+    /**
+     * @return mixed
+     */
+    public function getLocalite()
     {
         return $this->localite;
     }
 
-    public function setLocalite(string $localite): self
+    /**
+     * @param mixed $localite
+     * @return Candidat
+     */
+    public function setLocalite($localite)
     {
         $this->localite = $localite;
-
         return $this;
     }
+
+
 
     public function getEntreprise(): ?Entreprise
     {
@@ -250,4 +270,67 @@ class Candidat extends User
 
         return $this;
     }
+
+    /**
+     * @return Collection|Profil[]
+     */
+    public function getProfils(): Collection
+    {
+        return $this->profils;
+    }
+
+    public function addProfil(Profil $profil): self
+    {
+        if (!$this->profils->contains($profil)) {
+            $this->profils[] = $profil;
+            $profil->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfil(Profil $profil): self
+    {
+        if ($this->profils->removeElement($profil)) {
+            // set the owning side to null (unless already changed)
+            if ($profil->getCandidat() === $this) {
+                $profil->setCandidat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Signaler[]
+     */
+    public function getAnnonceSignales(): Collection
+    {
+        return $this->annonceSignales;
+    }
+
+    public function addAnnonceSignale(Signaler $annonceSignale): self
+    {
+        if (!$this->annonceSignales->contains($annonceSignale)) {
+            $this->annonceSignales[] = $annonceSignale;
+            $annonceSignale->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonceSignale(Signaler $annonceSignale): self
+    {
+        if ($this->annonceSignales->removeElement($annonceSignale)) {
+            // set the owning side to null (unless already changed)
+            if ($annonceSignale->getCandidat() === $this) {
+                $annonceSignale->setCandidat(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
 }

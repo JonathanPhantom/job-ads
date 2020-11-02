@@ -51,7 +51,7 @@ class Entreprise extends User
     private $siteWeb;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="localites")
      */
     private $localite;
 
@@ -154,17 +154,24 @@ class Entreprise extends User
         return $this;
     }
 
-    public function getLocalite(): ?string
+    /**
+     * @return mixed
+     */
+    public function getLocalite()
     {
         return $this->localite;
     }
 
-    public function setLocalite(string $localite): self
+    /**
+     * @param mixed $localite
+     * @return Entreprise
+     */
+    public function setLocalite($localite)
     {
         $this->localite = $localite;
-
         return $this;
     }
+
 
     /**
      * @return Collection|Candidat[]
