@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{# form_theme permet de mettre au courant twig qu'on veut utiliser un theme particuler#}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+    <header class="title">
+        <div class="block">
+            <a href="{{ path('app_home_candidat') }}">
+                <i>JOB-ADS</i>
+            </a>
+        </div>
+    </header>
+    <div class="mt-2 mb-5">
+    {{ dump(app.user.nom) }}
+    <div class="container ">
+        <div class=" p-3 mx-auto signUp-box" style="background-color: #fff;">
+            <h1 class="mt-3 text-dark text-center">Lancez-vous dans le monde professionnelle en créeant vos profils
+            </h1>
+
+            <form action="post" class="container mt-4 col-md-9 mb-5">
+                <div class="form-group">
+                    <input type="text" class="form-control rounded-1 border-secondary" name="" placeholder="Nom"
+                           value="" disabled />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control rounded-1 border-secondary" name="" placeholder="Prénom"
+                           value="Koumou Jonathan" disabled />
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control rounded-1 border-secondary" name=""
+                           placeholder="Adresse email" value="kassamagan2@gmail.com" disabled />
+                </div>
+
+                <h1 class="text-primary ml-5 mt-5 mb-4 h3">Votre Profil principal</h1>
+
+    <div class="container">
+        <div class="container mt-2">
+            <h1>Créer un profil</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-success">Editer l'annonce</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _profil_diplomes_widget %}
+    <p>Ajouter Vos diplômes</p>
+
+    {{ form_widget(form) }}
+
+    {#permet de gérer le nombre d'ajout de diplomes#}
+    <input type="hidden" id="widget-counters" value="0">
+
+    <div class="form-group">
+        <button type="button" id="add-diplome" class="btn btn-primary">Ajouter un Diplôme</button>
+    </div>
+{% endblock %}
+{#definir les entry de la collection#}
+{% block _profil_diplomes_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _profil_diplomes_entry_widget %}
+    <div class="form-group">
+        <div class="row" id="block_{{ id }}">
+            <div class="row">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col">
+                            <p>Domain d'étude</p>
+                            {{ form_widget(form.domaine) }}
+                        </div>
+                        <div class="col">
+                            <p>Niveau</p>
+                            {{ form_widget(form.niveau) }}
+                        </div>
+                        <div class="col">
+                            <p>Date obtention</p>
+                            {{ form_widget(form.dateObtention) }}
+                        </div>
+                        <div class="col">
+                            <p>Justificatif</p>
+                            {{ form_widget(form.justificatifFile) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p></p><br>
+                    <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#add-diplome').click(function () {
+            //je recupère le num des futurs champs
+            {#const index = $('#profil_diplomes div.form-group').length;#}
+            const index = +$('#widget-counters').val();
+            console.log(index);
+            //je recupère les prototypes des donnees
+            const tmpl = $('#profil_diplomes').data('prototype').replace(/__name__/g, index);
+            //j'injecte ce code au sein de la div
+            $('#profil_diplomes').append(tmpl);
+
+            //on veut dire a notre widget d'incrementer
+            $('#widget-counters').val(index + 1);
+            //je gère le button supprimer
+            handleDeleteButton();
+        });
+
+        function handleDeleteButton() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
+        function updateCounter() {
+            const count = +$('#profil_diplomes div.form-group').length;
+            $('#widget-counters').val(count);
+        }
+
+        updateCounter();
+
+        //au rechargement de la page
+        handleDeleteButton();
+    </script>
+{% endblock %}

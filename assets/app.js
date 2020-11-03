@@ -9,7 +9,8 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/app.css';
 import './styles/login.css';
+import './styles/compteCandidat.css';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
 
+import $ from 'jquery';
