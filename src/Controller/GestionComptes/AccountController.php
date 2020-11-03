@@ -7,11 +7,11 @@ use App\Entity\Profil;
 use App\Form\CompteCandidatType;
 use App\Form\ProfilType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
@@ -23,6 +23,8 @@ class AccountController extends AbstractController
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @param EntityManagerInterface $em
      * @return Response
+     *
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function createAccount(Request $request,UserPasswordEncoderInterface $passwordEncoder,EntityManagerInterface  $em) : Response
     {

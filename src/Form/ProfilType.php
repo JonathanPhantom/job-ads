@@ -6,14 +6,12 @@ use App\Entity\DomaineEtude;
 use App\Entity\Profil;
 use App\Entity\TypeContrat;
 use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProfilType extends FormConfig
 {
@@ -27,13 +25,17 @@ class ProfilType extends FormConfig
                 'enum_class' => DomaineEtude::class
             ]))
             ->add('typeContrat', EnumType::class, $this->getConfiguration('Type de Contrat', '', [
+                'attr'=>[
+                    'size'=>3
+                ],
                 'enum_class' => TypeContrat::class,
-                //'multiple' => true
+                'multiple' => true,
             ]))
             ->add('diplomes', CollectionType::class, [
                 'entry_type' => DiplomeType::class,
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                'label'=>false
             ])
         ;
     }

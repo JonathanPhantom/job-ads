@@ -14,3 +14,11 @@ import './styles/compteCandidat.css';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 
 import $ from 'jquery';
+$('select').select2();
+
+$('.custom-file-input').on('change', function (event) {
+    var inputFile = event.currentTarget;
+    $(inputFile).parent()
+        .find('.custom-file-label')
+        .html(inputFile.files[0].name);
+});
