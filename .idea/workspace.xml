@@ -20,7 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
+      <change afterPath="$PROJECT_DIR$/assets/styles/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201027205115.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201029085702.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201029215142.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201030005029.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +158,9 @@
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/theofidry/psysh-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -152,6 +172,8 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.44" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -160,7 +182,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -168,7 +190,7 @@
       <recent name="$PROJECT_DIR$/src/Controller" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -185,11 +207,12 @@
       <workItem from="1603800023090" duration="7532000" />
       <workItem from="1603825678366" duration="3190000" />
       <workItem from="1603836830820" duration="13430000" />
+      <workItem from="1604366362069" duration="1475000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -224,25 +247,30 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1603737187846" />
-    <state width="1288" height="262" key="GridCell.Tab.0.bottom" timestamp="1603837526272">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.bottom" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.bottom/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526272" />
-    <state width="1288" height="262" key="GridCell.Tab.0.center" timestamp="1603837526271">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.center" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.center/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state width="1288" height="262" key="GridCell.Tab.0.left" timestamp="1603837526270">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.left" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.left/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526270" />
-    <state width="1288" height="262" key="GridCell.Tab.0.right" timestamp="1603837526271">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.right" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.right/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state x="750" y="183" width="1037" height="736" key="SettingsEditor" timestamp="1603830897836">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state x="375" y="34" width="900" height="734" key="SettingsEditor" timestamp="1604365316424">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state x="375" y="34" width="900" height="734" key="SettingsEditor/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365316424" />
     <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1603830897836" />
     <state width="498" height="448" key="SwitcherDM" timestamp="1603842708069">
       <screen x="0" y="34" width="1920" height="1046" />

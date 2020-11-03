@@ -2,7 +2,6 @@
 
 namespace App\Controller\GestionComptes;
 
-use App\Entity\Diplome;
 use App\Entity\Profil;
 use App\Form\ProfilType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,15 +10,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
 class AccountController extends AbstractController
 {
     /**
-     * @Route("/recruteur/createProfil", name="recruteur_profil")
+     * @Route("/createAccount",name="app_candidat_compte")
+     */
+    public function createAccount() : Response
+    {
+
+    }
+
+    /**
+     * @Route("/createAccount/createProfil", name="app_candidat_profil")
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function createProfi(Request $request, EntityManagerInterface $manager): Response
+    public function createProfil(Request $request, EntityManagerInterface $manager): Response
     {
         $profil = new Profil();
 
@@ -40,6 +49,7 @@ class AccountController extends AbstractController
 
             //TODO:mise en place de la gestion des fichiers insérer par le user (pdf)
             //TODO:les assertions
+
             $candidat = $this->getUser();
             $profil->setCandidat($candidat);
             $manager->persist($profil);

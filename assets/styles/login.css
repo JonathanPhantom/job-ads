@@ -1,0 +1,36 @@
+.block{
+    padding: 10px 0;
+    border-bottom: 1px solid #d4d9dd;
+    background-color: #fff;
+}
+.block a {
+    display: flex;
+    color : #DB7300;
+    align-self: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: xx-large;
+}
+.login-header {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.login-header h1{
+    font-size: 24px;
+    line-height: 32px;
+}
+form label{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-bottom: 4px;
+}
+.passwordForgot{
+    color : #DB7300;
+}
+.signUp{
+    border-color: #DB7300; color: #DB7300;
+}
+.signUp:hover{
+    background-color: #DB7300;
+}
