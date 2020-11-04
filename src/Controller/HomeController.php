@@ -17,4 +17,14 @@ class HomeController extends AbstractController
   {
       return $this->render("home/index.html.twig");
   }
+  
+  /**
+   * homeEspaceRecruteur
+   *@Route("/espace-recruteur",name="app_espace_recruteur")
+   * @return Response
+   */
+  public function homeEspaceRecruteur() : Response
+  {
+      return $this->render("home/recruteur.html.twig");
+  }
 }

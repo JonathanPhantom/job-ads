@@ -1,3 +1,9 @@
 body {
-    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+.jumbotron:first-of-type{
+    background : url('/images/jumbotron.jpg') no-repeat;
+    background-size: cover;
+    width: auto;
 }

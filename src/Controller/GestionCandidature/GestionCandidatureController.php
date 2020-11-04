@@ -38,8 +38,6 @@ class GestionCandidatureController extends AbstractController
     {
         $profiles = $this->getUser()->getProfils();
 
-
-
         return $this->render('gestion_candidature/index.html.twig', [
             'controller_name' => 'GestionCandidatureController',
             'user' => $user,

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Publiez vos annonces - Job-Ads' %}
+
+{# form_theme permet de mettre au courant twig qu'on veut utiliser un theme particuler #}
+
+
+{% block body %}
+    {{ include('fragments/_nav.html.twig') }}
+    <h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark">Remplissez ce formulaire pour créer votre compte
+        recruteur</h1>
+    <div class="container bg-light text-dark pb-5">
+    <h5 class="text-left pt-5 pb-2">Informations sur l'entreprise</h5>
+    {{ form_start(form) }}
+    <div class="row row-cols-2  mx-auto">
+        <div class="col">
+            {{ form_widget(form.nomEntreprise) }}
+        </div>
+        <div class="col">
+            {{ form_widget(form.secteurActivite) }}
+        </div>
+    </div>
+    <div class="row row-cols-2 mt-3 mx-auto">
+        <div class="col">
+            {{ form_widget(form.adresse) }}
+        </div>
+        <div class="col">
+            {{ form_widget(form.localite) }}
+        </div>
+    </div>
+    <div class="row row-cols-2 mt-3 mx-auto">
+        <div class="col">
+            {{ form_widget(form.telephone) }}
+        </div>
+        <div class="col">
+            {{ form_widget(form.siteWeb) }}
+        </div>
+    </div>
+    <div class="row row-cols-1 mt-3 mx-auto">
+        <div class="col">
+        {{ form_row(form.photoProfilFile) }}
+        </div>
+    </div>
+        <h5 class="text-left pt-3 pb-2">Informations de contact</h5>
+        <div class="row row-cols mt-3 mx-auto">
+            <div class="col">
+                {{ form_widget(form.nomContact) }}
+            </div>
+        </div>
+        <div class="row row-cols-2 mt-3 mx-auto">
+            <div class="col">
+                {{ form_widget(form.emailContact) }}
+            </div>
+            <div class="col">
+                {{ form_widget(form.numeroContact) }}
+            </div>
+        </div>
+
+        <h5 class="text-left pt-5 pb-2">Informations de connexion</h5>
+        <div class="row row-cols mt-3 mx-auto">
+            <div class="col">
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="col-md-10  mx-auto container">
+            <div class="col-md-12">
+                {{ form_widget(form.plainPassword) }}
+            </div>
+
+        </div>
+    <div class="col-md-8 mt-5 mx-auto">
+        <button class="btn btn-primary btn-block">Créer le compte</button></div>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

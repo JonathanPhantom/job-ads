@@ -32,7 +32,7 @@
 						<input type="email" class="form-control rounded-1 border-secondary" name="" placeholder="Adresse email" value="{{ app.user.email }}" disabled/>
 					</div>
 
-					<h1 class="text-primary ml-5 mt-5 mb-4 h3">Votre Profil principal</h1>
+					<h1 class="text-primary ml-5 mt-5 mb-4 h4">Créer votre Profil principal*</h1>
 
 					{{ form_start(form) }}
 					<div class="input-group mb-3 ml-4">
@@ -103,8 +103,10 @@
 				<input type="hidden" id="widget-counters" value="0">
 
 				<div class="form-group">
-					<button type="button" id="add-diplome" class="btn" style="background-color: #DB7300;">Ajouter un Diplôme</button>
+					<button type="button" id="add-diplome" class="btn btn-info mt-2" >Ajouter un Diplôme</button>
 				</div>
+                    <span>* Ce profil sera votre profil par défaut</span>
+
 			{% endblock %}
 			{#definir les entry de la collection#}
 			{% block _profil_diplomes_entry_row %}
