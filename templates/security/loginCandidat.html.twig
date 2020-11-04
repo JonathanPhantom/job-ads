@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Connexion Candidat -Job-Ads" %}
+
+{% block body %}
+	<header class="title">
+		<div class="block">
+			<a href="{{path('app_home_candidat')}}">
+				<i>JOB-ADS</i>
+			</a>
+		</div>
+	</header>
+	<div class="container">
+		<div class="mx-auto col">
+			<div class="col-md-5  mx-auto">
+				<div class="login-header">
+					<h1>Connectez-vous à votre compte candidat.</h1>
+				</div>
+				<form action="{{path('app_login')}}" method="POST" class="col-md-50">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					<div class="form-group">
+						<label for="email">Email :</label>
+						<input type="email" value="{{last_username}}" class="form-control rounded-0" id="email" name="email" placeholder="Votre adresse email" required autofocus/>
+					</div>
+					<div class="form-group">
+						<label for="password">Mot de passe :</label>
+						<input type="password" class="form-control rounded-0" name="password" id="password" placeholder="Votre mot de passe" required/>
+					</div>
+					<div class="d-flex justify-content-between">
+						<div class="form-group">
+							<div class="container">
+								<input class="form-check-input rounded-0" type="checkbox" id="remember_me" name="_remember_me">
+								<label class="" for="remember_me">Rester connecté</label>
+							</div>
+						</div>
+						<a href="#" class="passwordForgot">Mot de passe oublié ?</a>
+					</div>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    
+					<button class="btn btn-block btn-outline mt-2 rounded-0" type="submit" style="background-color: #DB7300;">
+						Connexion
+					</button>
+				</form>
+				<small class="d-block mt-3">Pas encore membre ?</small>
+				<a href="{{ path('app_candidat_compte') }}" class="btn signUp  rounded-0 mt-2">Créer un compte</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -61,7 +61,7 @@ abstract class User implements UserInterface
     private $updateAt;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     private $photoProfil;
@@ -177,7 +177,7 @@ abstract class User implements UserInterface
     /**
      * @return File
      */
-    public function getPhotoProfilFile(): File
+    public function getPhotoProfilFile(): ?File
     {
         return $this->photoProfilFile;
     }
@@ -217,7 +217,7 @@ abstract class User implements UserInterface
     /**
      * @return string
      */
-    public function getPhotoProfil(): string
+    public function getPhotoProfil(): ?string
     {
         return $this->photoProfil;
     }

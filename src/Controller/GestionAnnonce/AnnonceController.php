@@ -3,6 +3,7 @@
 namespace App\Controller\GestionAnnonce;
 
 use App\Entity\Annonce;
+
 use App\Entity\Categorie;
 use App\Entity\Search;
 use App\Form\AnnonceType;
@@ -10,12 +11,12 @@ use App\Form\SearchType;
 use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\MesEnumType;
 
 class AnnonceController extends AbstractController
 {
@@ -41,13 +42,18 @@ class AnnonceController extends AbstractController
 
 
     /**
-     * @Route("/annonce", name="create_annonce")
+     * @Route("/annonce", name="app_create_annonce")
+     * 
+     *
      * @param Request $request
      * @return Response
      * @throws \Exception
      */
     public function createAnnonce(Request $request): Response
     {
+        if (!$this->isGranted("ROLE_ENTRETPRISE")){
+            return $this -> redirectToRoute("app_entreprise_account");
+        }
 
         //declaration d'une nouvelle annonce
         $annonce = new Annonce();
@@ -63,10 +69,7 @@ class AnnonceController extends AbstractController
             $annonce->setProprietaire($this->getUser());
             //Mise à jour de la date de publication
             $annonce->setDatePublication(new \DateTime());
-
             $this->manager->persist($annonce);
-
-
             $this->manager->flush();
             $id = $annonce->getId();
             $this->addFlash('success', 'Annonce créée avec succès');
@@ -76,8 +79,7 @@ class AnnonceController extends AbstractController
             ]);
         }
 
-        return $this->render('annonce/index1.html.twig', [
-            'controller_name' => 'AnnonceController',
+        return $this->render('annonce/publier.html.twig', [
             'annonce' => $annonce,
             'form' => $form->createView()
         ]);

@@ -1,0 +1,20 @@
+body{
+    background-color: #ededee;
+    font-size: 14px;
+    color: #656d6d;
+}
+.account-text{
+    font-size: 20px;
+    line-height: 32px;
+}
+.signUp-box{
+    border-radius: 4px;
+    height: 100%;
+}
+.description{
+    font-size: 16px;
+    font-style: italic;
+}
+.disponibiliteYes.active{
+    display: none;
+}

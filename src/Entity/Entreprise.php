@@ -26,6 +26,11 @@ class Entreprise extends User
     private $nomEntreprise;
 
     /**
+     * @ORM\Column(type="domaineActivite")
+     */
+    private $secteurActivite;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $emailContact;
@@ -90,6 +95,30 @@ class Entreprise extends User
     public function setNomEntreprise(string $nomEntreprise): self
     {
         $this->nomEntreprise = $nomEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of secteurActivite
+     *
+     * getSecteurActivite
+     *
+     * @return void
+     */
+    public function getSecteurActivite()
+    {
+        return $this->secteurActivite;
+    }
+
+    /**
+     * Set the value of secteurActivite
+     *
+     * @return  self
+     */
+    public function setSecteurActivite($secteurActivite)
+    {
+        $this->secteurActivite = $secteurActivite;
 
         return $this;
     }

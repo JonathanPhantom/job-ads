@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entreprise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +150,9 @@
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/theofidry/psysh-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -152,6 +164,8 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.44" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -168,7 +182,7 @@
       <recent name="$PROJECT_DIR$/src/Controller" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -185,11 +199,15 @@
       <workItem from="1603800023090" duration="7532000" />
       <workItem from="1603825678366" duration="3190000" />
       <workItem from="1603836830820" duration="13430000" />
+      <workItem from="1604366362069" duration="17720000" />
+      <workItem from="1604414615275" duration="2375000" />
+      <workItem from="1604417013255" duration="380000" />
+      <workItem from="1604474509978" duration="8880000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -208,6 +226,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Ajout des 5 classes énum" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="124" width="732" height="644" key="#Inspections" timestamp="1604406287500">
+      <screen x="0" y="34" width="1366" height="734" />
+    </state>
+    <state x="0" y="124" width="732" height="644" key="#Inspections/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604406287500" />
     <state x="555" y="218" width="800" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603837457824">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
@@ -216,6 +238,14 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="695" y="427" width="519" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1603737193700" />
+    <state x="332" y="34" width="1236" height="994" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604488234654">
+      <screen x="0" y="34" width="1920" height="994" />
+    </state>
+    <state x="332" y="34" width="1236" height="994" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.1920.994@0.34.1920.994" timestamp="1604488234654" />
+    <state x="693" y="289" width="524" height="490" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604489477871">
+      <screen x="0" y="34" width="1920" height="994" />
+    </state>
+    <state x="693" y="289" width="524" height="490" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.994@0.34.1920.994" timestamp="1604489477871" />
     <state x="588" y="64" width="753" height="760" key="CommitChangelistDialog2" timestamp="1603893949290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -224,41 +254,50 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1603737187846" />
-    <state width="1288" height="262" key="GridCell.Tab.0.bottom" timestamp="1603837526272">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.bottom" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.bottom/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526272" />
-    <state width="1288" height="262" key="GridCell.Tab.0.center" timestamp="1603837526271">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.center" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.center/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state width="1288" height="262" key="GridCell.Tab.0.left" timestamp="1603837526270">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.left" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.left/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526270" />
-    <state width="1288" height="262" key="GridCell.Tab.0.right" timestamp="1603837526271">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="1316" height="159" key="GridCell.Tab.0.right" timestamp="1604365517733">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state width="1316" height="159" key="GridCell.Tab.0.right/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state x="750" y="183" width="1037" height="736" key="SettingsEditor" timestamp="1603830897836">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state x="375" y="34" width="900" height="734" key="SettingsEditor" timestamp="1604394674615">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state x="375" y="34" width="900" height="734" key="SettingsEditor/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604394674615" />
     <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1603830897836" />
-    <state width="498" height="448" key="SwitcherDM" timestamp="1603842708069">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="700" height="539" key="SwitcherDM" timestamp="1604491853505">
+      <screen x="0" y="34" width="1920" height="994" />
     </state>
+    <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604408922959" />
     <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1603842708069" />
-    <state x="737" y="469" width="436" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603830278601">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state width="700" height="539" key="SwitcherDM/0.34.1920.994@0.34.1920.994" timestamp="1604491853505" />
+    <state x="524" y="339" width="446" height="176" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604408176874">
+      <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state x="524" y="339" width="446" height="176" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604408176874" />
     <state x="737" y="469" width="436" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1920.1046@0.34.1920.1046" timestamp="1603830278601" />
     <state x="624" y="254" key="run.anything.popup" timestamp="1603842555016">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="624" y="254" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603842555016" />
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1603838577126">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state x="623" y="253" width="672" height="645" key="search.everywhere.popup" timestamp="1604491327529">
+      <screen x="0" y="34" width="1920" height="994" />
     </state>
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603838577126" />
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1604415486634" />
+    <state x="623" y="253" width="672" height="645" key="search.everywhere.popup/0.34.1920.994@0.34.1920.994" timestamp="1604491327529" />
   </component>
 </project>
