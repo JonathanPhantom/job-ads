@@ -3,7 +3,11 @@
 namespace App\Controller\GestionAnnonce;
 
 use App\Entity\Annonce;
+
+use App\Entity\Categorie;
+use App\Entity\Search;
 use App\Form\AnnonceType;
+use App\Form\SearchType;
 use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,6 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AnnonceController extends AbstractController
 {
+
+
 
     //mise en place de l'injection de dependance
     /**
@@ -32,6 +38,7 @@ class AnnonceController extends AbstractController
         $this->repository = $repository;
         $this->manager = $manager;
     }
+
 
 
     /**
@@ -155,28 +162,57 @@ class AnnonceController extends AbstractController
     //lister tous les annonces
     //implémenter le paginator pour les annonces
     //et aussi implémenter les la recherche avec Search
+    //Page d'acceuil
 
     /**
      * @Route("/showAllAds", name="index_ads")
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function showAds(Request $request){
 
-        //$search = new Search();
+        $search = new Search();
 
-        //$form = $this->createForm(SearchType::class, $search);
+        $form = $this->createForm(SearchType::class, $search);
 
-        //$form->handleRequest($request);
+        $form->handleRequest($request);
+
+//        if ($form->isSubmitted() && $form->isValid()){
+//
+//            $annonces = $this->repository->findAllAdsQuery($search);
+//            dump($annonces);
+//        }
+
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
-        $annonces = $this->repository->findAllQuery();
+        /*$annonce = new Annonce();
+         if($page < 1){
+             throw $this->createNotFoundException("Page ".$page." innexistante");
 
-        return $this->render('annonce/annonces.html.twig', [
-            'current_menu' => 'properties',
-            'annonces' => $annonces,
-            //'form' => $form->createView()
+         }
+         $parpages = 3;
+          $listesAnnonces = $this->getDoctrine()->getManager()->getRepository(Annonce::class)->getAnnonces($page, $parpages);
+          $nbpages = ceil(count($listesAnnonces) / $parpages);
+
+          /* if ($page>$nbpages){
+               throw $this->createNotFoundException("Page ".$page. " inexistante");
+           }**///
+
+
+        $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
+
+        dump($annonces);
+
+        return $this->render('home/annonces.html.twig', [
+            'form' => $form->createView(),
+            'ads' => $annonces
+            //'listesAnnonces'=> $annonces,//$listesAnnonces,
+             /*'nbpages'=>$nbpages,
+            'page'=>$page,
+            'annonce' => $annonce*/
+           // 'form' => $form->createView()
         ]);
     }
 }

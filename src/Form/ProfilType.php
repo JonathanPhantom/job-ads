@@ -6,6 +6,8 @@ use App\Entity\DomaineEtude;
 use App\Entity\Profil;
 use App\Entity\TypeContrat;
 use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -30,6 +32,13 @@ class ProfilType extends FormConfig
                 ],
                 'enum_class' => TypeContrat::class,
                 'multiple' => true,
+            ]))
+            ->add('isPrincipal', ChoiceType::class, $this->getConfiguration('Cet Profil est t\'il votre profil principal', '',[
+                'choices' => [
+                    'oui' => true,
+                    'non' => false
+                ],
+                'expanded' => true
             ]))
             ->add('diplomes', CollectionType::class, [
                 'entry_type' => DiplomeType::class,

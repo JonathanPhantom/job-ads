@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Candidat;
+use App\Entity\Search;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -48,5 +51,39 @@ class CandidatRepository extends ServiceEntityRepository
     }
     */
 
+    /*
+    /**
+     *
+     * @param Search $search
+     * @return Query
+     *//*
+    public function findAllAdsQuery(Search $search): Query
+    {
+        $query = $this->findAdsQuery();
+
+
+        if ($search->getCategories()->count() > 0){
+            //regarder le DQL pour trouver les exemples de query
+            foreach ($search->getCategories() as $k => $category){
+                $query = $query
+                    ->orWhere(":category$k MEMBER OF p.categories")
+                    ->setParameter("category$k", $category);
+
+            }
+        }
+
+        return $query->getQuery();
+    }*/
+
+
+    public function findAllQuery(): array {
+        return $this->findCandidatQuery()
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findCandidatQuery(): QueryBuilder{
+        return $this->createQueryBuilder('p');
+    }
 
 }

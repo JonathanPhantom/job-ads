@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Annonce;
+use App\Entity\Search;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -64,4 +67,66 @@ class AnnonceRepository extends ServiceEntityRepository
     public function findAdsQuery(): QueryBuilder{
         return $this->createQueryBuilder('p');
     }
+
+//    //Pagination des annonces
+//    public function getAnnonces($page, $nbpages){
+//        $query = $this->createQueryBuilder('a');
+//         $query->leftJoin('a.categories', 'c')->addSelect('c')->orderBy('a.datePublication', 'ASC')->getQuery();
+//
+//         $query->setFirstResult(($page-1) * $nbpages)->setMaxResults($nbpages);
+//
+//         return new Paginator($query, true);
+//    }
+
+    public function getAllAnnonces(){
+        $query = $this->createQueryBuilder('a');
+        $query->leftJoin('a.categories', 'c')->addSelect('c')->orderBy('a.datePublication', 'ASC')->getQuery();
+
+        //$query->setFirstResult(($page-1) * $nbpages)->setMaxResults($nbpages);
+
+        return $query;
+    }
+
+    public function getAllAnnoncesSearch(Search $search){
+        $query = $this->createQueryBuilder('a');
+
+        if ($search->getDomaineEtude()){
+            foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
+                $domaineEtudes = $domaineEtude->getValue();
+                $query = $query
+                    ->orWhere("a.domaineEtude = '$domaineEtudes'")
+                    ;
+            }
+        }
+
+        if ($search->getLocalites()){
+            foreach ($search->getLocalites() as $k => $localite){
+                $localites = $localite->getValue();
+                $query = $query
+                    ->leftJoin("a.proprietaire", 'b')
+                    ->orWhere("b.localite = '$localites'");
+            }
+        }
+
+        if ($search->getTypeContrat()){
+            foreach ($search->getTypeContrat() as $k => $typeContrat){
+                $typeContrats = $typeContrat->getValue();
+                $query = $query
+                    ->orWhere("a.typeContrat = '$typeContrats'")
+                    ;
+            }
+        }
+        if ($search->getNiveauEtude()){
+            foreach ($search->getNiveauEtude() as $k => $niveauFormation){
+                $niveauFormations = $niveauFormation->getValue();
+                $query = $query
+                    ->orWhere("a.niveauFormation = '$niveauFormations'")
+                    ;
+            }
+        }
+
+        return $query->getQuery();
+    }
+
+
 }
