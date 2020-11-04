@@ -76,6 +76,11 @@ class Profil
      */
     private $diplomes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPrincipal;
+
     public function __construct()
     {
         $this->diplomes = new ArrayCollection();
@@ -250,6 +255,18 @@ class Profil
                 $diplome->setProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsPrincipal(): ?bool
+    {
+        return $this->isPrincipal;
+    }
+
+    public function setIsPrincipal(bool $isPrincipal): self
+    {
+        $this->isPrincipal = $isPrincipal;
 
         return $this;
     }

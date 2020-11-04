@@ -127,6 +127,11 @@ class Annonce
      */
     private $signales;
 
+    /**
+     * @ORM\Column(type="typeContrat")
+     */
+    private $typeContrat;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -330,6 +335,18 @@ class Annonce
                 $signale->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypeContrat()
+    {
+        return $this->typeContrat;
+    }
+
+    public function setTypeContrat($typeContrat): self
+    {
+        $this->typeContrat = $typeContrat;
 
         return $this;
     }
