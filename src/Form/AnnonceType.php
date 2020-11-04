@@ -6,6 +6,7 @@ use App\Entity\Annonce;
 use App\Entity\Categorie;
 use App\Entity\DomaineEtude;
 use App\Entity\NiveauFormation;
+use App\Entity\TypeContrat;
 use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -41,6 +42,9 @@ class AnnonceType extends FormConfig
             ]))
             ->add('niveauFormation', EnumType::class, $this->getConfiguration('Niveau de formation', '', [
                 'enum_class' => NiveauFormation::class
+            ]))
+            ->add('typeContrat', EnumType::class, $this->getConfiguration('Type de Contrat', '', [
+                'enum_class' => TypeContrat::class
             ]))
             ->add('dateLimite', DateType::class, $this->getConfiguration('Date d\'expiration de l\'annonce', 'aa-mm-dd',[
                 'widget' => 'single_text',

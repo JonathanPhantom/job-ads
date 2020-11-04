@@ -3,6 +3,7 @@
 namespace App\Controller\GestionCandidature;
 
 use App\Entity\Annonce;
+use App\Entity\Postulation;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,18 +34,28 @@ class GestionCandidatureController extends AbstractController
      * @param Annonce $annonce
      * @Route("/gestion/annonce/{id}/postuler", name="gestion_candidature")
      * @return Response
+     * @throws \Exception
      */
     public function postuler(Annonce $annonce): Response
     {
-        $profiles = $this->getUser()->getProfils();
+        //dès que le candidat clique sur postuler on envoie le candidat en cours à l'annonce
+        //maintenant lors de la page d'affichage des candidats d'une annonce seulement le profil correspondant
+        //au domaine d'etude de l'annonce sera affiché au cas contraire le profil par défaut.
 
+        //on ajoute envoie l'utilisateur à l'annonce
+        $postulation = new Postulation();
+        $postulation->setDatePostulation(new \DateTimeImmutable());
+        $postulation->setAnnonce($annonce);
+        $postulation->setCandidat($this->getUser());
 
+        //on persist la postulation
+        $this->manager->persist($postulation);
+        $this->manager->flush();
 
-        return $this->render('gestion_candidature/index.html.twig', [
-            'controller_name' => 'GestionCandidatureController',
-            'user' => $user,
-            'annonce' => $annonce,
-            'profiles' => $profiles
-        ]);
+        //rediriger vers la page courante.
+
+        $this->addFlash('success', 'Votre postulation à l\'annonce est éffective!!');
+        $this->redirectToRoute('ho');
+
     }
 }

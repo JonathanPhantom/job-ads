@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CvthequeController!{% endblock %}
+
+{% block body %}
+    {% for candidat in candidats %}
+        <p>{{ candidat.nom }}</p>
+        <p>{{ candidat.prenom }}</p>
+        <p>{{ candidat.dateNaissance | date }}</p>
+    {% endfor %}
+{% endblock %}
