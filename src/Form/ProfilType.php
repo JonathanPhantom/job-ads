@@ -20,33 +20,36 @@ class ProfilType extends FormConfig
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('competences', TextType::class, $this->getConfiguration('Vos Compétences', 'compétence1, compétence2, ...'))
-            ->add('anneeExperience', IntegerType::class, $this->getConfiguration('Année(s) d\'expérience', ''))
+            ->add('competences', TextType::class, $this->getConfiguration('Vos Compétences', 'compétence1, compétence2, ...', [
+                'required'=>false
+            ]))
+            ->add('anneeExperience', IntegerType::class, $this->getConfiguration('Année(s) d\'expérience', '',[
+                'required'=>false
+            ]))
             ->add('cvFile', FileType::class, $this->getConfiguration('CV', ''))
             ->add('domaineEtudeProfil', EnumType::class, $this->getConfiguration('Domaine d\'étude', '', [
                 'enum_class' => DomaineEtude::class
             ]))
             ->add('typeContrat', EnumType::class, $this->getConfiguration('Type de Contrat', '', [
-                'attr'=>[
-                    'size'=>3
+                'attr' => [
+                    'size' => 3
                 ],
                 'enum_class' => TypeContrat::class,
-                'multiple' => true,
+                'multiple' => false,
             ]))
-            ->add('isPrincipal', ChoiceType::class, $this->getConfiguration('Cet Profil est t\'il votre profil principal', '',[
-                'choices' => [
-                    'oui' => true,
-                    'non' => false
-                ],
-                'expanded' => true
-            ]))
+            /*            ->add('isPrincipal', ChoiceType::class, $this->getConfiguration('Cet Profil est t\'il votre profil principal', '',[
+                            'choices' => [
+                                'oui' => true,
+                                'non' => false
+                            ],
+                            'expanded' => true
+                        ]))*/
             ->add('diplomes', CollectionType::class, [
                 'entry_type' => DiplomeType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
-                'label'=>false
-            ])
-        ;
+                'label' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

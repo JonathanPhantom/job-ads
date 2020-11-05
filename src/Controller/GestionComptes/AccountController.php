@@ -22,7 +22,7 @@ class AccountController extends AbstractController
     public EntityManagerInterface $em;
     public UserPasswordEncoderInterface $passwordEncoder;
 
-    public function __construct(EntityManagerInterface  $em,UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->em = $em;
         $this->passwordEncoder = $passwordEncoder;
@@ -33,17 +33,17 @@ class AccountController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function createAccount(Request $request) : Response
+    public function createAccount(Request $request): Response
     {
         $candidat = new Candidat();
-        $form = $this->createForm(CompteCandidatType::class,$candidat,[
-            'attr'=>[
-                'class'=> 'container mt-4 col-md-9 mb-5'
+        $form = $this->createForm(CompteCandidatType::class, $candidat, [
+            'attr' => [
+                'class' => 'container mt-4 col-md-9 mb-5'
             ]
         ]);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $candidat->setPassword(
                 $this->passwordEncoder->encodePassword(
                     $candidat,
@@ -51,15 +51,17 @@ class AccountController extends AbstractController
                 )
             );
             $candidat->setIsActive(true);
-
+            $roles = $candidat->getRoles();
+            array_push($roles, "ROLE_CANDIDAT");
+            $candidat->setRoles($roles);
             $candidat->setUpdateAt(new \DateTimeImmutable("now"));
             $this->em->persist($candidat);
             $this->em->flush();
 
             return $this->redirectToRoute("app_candidat_profil");
         }
-        return $this->render("accounts/candidatAccount.hmtl.twig",[
-            'form'=> $form->createView()
+        return $this->render("accounts/candidatAccount.hmtl.twig", [
+                'form' => $form->createView()
             ]
         );
     }
@@ -68,37 +70,37 @@ class AccountController extends AbstractController
      * @Route("/createAccount/createProfil", name="app_candidat_profil")
      * @param Request $request
      * @return Response
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * @IsGranted("ROLE_CANDIDAT")
      */
     public function createProfil(Request $request): Response
     {
         $profil = new Profil();
-        
+
         $form = $this->createForm(ProfilType::class, $profil);
         $form->handleRequest($request);
 
         //TODO: Mise en place de la gestion du controller de profil (accountController)
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             //pour mettre les diplomes dans profil
-            foreach ($profil->getDiplomes() as $diplome){
+            foreach ($profil->getDiplomes() as $diplome) {
                 $diplome->setProfil($profil);
                 $this->em->persist($diplome);
             }
-
             //TODO:mise en place de la gestion des fichiers insérer par le user (pdf)
             //TODO:les assertions
 
             $candidat = $this->getUser();
             $profil->setCandidat($candidat);
+
+            $profil->setIsPrincipal(true);
             $this->em->persist($profil);
             $this->em->flush();
 
             $this->addFlash('success',
                 'Profil Créée avec succès');
 
-            //on renvoie la page du user mais ici pour le test j'ai mis le home.
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_home_candidat');
 
         }
 
@@ -110,16 +112,18 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/espace-recruteur/createAccount",name="app_entreprise_account")
-     * 
+     *
+     * @param Request $request
+     * @return Response
      */
-    public function createEntrepriseAccount(Request $request) : Response
+    public function createEntrepriseAccount(Request $request): Response
     {
         $entreprise = new Entreprise();
-        $form   =   $this->createForm(CompteEntrepriseType::class,$entreprise);
+        $form = $this->createForm(CompteEntrepriseType::class, $entreprise);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $entreprise->setPassword(
                 $this->passwordEncoder->encodePassword(
                     $entreprise,
@@ -127,13 +131,18 @@ class AccountController extends AbstractController
                 )
             );
             $entreprise->setIsActive(true);
+            $roles = $entreprise->getRoles();
+            array_push($roles, "ROLE_RECRUTEUR");
+            $entreprise->setRoles($roles);
+            $entreprise->setUpdateAt(new \DateTimeImmutable("now"));
+
             $this->em->persist($entreprise);
             $this->em->flush();
 
-            return $this->redirectToRoute('app_espace_recruteur');
+            return $this->redirectToRoute('app_login');
         }
-        return $this->render("accounts/entrepriseAccount.html.twig",[
-            'form'=>$form->createView(),
+        return $this->render("accounts/entrepriseAccount.html.twig", [
+            'form' => $form->createView(),
         ]);
     }
 }

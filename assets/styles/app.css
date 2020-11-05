@@ -1,9 +1,11 @@
 body {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 .jumbotron:first-of-type{
-    background : url('/images/jumbotron.jpg') no-repeat;
+    background-repeat: no-repeat;
+    background-image: url('/public/images/jumbotron.jpg');
     background-size: cover;
     width: auto;
 }

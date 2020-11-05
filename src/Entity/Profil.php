@@ -32,7 +32,7 @@ class Profil
     /**
      * @ORM\Column(type="integer")
      */
-    private $anneeExperience;
+    private ?int $anneeExperience;
 
     //mise en place du cv
 
@@ -40,13 +40,13 @@ class Profil
      * @Vich\UploadableField(mapping="cv_files", fileNameProperty="cvName")
      * @var File|null
      */
-    private $cvFile;
+    private ?File $cvFile;
 
     /**
      * @ORM\Column(type="string")
      * @var string
      */
-    private $cvName;
+    private string $cvName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -79,7 +79,7 @@ class Profil
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPrincipal;
+    private ?bool $isPrincipal;
 
     public function __construct()
     {
@@ -154,7 +154,7 @@ class Profil
     }
 
     /**
-     * @param string $cvName
+     * @param string|null $cvName
      * @return Profil
      */
     public function setCvName(?string $cvName): Profil

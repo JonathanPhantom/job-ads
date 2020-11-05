@@ -18,15 +18,16 @@ class DiplomeType extends FormConfig
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('domaine', EnumType::class, $this->getConfiguration('Domaine d\'étude', '', [
-                'enum_class' => DomaineEtude::class
-            ]))
             ->add('niveau', EnumType::class, $this->getConfiguration('Niveau', '', [
                 'enum_class' => NiveauFormation::class,
             ]))
-            ->add('dateObtention', IntegerType::class, $this->getConfiguration('Date d\'obtention', ''))
-            ->add('justificatifFile', FileType::class, $this->getConfiguration('Justificatif', ''))
-        ;
+            ->add('dateObtention', IntegerType::class, $this->getConfiguration('Date d\'obtention', '',[
+                'attr'=>[
+                    'min'=>'1960',
+                    'max'=>'2020'
+                ]
+            ]))
+            ->add('justificatifFile', FileType::class, $this->getConfiguration('Justificatif', ''));
     }
 
     public function configureOptions(OptionsResolver $resolver)

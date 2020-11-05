@@ -11,6 +11,7 @@ use App\Form\SearchType;
 use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,11 +28,11 @@ class AnnonceController extends AbstractController
     /**
      * @var AnnonceRepository
      */
-    private $repository;
+    private AnnonceRepository $repository;
     /**
      * @var EntityManagerInterface
      */
-    private $manager;
+    private EntityManagerInterface $manager;
 
     public function __construct(AnnonceRepository $repository, EntityManagerInterface $manager)
     {
@@ -47,12 +48,12 @@ class AnnonceController extends AbstractController
      *
      * @param Request $request
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function createAnnonce(Request $request): Response
     {
-        if (!$this->isGranted("ROLE_ENTRETPRISE")){
-            return $this -> redirectToRoute("app_entreprise_account");
+        if (!$this->isGranted("ROLE_RECRUTEUR")){
+            return $this -> redirectToRoute("app_login");
         }
 
         //declaration d'une nouvelle annonce
@@ -62,7 +63,6 @@ class AnnonceController extends AbstractController
 
         //gestion des requetes
         $form->handleRequest($request);
-
 
         //traitement du formulaire
         if($form->isSubmitted() && $form->isValid()){
@@ -89,7 +89,7 @@ class AnnonceController extends AbstractController
     //test affiche une annonce
 
     /**
-     * @Route("/annonce/{id}", name="show_one_ad")
+     * @Route("/annonce/{id<\d+>}", name="app_annonce_details")
      * @param Annonce $annonce
      * @return Response
      */
@@ -106,8 +106,9 @@ class AnnonceController extends AbstractController
      * @param Annonce $annonce
      * @param Request $request
      * @return RedirectResponse|Response
-     * @Route("/annonce/{id}/modifier", name="modifer_une_annonce")
-     * @throws \Exception
+     *
+     * @Route("/annonce/{id<\d+>}/edit", name="app_annonce_edit")
+     * @throws Exception
      */
     public function edit(Annonce $annonce, Request $request)
     {
@@ -127,7 +128,7 @@ class AnnonceController extends AbstractController
             ]);
         }
 
-        return $this->render('annonce/editerune.html.twig', [
+        return $this->render('annonce/editer.html.twig', [
             'ads' => $annonce,
             'form' => $form->createView()
         ]);
@@ -139,7 +140,7 @@ class AnnonceController extends AbstractController
      * @param Annonce $annonce
      * @param Request $request
      * @return RedirectResponse
-     * @Route("/annonce/supprimer/{id}", name="delete_ad", methods={"DELETE"})
+     * @Route("/annonce/{id<\d+>}/delete", name="app_annonce_delete", methods={"DELETE"})
      */
     public function delete(Annonce $annonce, Request $request)
     {
@@ -153,7 +154,7 @@ class AnnonceController extends AbstractController
         $id = $this->getUser()->getId();
         //on redirige vers la page d'édition de l'admin des biens
         //Mais là on redirige vers la page d'acceuil
-        return $this->redirectToRoute('app_home_recruteur', [
+        return $this->redirectToRoute('app_espace_recruteur', [
             //'id' => $id
         ]);
     }
@@ -165,7 +166,7 @@ class AnnonceController extends AbstractController
     //Page d'acceuil
 
     /**
-     * @Route("/showAllAds", name="index_ads")
+     * @Route("/annonce/show", name="app_annonce_show")
      *
      * @param Request $request
      *
@@ -177,7 +178,6 @@ class AnnonceController extends AbstractController
 
         $form = $this->createForm(SearchType::class, $search);
 
-        $form->handleRequest($request);
 
 //        if ($form->isSubmitted() && $form->isValid()){
 //
@@ -200,19 +200,30 @@ class AnnonceController extends AbstractController
                throw $this->createNotFoundException("Page ".$page. " inexistante");
            }**///
 
-
         $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
-
-        dump($annonces);
-
-        return $this->render('home/annonces.html.twig', [
-            'form' => $form->createView(),
-            'ads' => $annonces
+        
+        return $this->render('annonce/list.html.twig', [
             //'listesAnnonces'=> $annonces,//$listesAnnonces,
              /*'nbpages'=>$nbpages,
             'page'=>$page,
             'annonce' => $annonce*/
            // 'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route ("/espace-recruteur/mesAnnonces",name="app_recruteur_myAds")
+     */
+    public function showMyAds() : Response
+    {
+        if (!$this->isGranted("ROLE_RECRUTEUR")){
+            return  $this->redirectToRoute('app_espace_recruteur');
+        }
+
+        $annonces = $this->getUser()->getAnnonces();
+
+        return $this->render('annonce/myAds.html.twig',[
+            'annonces'=>$annonces
         ]);
     }
 }

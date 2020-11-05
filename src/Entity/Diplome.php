@@ -25,24 +25,19 @@ class Diplome
     /**
      * @ORM\Column(type="integer")
      */
-    private $dateObtention;
+    private ?int $dateObtention;
 
     /**
      * @Vich\UploadableField(mapping="diplomes_files", fileNameProperty="justificatifName")
      * @var File|null
      */
-    private $justificatifFile;
+    private ?File $justificatifFile;
 
     /**
      * @ORM\Column(type="string")
      * @var string
      */
-    private $justificatifName;
-
-    /**
-     * @ORM\Column(type="domaineEtude")
-     */
-    private $domaine;
+    private string $justificatifName;
 
     /**
      * @ORM\Column(type="niveauFormation")
@@ -59,7 +54,7 @@ class Diplome
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="diplomes", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $profil;
+    private ?Profil $profil;
 
 
     public function getId(): ?int
@@ -113,29 +108,13 @@ class Diplome
     }
 
     /**
-     * @param string $justificatifName
+     * @param string|null $justificatifName
      * @return Diplome
      */
     public function setJustificatifName(?string $justificatifName): Diplome
     {
         $this->justificatifName = $justificatifName;
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDomaine()
-    {
-        return $this->domaine;
-    }
-
-    /**
-     * @param mixed $domaine
-     */
-    public function setDomaine($domaine): void
-    {
-        $this->domaine = $domaine;
     }
 
     /**

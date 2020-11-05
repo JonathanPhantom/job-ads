@@ -22,27 +22,18 @@ class SearchType extends FormConfig
                 'enum_class' => Localites::class,
                 'label' => false,
                 'required' => false,
-                'multiple' => true
+
+                'placeholder' => "Rechercher par Ville ou Région"
+
             ]))
             ->add('domaineEtude', EnumType::class, $this->getConfiguration('', '', [
                 'enum_class' => DomaineEtude::class,
                 'label' => false,
                 'required' => false,
-                'multiple' => true
-            ]))
-            ->add('typeContrat', EnumType::class, $this->getConfiguration('', '', [
-                'enum_class' => TypeContrat::class,
-                'label' => false,
-                'required' => false,
-                'multiple' => true
-            ]))
-            ->add('niveauEtude', EnumType::class, $this->getConfiguration('', '', [
-                'enum_class' => NiveauFormation::class,
-                'label' => false,
-                'required' => false,
-                'multiple' => true
-            ]))
-        ;
+                'multiple' => false,
+                'placeholder' => "Rechercher par le domaine d'étude"
+
+            ]));
     }
 
     //pour que les recherche ne se postent pas on utilisent les méthodes en get
