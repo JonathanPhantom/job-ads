@@ -22,6 +22,7 @@ class SearchType extends FormConfig
                 'enum_class' => Localites::class,
                 'label' => false,
                 'required' => false,
+                'multiple' => false,
 
                 'placeholder' => "Rechercher par Ville ou Région"
 

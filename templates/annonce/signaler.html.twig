@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Signaler une annonce' %}
+
+{% block body %}
+    {{ include('fragments/_navCandidat.html.twig') }}
+    <div class="container col-md-6 mt-5">
+        <h2>Signaler l'annonce</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn rounded-0 btn-info">Signaler</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+

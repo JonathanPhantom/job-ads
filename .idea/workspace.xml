@@ -20,35 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change afterPath="$PROJECT_DIR$/templates/annonce/editer.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/annonce/myAds.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/annonce/signaler.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/SignalerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/SignalerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Annonce.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Annonce.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Diplome.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Diplome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/DiplomeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DiplomeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProfilType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProfilType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/SearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SignalerType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SignalerType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EntrepriseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EntrepriseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/candidatAccount.hmtl.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/candidatAccount.hmtl.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fragments/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/loginCandidat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/loginCandidat.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +210,8 @@
       <workItem from="1604414615275" duration="2375000" />
       <workItem from="1604417013255" duration="380000" />
       <workItem from="1604474509978" duration="8880000" />
-      <workItem from="1604530786481" duration="12836000" />
+      <workItem from="1604530786481" duration="28794000" />
+      <workItem from="1604579257533" duration="9890000" />
     </task>
     <servers />
   </component>
@@ -268,9 +256,10 @@
       <screen x="0" y="34" width="1366" height="734" />
     </state>
     <state x="416" y="148" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604532975416" />
-    <state x="693" y="289" width="524" height="490" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604489477871">
-      <screen x="0" y="34" width="1920" height="994" />
+    <state x="693" y="302" width="524" height="490" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604586062512">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
+    <state x="693" y="302" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1604586062512" />
     <state x="693" y="289" width="524" height="490" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.994@0.34.1920.994" timestamp="1604489477871" />
     <state x="588" y="64" width="753" height="760" key="CommitChangelistDialog2" timestamp="1603893949290">
       <screen x="0" y="0" width="1536" height="824" />
@@ -309,18 +298,18 @@
       <screen x="0" y="34" width="3286" height="1046" />
     </state>
     <state x="412" y="132" width="540" height="540" key="StructurePopup/0.34.3286.1046@0.34.3286.1046" timestamp="1604516176869" />
-    <state width="498" height="398" key="SwitcherDM" timestamp="1604533465145">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state width="498" height="448" key="SwitcherDM" timestamp="1604583863898">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604533465145" />
-    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1603842708069" />
+    <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604571174024" />
+    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604583863898" />
     <state width="700" height="539" key="SwitcherDM/0.34.1920.994@0.34.1920.994" timestamp="1604503716578" />
     <state width="1199" height="568" key="SwitcherDM/0.34.3286.1046@0.34.3286.1046" timestamp="1604516941773" />
-    <state x="524" y="339" width="446" height="176" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604408176874">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state x="737" y="469" width="446" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604585941002">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="524" y="339" width="446" height="176" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604408176874" />
-    <state x="737" y="469" width="436" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1920.1046@0.34.1920.1046" timestamp="1603830278601" />
+    <state x="737" y="469" width="446" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1920.1046@0.34.1920.1046" timestamp="1604585941002" />
     <state x="1120" y="125" width="638" height="903" key="find.popup" timestamp="1604503584450">
       <screen x="0" y="34" width="1920" height="994" />
     </state>
@@ -329,9 +318,10 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="624" y="254" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603842555016" />
-    <state x="623" y="253" width="672" height="645" key="search.everywhere.popup" timestamp="1604491327529">
-      <screen x="0" y="34" width="1920" height="994" />
+    <state x="1989" y="238" width="672" height="701" key="search.everywhere.popup" timestamp="1604545624788">
+      <screen x="1366" y="0" width="1920" height="1080" />
     </state>
+    <state x="1989" y="238" width="672" height="701" key="search.everywhere.popup/0.34.1366.734/1366.0.1920.1080@1366.0.1920.1080" timestamp="1604545624788" />
     <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1604415486634" />
     <state x="623" y="253" width="672" height="645" key="search.everywhere.popup/0.34.1920.994@0.34.1920.994" timestamp="1604491327529" />
   </component>

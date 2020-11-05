@@ -33,13 +33,16 @@ class SignalerController extends AbstractController
 
 
     /**
-     * @Route("/annonce/{id}/signaler", name="signaler")
+     * @Route("/annonce/{id}/signaler", name="app_annonce_signaler")
      * @param Request $request
      * @param Annonce $annonce
      * @return Response
      */
     public function signaleAnnonce(Request $request, Annonce $annonce): Response
     {
+        if (!$this->isGranted("ROLE_CANDIDAT")){
+            $this->redirectToRoute('app_login');
+        }
 
         //TODO: faire une relation entre signaler et annonce et signaler et candidat
 
@@ -59,11 +62,10 @@ class SignalerController extends AbstractController
 
             //on redirige vers la page de l'annonce ici on met home seulement pour le moment
             $id = $annonce->getId();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_annonce_show');
         }
 
-        return $this->render('signaler/index.html.twig', [
-            'controller_name' => 'SignalerController',
+        return $this->render('annonce/signaler.html.twig', [
             'form' => $form->createView()
         ]);
     }

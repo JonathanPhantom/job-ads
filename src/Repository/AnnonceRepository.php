@@ -91,38 +91,38 @@ class AnnonceRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('a');
 
         if ($search->getDomaineEtude()){
-            foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
-                $domaineEtudes = $domaineEtude->getValue();
+            /*foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
+                $domaineEtudes = $domaineEtude->getValue();*/
                 $query = $query
-                    ->orWhere("a.domaineEtude = '$domaineEtudes'")
+                    ->andWhere("a.domaineEtude = '".$search->getDomaineEtude()->getValue()."'")
                     ;
-            }
+           /* }*/
         }
 
         if ($search->getLocalites()){
-            foreach ($search->getLocalites() as $k => $localite){
-                $localites = $localite->getValue();
+           /* foreach ( as $k => $localite){
+                $localites = $localite->getValue();*/
                 $query = $query
                     ->leftJoin("a.proprietaire", 'b')
-                    ->orWhere("b.localite = '$localites'");
-            }
+                    ->andWhere("b.localite = '".$search->getLocalites()->getValue()."'");
+           /* }*/
         }
 
         if ($search->getTypeContrat()){
-            foreach ($search->getTypeContrat() as $k => $typeContrat){
-                $typeContrats = $typeContrat->getValue();
+            /*foreach ($search->getTypeContrat() as $k => $typeContrat){
+                $typeContrats = $typeContrat->getValue();*/
                 $query = $query
-                    ->orWhere("a.typeContrat = '$typeContrats'")
+                    ->andWhere("a.typeContrat = '".$search->getTypeContrat()->getValue()."'")
                     ;
-            }
+            /*}*/
         }
         if ($search->getNiveauEtude()){
-            foreach ($search->getNiveauEtude() as $k => $niveauFormation){
-                $niveauFormations = $niveauFormation->getValue();
+            /*foreach ($search->getNiveauEtude() as $k => $niveauFormation){
+                $niveauFormations = $niveauFormation->getValue();*/
                 $query = $query
-                    ->orWhere("a.niveauFormation = '$niveauFormations'")
+                    ->andWhere("a.niveauFormation = '".$search->getNiveauEtude()->getValue()."'")
                     ;
-            }
+           /* }*/
         }
 
         return $query->getQuery();
