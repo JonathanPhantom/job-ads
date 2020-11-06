@@ -81,6 +81,21 @@ class Cv
      */
     private $experienecesProfessionnelles;
 
+    /**
+     * @ORM\Column(type="anneeExperience")
+     */
+    private $anneeExperience;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $salaire;
+
+    /**
+     * @ORM\Column(type="statut")
+     */
+    private $statut;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
@@ -278,6 +293,42 @@ class Cv
                 $experienecesProfessionnelle->setCv(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAnneeExperience()
+    {
+        return $this->anneeExperience;
+    }
+
+    public function setAnneeExperience($anneeExperience): self
+    {
+        $this->anneeExperience = $anneeExperience;
+
+        return $this;
+    }
+
+    public function getSalaire(): ?int
+    {
+        return $this->salaire;
+    }
+
+    public function setSalaire(?int $salaire): self
+    {
+        $this->salaire = $salaire;
+
+        return $this;
+    }
+
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    public function setStatut($statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

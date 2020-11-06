@@ -58,6 +58,11 @@ class ExperienceProfessionnelle
      */
     private $cv;
 
+    /**
+     * @ORM\Column(type="niveauDePoste")
+     */
+    private $niveauPoste;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,18 @@ class ExperienceProfessionnelle
     public function setCv(?Cv $cv): self
     {
         $this->cv = $cv;
+
+        return $this;
+    }
+
+    public function getNiveauPoste()
+    {
+        return $this->niveauPoste;
+    }
+
+    public function setNiveauPoste($niveauPoste): self
+    {
+        $this->niveauPoste = $niveauPoste;
 
         return $this;
     }
