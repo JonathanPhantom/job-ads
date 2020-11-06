@@ -11,10 +11,10 @@
         </div>
     </header>
     <div class="mt-2 mb-5">
-        <div class="container ">
-            <div class="col-md-8 p-3 mx-auto signUp-box" style="background-color: #fff;">
-                <h1 class=" text-center account-text text-primary">Inscrivez-vous et commencez à postuler</h1>
-                <span class="d-block text-center mt-2">Un texte peut être ici</span>
+        <div class=" ">
+            <div class="col-md-5 rounded-0 p-3 mx-auto signUp-box" style="background-color: #fff;">
+                <h1 class="text-center account-text text-dark">Inscrivez-vous</h1>
+                <span class="d-block text-center mt-4">Bénéficiez des avantages de Job-Ads : <br></span>
                 <span class="d-block text-center mt-3">Vous avez déja un compte?
                     <a href="{{ path('app_login') }}">Connectez-vous!
                     </a>
@@ -24,7 +24,6 @@
                 {{ form_row(form.prenom) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.dateNaissance) }}
-                {{ form_row(form.description) }}
                 {{ form_row(form.telephone) }}
                 {{ form_row(form.adresse) }}
                 <div class="input-group">
@@ -37,7 +36,7 @@
                     </div>
                     {{ form_widget(form.localite) }}
                 </div>
-                <label for="disponibilte" class="mt-3 mb-2">Quelle est votre disponibilté en ce moment ?</label>
+                {# <label for="disponibilte" class="mt-3 mb-2">Quelle est votre disponibilté en ce moment ?</label>
                 {{ form_widget(form.disponibilite,{'attr':
                     {
                         'onChange':"displayDisponibility('compte_candidat_disponibilite')"
@@ -58,16 +57,15 @@
                         </label>
                         {{ form_widget( form.dateDisponibilite) }}
                     </div>
-                </div>
+                </div> #}
                 {{ form_widget(form.plainPassword) }}
                 {{ form_widget(form.agreeTerms) }}
 
                 <div class="d-flex flex-column">
 
-                    <button class=" btn btn-outline mt-2 mb-2" type="submit"
-                            style="background-color: #DB7300;">Créer le compte*
+                    <button class=" btn btn-outline mt-3 mb-2 text-light" type="submit"
+                            style="background-color: #700598;">Créer le compte*
                     </button>
-                    <span>* Poursuivre la création du compte vers la création des différents profils </span>
                 </div>
                 {{ form_end(form) }}
             </div>

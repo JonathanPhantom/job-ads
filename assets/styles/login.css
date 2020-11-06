@@ -5,7 +5,7 @@
 }
 .block a {
     display: flex;
-    color : #DB7300;
+    color : #700598;
     align-self: center;
     justify-content: center;
     text-decoration: none;
@@ -26,11 +26,11 @@ form label{
     margin-bottom: 4px;
 }
 .passwordForgot{
-    color : #DB7300;
+    color : #700598;
 }
 .signUp{
-    border-color: #DB7300; color: #DB7300;
+    border-color: #700598; color: #700598;
 }
 .signUp:hover{
-    background-color: #DB7300;
+    background-color: #700598;
 }

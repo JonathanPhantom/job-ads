@@ -16,4 +16,5 @@ return [
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Fidry\PsyshBundle\PsyshBundle::class => ['dev' => true, 'test' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    MercurySeries\FlashyBundle\MercurySeriesFlashyBundle::class => ['all' => true],
 ];
