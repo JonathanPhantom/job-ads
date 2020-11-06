@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\CvRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=CvRepository::class)
@@ -29,6 +31,25 @@ class Cv
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Candidat $candidat;
+
+    /**
+     * @Vich\UploadableField(mapping="image_user", fileNameProperty="photoProfil")
+     * @var File
+     */
+    private $photoProfilFile;
+
+    //update pour gérer l'insertion des fichiers
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updateAt;
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     * @var string
+     */
+    private $photoProfil;
 
     /**
      * @ORM\Column(type="domaineEtude")
@@ -92,6 +113,64 @@ class Cv
     {
         $this->candidat = $candidat;
 
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getPhotoProfilFile(): ?File
+    {
+        return $this->photoProfilFile;
+    }
+
+    /**
+     * @param File $photoProfilFile
+     * @return Cv
+     * @throws \Exception
+     */
+    public function setPhotoProfilFile(File $photoProfilFile): Cv
+    {
+        $this->photoProfilFile = $photoProfilFile;
+        if ($this->photoProfilFile instanceof UploadedFile){
+            $this->updateAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param mixed $updateAt
+     * @return Cv
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoProfil(): ?string
+    {
+        return $this->photoProfil;
+    }
+
+    /**
+     * @param string $photoProfil
+     * @return Cv
+     */
+    public function setPhotoProfil(string $photoProfil): Cv
+    {
+        $this->photoProfil = $photoProfil;
         return $this;
     }
 

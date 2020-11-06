@@ -6,10 +6,10 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import 'bootstrap/dist/css/bootstrap.css'
 import './styles/app.css';
-import './styles/login.css';
-import './styles/compteCandidat.css';
+
+import flashy from './scripts/flashy';
+window.flashy = flashy;
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 

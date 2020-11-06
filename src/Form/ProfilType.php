@@ -37,7 +37,8 @@ class ProfilType extends FormConfig
                 'enum_class' => TypeContrat::class,
                 'multiple' => false,
             ]))
-            /*            ->add('isPrincipal', ChoiceType::class, $this->getConfiguration('Cet Profil est t\'il votre profil principal', '',[
+            /*
+             ->add('isPrincipal', ChoiceType::class, $this->getConfiguration('Cet Profil est t\'il votre profil principal', '',[
                             'choices' => [
                                 'oui' => true,
                                 'non' => false
