@@ -18,42 +18,23 @@ class Candidat extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    protected ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    private ?string $prenom;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $dateNaissance;
+    private ?\DateTimeInterface $dateNaissance;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $disponibilite;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dateDisponibilite;
 
     /**
      * @ORM\Column(type="localites")
@@ -63,34 +44,40 @@ class Candidat extends User
     /**
      * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="candidats")
      */
-    private $entreprise;
+    private ?Entreprise $entreprise;
 
     /**
      * @ORM\ManyToMany(targetEntity=Entreprise::class, mappedBy="candidatsRecrutes")
      */
-    private $entreprisesRecruteurs;
+    private ArrayCollection $entreprisesRecruteurs;
 
     /**
      * @ORM\OneToMany(targetEntity=Postulation::class, mappedBy="candidat", orphanRemoval=true)
      */
-    private $candidatures;
+    private ArrayCollection $candidatures;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Profil::class, mappedBy="candidat", orphanRemoval=true)
-     */
-    private $profils;
 
     /**
      * @ORM\OneToMany(targetEntity=Signaler::class, mappedBy="candidat")
      */
-    private $annonceSignales;
+    private ArrayCollection $annonceSignales;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private array $emailsPersonnels = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=Cv::class, mappedBy="candidat", orphanRemoval=true)
+     */
+    private ArrayCollection $mesCvs;
 
     public function __construct()
     {
         $this->entreprisesRecruteurs = new ArrayCollection();
         $this->candidatures = new ArrayCollection();
-        $this->profils = new ArrayCollection();
         $this->annonceSignales = new ArrayCollection();
+        $this->mesCvs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,54 +117,6 @@ class Candidat extends User
     public function setDateNaissance(\DateTimeInterface $dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getDisponibilite(): ?bool
-    {
-        return $this->disponibilite;
-    }
-
-    public function setDisponibilite(bool $disponibilite): self
-    {
-        $this->disponibilite = $disponibilite;
-
-        return $this;
-    }
-
-    public function getDateDisponibilite(): ?\DateTimeInterface
-    {
-        return $this->dateDisponibilite;
-    }
-
-    public function setDateDisponibilite(?\DateTimeInterface $dateDisponibilite): self
-    {
-        $this->dateDisponibilite = $dateDisponibilite;
 
         return $this;
     }
@@ -272,36 +211,6 @@ class Candidat extends User
     }
 
     /**
-     * @return Collection|Profil[]
-     */
-    public function getProfils(): Collection
-    {
-        return $this->profils;
-    }
-
-    public function addProfil(Profil $profil): self
-    {
-        if (!$this->profils->contains($profil)) {
-            $this->profils[] = $profil;
-            $profil->setCandidat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProfil(Profil $profil): self
-    {
-        if ($this->profils->removeElement($profil)) {
-            // set the owning side to null (unless already changed)
-            if ($profil->getCandidat() === $this) {
-                $profil->setCandidat(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Signaler[]
      */
     public function getAnnonceSignales(): Collection
@@ -325,6 +234,48 @@ class Candidat extends User
             // set the owning side to null (unless already changed)
             if ($annonceSignale->getCandidat() === $this) {
                 $annonceSignale->setCandidat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEmailsPersonnels(): ?array
+    {
+        return $this->emailsPersonnels;
+    }
+
+    public function setEmailsPersonnels(?array $emailsPersonnels): self
+    {
+        $this->emailsPersonnels = $emailsPersonnels;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cv[]
+     */
+    public function getMesCvs(): Collection
+    {
+        return $this->mesCvs;
+    }
+
+    public function addMesCv(Cv $mesCv): self
+    {
+        if (!$this->mesCvs->contains($mesCv)) {
+            $this->mesCvs[] = $mesCv;
+            $mesCv->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMesCv(Cv $mesCv): self
+    {
+        if ($this->mesCvs->removeElement($mesCv)) {
+            // set the owning side to null (unless already changed)
+            if ($mesCv->getCandidat() === $this) {
+                $mesCv->setCandidat(null);
             }
         }
 

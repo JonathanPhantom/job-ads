@@ -18,12 +18,12 @@ class Entreprise extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    protected ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomEntreprise;
+    private ?string $nomEntreprise;
 
     /**
      * @ORM\Column(type="domaineActivite")
@@ -33,27 +33,27 @@ class Entreprise extends User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $emailContact;
+    private ?string $emailContact;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomContact;
+    private ?string $nomContact;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $numeroContact;
+    private ?string $numeroContact;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private ?string $adresse;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $siteWeb;
+    private ?string $siteWeb;
 
     /**
      * @ORM\Column(type="localites")
@@ -63,17 +63,17 @@ class Entreprise extends User
     /**
      * @ORM\OneToMany(targetEntity=Candidat::class, mappedBy="entreprise")
      */
-    private $candidats;
+    private ArrayCollection $candidats;
 
     /**
      * @ORM\ManyToMany(targetEntity=Candidat::class, inversedBy="entreprisesRecruteurs")
      */
-    private $candidatsRecrutes;
+    private ArrayCollection $candidatsRecrutes;
 
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="proprietaire", orphanRemoval=true)
      */
-    private $annonces;
+    private ArrayCollection $annonces;
 
     public function __construct()
     {

@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\DiplomeRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -20,12 +22,8 @@ class Diplome
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private ?int $dateObtention;
 
     /**
      * @Vich\UploadableField(mapping="diplomes_files", fileNameProperty="justificatifName")
@@ -51,27 +49,40 @@ class Diplome
     private $updateAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="diplomes", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Cv::class, inversedBy="formations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?Profil $profil;
+    private ?Cv $cv;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $titreFormation;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private ?DateTimeInterface $dateDebut;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private ?DateTimeInterface $dateFin;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $nomEtablissement;
+
+    /**
+     * @ORM\Column(type="localites", nullable=true)
+     */
+    private $localite;
 
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDateObtention(): ?int
-    {
-        return $this->dateObtention;
-    }
-
-    public function setDateObtention(int $dateObtention): self
-    {
-        $this->dateObtention = $dateObtention;
-
-        return $this;
     }
 
 
@@ -80,7 +91,7 @@ class Diplome
     /**
      * @param File|null $justificatifFile
      * @return Diplome
-     * @throws \Exception
+     * @throws Exception
      */
     public function setJustificatifFile(?File $justificatifFile): Diplome
     {
@@ -150,15 +161,75 @@ class Diplome
         $this->updateAt = $updateAt;
         return $this;
     }
-
-    public function getProfil(): ?Profil
+    
+    public function getCv(): ?Cv
     {
-        return $this->profil;
+        return $this->cv;
     }
 
-    public function setProfil(?Profil $profil): self
+    public function setCv(?Cv $cv): self
     {
-        $this->profil = $profil;
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    public function getTitreFormation(): ?string
+    {
+        return $this->titreFormation;
+    }
+
+    public function setTitreFormation(string $titreFormation): self
+    {
+        $this->titreFormation = $titreFormation;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getNomEtablissement(): ?string
+    {
+        return $this->nomEtablissement;
+    }
+
+    public function setNomEtablissement(string $nomEtablissement): self
+    {
+        $this->nomEtablissement = $nomEtablissement;
+
+        return $this;
+    }
+
+    public function getLocalite()
+    {
+        return $this->localite;
+    }
+
+    public function setLocalite($localite): self
+    {
+        $this->localite = $localite;
 
         return $this;
     }
