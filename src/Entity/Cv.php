@@ -69,7 +69,7 @@ class Cv
     /**
      * @ORM\OneToMany(targetEntity=Diplome::class, mappedBy="cv", orphanRemoval=true)
      */
-    private ArrayCollection $formations;
+    private $formations;
 
     /**
      * @ORM\Column(type="array", nullable=true)

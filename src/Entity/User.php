@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="users")
  * @Vich\Uploadable
  */
-abstract class User implements UserInterface
+abstract class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -68,7 +68,7 @@ abstract class User implements UserInterface
 
     /**
      * @ORM\Column(type="string",nullable=true)
-     * @var string
+     * @var string|null
      */
     private $photoProfil;
 
@@ -232,10 +232,29 @@ abstract class User implements UserInterface
      * @param string $photoProfil
      * @return User
      */
-    public function setPhotoProfil(string $photoProfil): User
+    public function setPhotoProfil(?string $photoProfil): User
     {
         $this->photoProfil = $photoProfil;
         return $this;
+    }
+
+    public function serialize() {
+
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+
+    }
+
+    public function unserialize($serialized) {
+
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            ) = unserialize($serialized);
     }
 
 
