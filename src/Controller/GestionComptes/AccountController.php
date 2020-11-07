@@ -26,7 +26,7 @@ class AccountController extends AbstractController
     public UserPasswordEncoderInterface $passwordEncoder;
     private $flashy;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder,FlashyNotifier $flashy)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, FlashyNotifier $flashy)
     {
         $this->em = $em;
         $this->passwordEncoder = $passwordEncoder;
@@ -62,14 +62,13 @@ class AccountController extends AbstractController
             $candidat->setUpdateAt(new DateTimeImmutable("now"));
             $this->em->persist($candidat);
             $this->em->flush();
-            
-            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous",$this->generateUrl("app_login"));
-            return $this->redirectToRoute("app_home_candidat");
+
+            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous", $this->generateUrl("app_login"));
+            return $this->redirectToRoute('app_login');
         }
         return $this->render("accounts/candidatAccount.hmtl.twig", [
-                'form' => $form->createView()
-            ]
-        );
+            'form' => $form->createView()
+        ]);
     }
 
     /**
@@ -103,11 +102,12 @@ class AccountController extends AbstractController
             $this->em->persist($Cv);
             $this->em->flush();
 
-            $this->flashy->success('success',
-                'Cv Créée avec succès');
+            $this->flashy->success(
+                'success',
+                'Cv Créée avec succès'
+            );
 
             return $this->redirectToRoute('app_home_candidat');
-
         }
 
         return $this->render('accounts/createProfil.html.twig', [
@@ -145,6 +145,7 @@ class AccountController extends AbstractController
 
             $this->em->persist($entreprise);
             $this->em->flush();
+            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous", $this->generateUrl("app_login"));
 
             return $this->redirectToRoute('app_login');
         }

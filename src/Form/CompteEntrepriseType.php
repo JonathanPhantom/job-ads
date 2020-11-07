@@ -2,22 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\DomaineActivite;
-use App\Entity\Entreprise;
+use App\Form\FormConfig;
 use App\Entity\Localites;
+use App\Entity\Entreprise;
+use App\Entity\DomaineActivite;
 use App\MesEnumType\LocalitesType;
-use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CompteEntrepriseType extends FormConfig
 {
@@ -58,15 +60,20 @@ class CompteEntrepriseType extends FormConfig
             ->add('email',EmailType::class,$this->getConfiguration('','Votre adresse email '))
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => false,
+                'first_options' => [
+                    'label' => false,
                     'attr' => [
                         'placeholder' => 'Mot de passe',
-                        'class' => 'mt-4'
+                        'class' => 'mt-2 rounded-0 ',
                     ]
                 ],
-                'second_options' => ['label' => false,
+                'second_options' => [
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => 'Entrez à nouveau le mot de passe']
+                        'placeholder' => 'Entrez à nouveau le mot de passe',
+                        'class' => 'mt-4 rounded-0 ',
+
+                    ]
                 ],
                 'invalid_message' => 'Les mots de passe doivent correspondre',
                 // instead of being set onto the object directly,
@@ -76,12 +83,12 @@ class CompteEntrepriseType extends FormConfig
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
-                    /*new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),*/
+                    new Length([
+                    'min' => 8,
+                    'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} characters',
+                    // max length allowed by Symfony for security reasons
+                    'max' => 4096,
+                ]),
                 ],
             ])
             ;

@@ -112,12 +112,12 @@ class CompteCandidatType extends FormConfig
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
-                    /*new Length([
-                    'min' => 6,
-                    'minMessage' => 'Votre mot {{ limit }} characters',
+                    new Length([
+                    'min' => 8,
+                    'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} characters',
                     // max length allowed by Symfony for security reasons
                     'max' => 4096,
-                ]),*/
+                ]),
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
