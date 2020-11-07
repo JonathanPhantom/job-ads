@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AnnonceRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use App\Repository\AnnonceRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=AnnonceRepository::class)
@@ -77,27 +78,24 @@ class Annonce
     private $datePublication;
 
     /**
-     * @ORM\Column(type="domaineEtude")
+     * @ORM\Column(type="niveauFormation")
      */
-    private $domaineEtude;
+    private $niveauFormation;
 
     /**
-     * @return mixed
+     * @ORM\OneToMany(targetEntity=Signaler::class, mappedBy="annonce")
      */
-    public function getDomaineEtude()
-    {
-        return $this->domaineEtude;
-    }
+    private $signales;
 
     /**
-     * @param mixed $domaineEtude
-     * @return Annonce
+     * @ORM\Column(type="typeContrat")
      */
-    public function setDomaineEtude($domaineEtude)
-    {
-        $this->domaineEtude = $domaineEtude;
-        return $this;
-    }
+    private $typeContrat;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $domaineEtudes = [];
 
     /**
      * @return mixed
@@ -116,21 +114,6 @@ class Annonce
         $this->niveauFormation = $niveauFormation;
         return $this;
     }
-
-    /**
-     * @ORM\Column(type="niveauFormation")
-     */
-    private $niveauFormation;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Signaler::class, mappedBy="annonce")
-     */
-    private $signales;
-
-    /**
-     * @ORM\Column(type="typeContrat")
-     */
-    private $typeContrat;
 
     public function __construct()
     {
@@ -347,6 +330,18 @@ class Annonce
     public function setTypeContrat($typeContrat): self
     {
         $this->typeContrat = $typeContrat;
+
+        return $this;
+    }
+
+    public function getDomaineEtudes(): ?array
+    {
+        return $this->domaineEtudes;
+    }
+
+    public function setDomaineEtudes(?array $domaineEtudes): self
+    {
+        $this->domaineEtudes = $domaineEtudes;
 
         return $this;
     }

@@ -94,11 +94,11 @@ class AnnonceRepository extends ServiceEntityRepository
             /*foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
                 $domaineEtudes = $domaineEtude->getValue();*/
                 $query = $query
-                    ->andWhere("a.domaineEtude = '".$search->getDomaineEtude()->getValue()."'")
-                    ;
-           /* }*/
+                ->andWhere($query->expr()->in('a.domaineEtudes',':do'))
+                ->setParameter('do',$search->getDomaineEtude()->getValue());
+                /* }*/
         }
-
+        // dd($query->getQuery()->getResult());
         if ($search->getLocalites()){
            /* foreach ( as $k => $localite){
                 $localites = $localite->getValue();*/
@@ -124,7 +124,7 @@ class AnnonceRepository extends ServiceEntityRepository
                     ;
            /* }*/
         }
-
+        
         return $query->getQuery();
     }
 
