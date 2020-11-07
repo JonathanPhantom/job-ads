@@ -12,6 +12,7 @@ use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -32,11 +33,13 @@ class AnnonceController extends AbstractController
      * @var EntityManagerInterface
      */
     private EntityManagerInterface $manager;
+    private $flashy;
 
-    public function __construct(AnnonceRepository $repository, EntityManagerInterface $manager)
+    public function __construct(AnnonceRepository $repository, EntityManagerInterface $manager,FlashyNotifier $flashy)
     {
         $this->repository = $repository;
         $this->manager = $manager;
+        $this->flashy = $flashy;
     }
 
 
@@ -64,13 +67,19 @@ class AnnonceController extends AbstractController
 
         //traitement du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les valeurs des enum 
+            $domaines = [];
+            foreach ($form->get('domaineEtudes')->getData() as$domaine) {
+                $domaines[]=$domaine->getValue();
+            }
+            $annonce->setDomaineEtudes($domaines);
             $annonce->setProprietaire($this->getUser());
             //Mise à jour de la date de publication
             $annonce->setDatePublication(new \DateTime());
             $this->manager->persist($annonce);
             $this->manager->flush();
             $id = $annonce->getId();
-            $this->addFlash('success', 'Annonce créée avec succès');
+            $this->flashy->success('Annonce créée avec succès');
             //on redirige vers la page d'affichage des annonces ou la page d'admin des annonces
             return $this->redirectToRoute('app_annonce_show', [
                 'id' => $id
@@ -165,7 +174,7 @@ class AnnonceController extends AbstractController
     //Page d'acceuil
 
     /**
-     * @Route("/annonce/show/{id<\d+>}", name="app_annonce_show2")
+     * @Route("/annonce/show/{id<\d+>}", name="app_annonce_show_id")
      *
      * @param Request $request
      *
@@ -180,6 +189,7 @@ class AnnonceController extends AbstractController
         $form = $this->createForm(SearchType::class, $search);
 
         $form->handleRequest($request);
+        $a = $annonce->getDomaineEtudes();
 
         $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 

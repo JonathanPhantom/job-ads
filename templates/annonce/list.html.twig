@@ -28,14 +28,14 @@
             </form>
         </div>
     </div>
-    <main class="" style="flex: 1 0 auto;margin-left: 10%;max-width: 1250px;padding: 20px">
+    <main class="" style="flex: 1 0 auto;margin-right: 10%;margin-left:10%;max-width: 1250px;padding: 20px">
         <div class="row">
             <div class="col-md-4">
                 <div style="overflow-x: hidden;overflow-y: hidden">
                     <div class="container">
                         <div class="mb-4">
                             {% for annonce in annonces %}
-                                <form method="post" action="{{ path('app_annonce_show2',{id:annonce.id}) }}" id="form-sumibtted_{{ annonce.id }}" >
+                                <form method="post" action="{{ path('app_annonce_show_id',{id:annonce.id}) }}" id="form-sumibtted_{{ annonce.id }}" >
                                 </form>
                                 <a href="#">
                                 <section class=""
@@ -89,7 +89,7 @@
                             margin-right: 20px;
                             left: 28px;
                             position: relative;">
-                                <img src="{{ asset('images/sonatel.jpg') }}" alt="logo entreprise" style="
+                                <img src="{{ vich_uploader_asset(annonce.proprietaire) }}" alt="logo-{{annonce.proprietaire.nomEntreprise}}" style="
                                     left: 30%;
                                     position: absolute;
                                     top: 48%;

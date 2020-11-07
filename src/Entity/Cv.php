@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
+use App\Entity\Diplome;
+use App\Entity\Candidat;
 use App\Repository\CvRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ExperienceProfessionnelle;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass=CvRepository::class)
@@ -79,7 +83,7 @@ class Cv
     /**
      * @ORM\OneToMany(targetEntity=ExperienceProfessionnelle::class, mappedBy="cv")
      */
-    private $experienecesProfessionnelles;
+    private $experiencesProfessionnelles;
 
     /**
      * @ORM\Column(type="anneeExperience")
@@ -96,10 +100,20 @@ class Cv
      */
     private $statut;
 
+    /**
+     * @ORM\Column(type="niveauDePoste")
+     */
+    private $niveauPoste;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $langues = [];
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
-        $this->experienecesProfessionnelles = new ArrayCollection();
+        $this->experiencesProfessionnelles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,7 +161,7 @@ class Cv
     public function setPhotoProfilFile(File $photoProfilFile): Cv
     {
         $this->photoProfilFile = $photoProfilFile;
-        if ($this->photoProfilFile instanceof UploadedFile){
+        if ($this->photoProfilFile instanceof UploadedFile) {
             $this->updateAt = new \DateTime('now');
         }
         return $this;
@@ -270,27 +284,27 @@ class Cv
     /**
      * @return Collection|ExperienceProfessionnelle[]
      */
-    public function getExperienecesProfessionnelles(): Collection
+    public function getExperiencesProfessionnelles(): Collection
     {
-        return $this->experienecesProfessionnelles;
+        return $this->experiencesProfessionnelles;
     }
 
-    public function addExperienecesProfessionnelle(ExperienceProfessionnelle $experienecesProfessionnelle): self
+    public function addExperiencesProfessionnelle(ExperienceProfessionnelle $experiencesProfessionnelle): self
     {
-        if (!$this->experienecesProfessionnelles->contains($experienecesProfessionnelle)) {
-            $this->experienecesProfessionnelles[] = $experienecesProfessionnelle;
-            $experienecesProfessionnelle->setCv($this);
+        if (!$this->experiencesProfessionnelles->contains($experiencesProfessionnelle)) {
+            $this->experiencesProfessionnelles[] = $experiencesProfessionnelle;
+            $experiencesProfessionnelle->setCv($this);
         }
 
         return $this;
     }
 
-    public function removeExperienecesProfessionnelle(ExperienceProfessionnelle $experienecesProfessionnelle): self
+    public function removeExperiencesProfessionnelle(ExperienceProfessionnelle $experiencesProfessionnelle): self
     {
-        if ($this->experienecesProfessionnelles->removeElement($experienecesProfessionnelle)) {
+        if ($this->experiencesProfessionnelles->removeElement($experiencesProfessionnelle)) {
             // set the owning side to null (unless already changed)
-            if ($experienecesProfessionnelle->getCv() === $this) {
-                $experienecesProfessionnelle->setCv(null);
+            if ($experiencesProfessionnelle->getCv() === $this) {
+                $experiencesProfessionnelle->setCv(null);
             }
         }
 
@@ -329,6 +343,29 @@ class Cv
     public function setStatut($statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+    public function getNiveauPoste()
+    {
+        return $this->niveauPoste;
+    }
+
+    public function setNiveauPoste($niveauPoste): self
+    {
+        $this->niveauPoste = $niveauPoste;
+
+        return $this;
+    }
+
+    public function getLangues(): ?array
+    {
+        return $this->langues;
+    }
+
+    public function setLangues(?array $langues): self
+    {
+        $this->langues = $langues;
 
         return $this;
     }
