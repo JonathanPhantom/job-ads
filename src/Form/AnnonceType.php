@@ -37,7 +37,8 @@ class AnnonceType extends FormConfig
             ->add('description', TextareaType::class, $this->getConfiguration('Description de l\'annonce', '', [
                 'attr' => [
                     'placeholder' => 'Saisissez tous les détails de votre annonce ',
-                    'rows' => '10'
+                    'rows' => '10',
+                    'id' => 'textarea'
                 ]
             ]))
             ->add('categories', EntityType::class, $this->getConfiguration('Catégorie(s) de l\'annonce', '', [

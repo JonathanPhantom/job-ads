@@ -37,6 +37,7 @@ class AccountController extends AbstractController
      * @Route("/createAccount",name="app_candidat_compte",methods={"GET","POST"})
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function createAccount(Request $request): Response
     {
@@ -120,6 +121,7 @@ class AccountController extends AbstractController
      *
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function createEntrepriseAccount(Request $request): Response
     {

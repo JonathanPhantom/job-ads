@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Candidat;
+use App\Entity\CandidatSearch;
 use App\Entity\Search;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -85,5 +86,92 @@ class CandidatRepository extends ServiceEntityRepository
     public function findCandidatQuery(): QueryBuilder{
         return $this->createQueryBuilder('p');
     }
+
+    //recherchons les candidats avec des attributs précis
+
+    public function findAllCandidat(CandidatSearch $search){
+        $query = $this->createQueryBuilder('c');
+//        $valeur =
+
+        if ($search->getDomaineEtude()){
+            foreach ($search->getDomaineEtude() as $k => $domaineEtude){
+                $domaineEtu = $domaineEtude->getValue();
+                $query = $query
+                    ->leftJoin('c.mesCvs', 'j')
+                    ->andWhere("j.SecteurEtudeSouhaite = '[".$domaineEtu."]'")
+                ;
+            }
+        }
+
+
+
+        if ($search->getNiveauFormation()){
+            foreach ($search->getNiveauFormation() as $k => $niveauFormation){
+                $niveauForm = $niveauFormation->getValue();
+                $query = $query
+                    ->leftJoin('c.mesCvs', 'b')
+                    ->andWhere("b.niveauFormation = '$niveauForm'");
+
+            }
+        }
+
+        if ($search->getNom()){
+            $name = $search->getNom();
+            $query = $query
+                ->andWhere('c.nom LIKE :searchterm')
+                ->setParameter('searchterm', '%'.$name.'%');
+        }
+
+        if ($search->getLocalite()){
+            $local = $search->getLocalite()->getValue();
+            $query = $query
+                ->andWhere("c.localite = '$local'");
+        }
+
+        return $query->getQuery();
+
+    }
+
+
+//    public function getAllAnnoncesSearch(Search $search){
+//        $query = $this->createQueryBuilder('a');
+//
+//        if ($search->getDomaineEtude()){
+//            foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
+//                $domaineEtudes = $domaineEtude->getValue();
+//                $query = $query
+//                    ->orWhere("a.domaineEtude = '$domaineEtudes'")
+//                ;
+//            }
+//        }
+//
+//        if ($search->getLocalites()){
+//            foreach ($search->getLocalites() as $k => $localite){
+//                $localites = $localite->getValue();
+//                $query = $query
+//                    ->leftJoin("a.proprietaire", 'b')
+//                    ->orWhere("b.localite = '$localites'");
+//            }
+//        }
+//
+//        if ($search->getTypeContrat()){
+//            foreach ($search->getTypeContrat() as $k => $typeContrat){
+//                $typeContrats = $typeContrat->getValue();
+//                $query = $query
+//                    ->orWhere("a.typeContrat = '$typeContrats'")
+//                ;
+//            }
+//        }
+//        if ($search->getNiveauEtude()){
+//            foreach ($search->getNiveauEtude() as $k => $niveauFormation){
+//                $niveauFormations = $niveauFormation->getValue();
+//                $query = $query
+//                    ->orWhere("a.niveauFormation = '$niveauFormations'")
+//                ;
+//            }
+//        }
+//
+//        return $query->getQuery();
+//    }
 
 }
