@@ -40,7 +40,8 @@ class AnnonceType extends FormConfig
                 'attr' => [
                     'placeholder' => 'Saisissez tous les détails de votre annonce ',
                     'rows' => '10',
-                    'class'=>'rounded-0 mt-3'
+                    'class'=>'rounded-0 mt-3',
+                    'id' => 'textarea'
                 ]
             ]))
             // ->add('categories', EntityType::class, $this->getConfiguration('Catégorie(s) de l\'annonce', '', [

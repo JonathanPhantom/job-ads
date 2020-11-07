@@ -63,17 +63,17 @@ class Entreprise extends User
     /**
      * @ORM\OneToMany(targetEntity=Candidat::class, mappedBy="entreprise")
      */
-    private  $candidats;
+    private $candidats;
 
     /**
      * @ORM\ManyToMany(targetEntity=Candidat::class, inversedBy="entreprisesRecruteurs")
      */
-    private  $candidatsRecrutes;
+    private $candidatsRecrutes;
 
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="proprietaire", orphanRemoval=true)
      */
-    private  $annonces;
+    private $annonces;
 
     public function __construct()
     {
