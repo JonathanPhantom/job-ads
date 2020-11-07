@@ -20,14 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AnnonceCandidat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/photo-esp-5fa41c1582421884601472.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/photo-esp-5fa41c15ed72e329043457.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/photo-esp-5fa41c24043d3953466872.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/sonatel-5fa3f7720226b203954742.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/photo esp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Annonce.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Annonce.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Candidat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Candidat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Diplome.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Diplome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entreprise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Cv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/DomaineEtude.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/DomaineEtude.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CompteCandidatType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CompteCandidatType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/DiplomeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DiplomeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/candidatAccount.hmtl.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/candidatAccount.hmtl.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/createProfil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/annonce/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +168,7 @@
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
+      <path value="$PROJECT_DIR$/vendor/mercuryseries/flashy-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -205,6 +222,7 @@
       <workItem from="1604530786481" duration="28794000" />
       <workItem from="1604579257533" duration="9890000" />
       <workItem from="1604643644195" duration="1753000" />
+      <workItem from="1604770980638" duration="183000" />
     </task>
     <servers />
   </component>

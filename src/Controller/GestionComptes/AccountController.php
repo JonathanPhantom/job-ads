@@ -2,12 +2,13 @@
 
 namespace App\Controller\GestionComptes;
 
+use DateTime;
 use App\Entity\Cv;
-use App\Entity\Profil;
+use App\Form\CvType;
 use DateTimeImmutable;
 use App\Entity\Candidat;
-use App\Form\ProfilType;
 use App\Entity\Entreprise;
+use App\Entity\ExperienceProfessionnelle;
 use App\Form\CompteCandidatType;
 use App\Form\CompteEntrepriseType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -66,51 +67,6 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         return $this->render("accounts/candidatAccount.hmtl.twig", [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/createAccount/createCv", name="app_candidat_cv")
-     * @param Request $request
-     * @return Response
-     * @IsGranted("ROLE_CANDIDAT")
-     */
-    public function createCv(Request $request): Response
-    {
-        $Cv = new Cv();
-
-        $form = $this->createForm(CvType::class, $Cv);
-        $form->handleRequest($request);
-
-        //TODO: Mise en place de la gestion du controller de Cv (accountController)
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            //pour mettre les diplomes dans Cv
-            foreach ($Cv->getDiplomes() as $diplome) {
-                $diplome->setCv($Cv);
-                $this->em->persist($diplome);
-            }
-            //TODO:mise en place de la gestion des fichiers insérer par le user (pdf)
-            //TODO:les assertions
-
-            $candidat = $this->getUser();
-            $Cv->setCandidat($candidat);
-
-            $Cv->setIsPrincipal(true);
-            $this->em->persist($Cv);
-            $this->em->flush();
-
-            $this->flashy->success(
-                'success',
-                'Cv Créée avec succès'
-            );
-
-            return $this->redirectToRoute('app_home_candidat');
-        }
-
-        return $this->render('accounts/createProfil.html.twig', [
-            'controller_name' => 'AccountController',
             'form' => $form->createView()
         ]);
     }
