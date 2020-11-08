@@ -22,8 +22,8 @@ class CandidatController extends AbstractController
 {
     public EntityManagerInterface $em;
     public UserPasswordEncoderInterface $passwordEncoder;
-    private $flashy;
-    private $cvRepository;
+    private FlashyNotifier $flashy;
+    private CvRepository $cvRepository;
 
     public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, FlashyNotifier $flashy, CvRepository $cvRepository)
     {
@@ -36,6 +36,7 @@ class CandidatController extends AbstractController
     /**
      * @Route("/candidat/mesCvs", name="app_candidat_cv_list")
      * @param Request $request
+     * @param Security $security
      * @return Response
      */
     public function mesCvs(Request $request, Security $security): Response
@@ -44,7 +45,7 @@ class CandidatController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $mesCVs_col  = $security->getUser()->getMesCvs();
+        $mesCVs_col = $security->getUser()->getMesCvs();
         $mesCVs = array();
         foreach ($mesCVs_col as $cv) {
             array_push($mesCVs, $cv);
@@ -68,6 +69,8 @@ class CandidatController extends AbstractController
         // Pour la modification
         $cv = new Cv();
         $candidat = $this->getUser();
+
+        /** @var Candidat $candidat */
         $cv->setCandidat($candidat);
 
         $form = $this->createForm(CvType::class, $cv);
@@ -105,6 +108,7 @@ class CandidatController extends AbstractController
             'form2' => $form2->createView(),
         ]);
     }
+
     /**
      * @Route("/candidat/editCv", name="app_candidat_cv_edit",methods={"GET","PUT"})
      * @param Request $request
@@ -121,14 +125,14 @@ class CandidatController extends AbstractController
         $cv_array = $this->cvRepository->findBy(['id' => $request->get('idcv')]);
         if (!empty($cv_array)) {
             $cv = $cv_array[0];
-            $session->set('cv',$cv);
-        }else {
-            $cv= $session->get('cv');
+            $session->set('cv', $cv);
+        } else {
+            $cv = $session->get('cv');
         }
-        $form = $this->createForm(CvType::class, $cv,[
+        $form = $this->createForm(CvType::class, $cv, [
             'method' => 'PUT'
         ]);
-        $form2 = $this->createForm(CompteCandidatType::class, $this->getUser(),[
+        $form2 = $this->createForm(CompteCandidatType::class, $this->getUser(), [
             'method' => 'PUT'
         ]);
         $form->handleRequest($request);
@@ -145,7 +149,7 @@ class CandidatController extends AbstractController
         return $this->render('candidat/editCv.html.twig', [
             'form' => $form->createView(),
             'form2' => $form2->createView(),
-            'cv'=>$cv
+            'cv' => $cv
         ]);
     }
 }

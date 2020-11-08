@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Entreprise;
+use App\Entity\User;
 use App\Form\CompteEntrepriseType;
 use App\Form\ModifyCompteEntrepriseType;
 use App\Repository\EntrepriseRepository;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class AdminRecruteurController extends AbstractController
 {
@@ -31,14 +33,19 @@ class AdminRecruteurController extends AbstractController
     }
 
     /**
-     * @Route("/admin/recruteur/{id<\d+>}", name="admin_recruteur")
-     * @param Entreprise $entreprise
+     * @Route("/admin/recruteur", name="app_admin_recruteur")
+     * @param Security $security
      * @return Response
      */
-    public function index(Entreprise $entreprise): Response
+    public function index(Security $security): Response
     {
+        $user = new Entreprise();
+        $user = $security->getUser();
+        if (!$this->isGranted(User::ROLE_RECRUTEUR)) {
+            return $this->redirectToRoute("app_login");
+        }
         return $this->render('admin_recruteur/index.html.twig', [
-            'user' => $entreprise
+            'user' => $user
         ]);
     }
 
@@ -46,31 +53,33 @@ class AdminRecruteurController extends AbstractController
 
     /**
      * @param Request $request
-     * @Route("/admin/recruteur/edit", name="app_admin_modify")
+     * @Route("/admin/recruteur/edit", name="app_admin_recruteur_edit")
      * @return Response
      */
     public function edit(Request $request)
     {
-            $user = $this->getUser();
-            $form = $this->createForm(ModifyCompteEntrepriseType::class, $user);
+        if (!$this->isGranted(User::ROLE_RECRUTEUR)) {
+            return $this->redirectToRoute("app_login");
+        }
 
-            $form->handleRequest($request);
+        $user = $this->getUser();
+        $form = $this->createForm(ModifyCompteEntrepriseType::class, $user);
 
-            if ($form->isSubmitted() && $form->isValid()){
-                $this->manager->persist($user);
-                $this->manager->flush();
+        $form->handleRequest($request);
 
-                //gestion des messages flash
-                $this->addFlash('success', 'Profil modifié avec succès');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->manager->persist($user);
+            $this->manager->flush();
 
-                $this->redirectToRoute('admin_recruteur', [
-                    'id' => $this->getUser()->getId()
-                ]);
-            }
+            //gestion des messages flash
+            $this->addFlash('success', 'Profil modifié avec succès');
 
-            return $this->render('admin_recruteur/modifier.html.twig', [
-                'form' => $form->createView()
-            ]);
+            return $this->redirectToRoute('app_admin_recruteur');
+        }
+
+        return $this->render('admin_recruteur/modifier.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
 }

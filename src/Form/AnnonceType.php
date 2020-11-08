@@ -40,9 +40,9 @@ class AnnonceType extends FormConfig
                 'attr' => [
                     'placeholder' => 'Saisissez tous les détails de votre annonce ',
                     'rows' => '10',
-                    'class'=>'rounded-0 mt-3',
-                    'id' => 'textarea'
-                ]
+                    'class'=>'rounded-0 mt-3 textarea',
+                ],
+                'required'=>false,
             ]))
             // ->add('categories', EntityType::class, $this->getConfiguration('Catégorie(s) de l\'annonce', '', [
             //     'attr'=>[
@@ -63,7 +63,8 @@ class AnnonceType extends FormConfig
             ->add('posteAPourvoir', TextType::class, $this->getConfiguration('Poste disponible', '',[
                 'attr'=>[
                     'class'=>'rounded-0 mt-3'
-                ]
+                ],
+                'required'=>false,
             ]))
             ->add('nombrePoste', IntegerType::class, $this->getConfiguration('Nombre de Poste disponible', '', [
                 'attr' => [

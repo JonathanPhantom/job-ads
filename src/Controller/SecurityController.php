@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -30,9 +32,12 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/logout", name="app_logout")
+     * @param FlashyNotifier $flashy
+     * @return RedirectResponse
      */
-    public function logout()
+    public function logout(FlashyNotifier  $flashy)
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
-    }
+        $flashy ->success('Déconnexion réussie!');
+
+        return $this->redirectToRoute('app_home_candidat');    }
 }

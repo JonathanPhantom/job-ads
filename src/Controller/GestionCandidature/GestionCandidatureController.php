@@ -3,8 +3,13 @@
 namespace App\Controller\GestionCandidature;
 
 use App\Entity\Annonce;
+use App\Entity\Candidat;
 use App\Entity\Postulation;
+use App\Entity\User;
+use App\Repository\PostulationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -18,14 +23,8 @@ class GestionCandidatureController extends AbstractController
 
     use TargetPathTrait;
     //mise en place de l'injection de dependance
-    /**
-     * @var
-     */
-    private $repository;
-    /**
-     * @var EntityManagerInterface
-     */
-    private $manager;
+
+    private EntityManagerInterface $manager;
 
     public function __construct(EntityManagerInterface $manager)
     {
@@ -38,24 +37,28 @@ class GestionCandidatureController extends AbstractController
     /**
      * @param Request $request
      * @param Annonce $annonce
-     * @throws \Exception
-     * @Route("/gestion/annonce/{id}/postuler", name="app_candidat_postuler")
+     * @param FlashyNotifier $flashy
+     * @return RedirectResponse
+     * @Route("/gestion/annonce/{id<\d+>}/postuler", name="app_candidat_postuler")
      */
-    public function postuler(Request $request, Annonce $annonce)
+    public function postuler(Request $request, Annonce $annonce,PostulationRepository $postulationRepository,FlashyNotifier  $flashy)
     {
-        //dès que le candidat clique sur postuler on envoie le candidat en cours à l'annonce
-        //maintenant lors de la page d'affichage des candidats d'une annonce seulement le profil correspondant
-        //au domaine d'etude de l'annonce sera affiché au cas contraire le profil par défaut.
-
         //on ajoute envoie l'utilisateur à l'annonce
 
-        if (!$this->isGranted("ROLE_CANDIDAT")){
+        if (!$this->isGranted(User::ROLE_CANDIDAT)){
             return $this->redirectToRoute('app_login');
+        }
+        $candidat = $this->getUser();
+
+        if ($postulationRepository->findBy(['candidat'=>$candidat,'annonce'=>$annonce])){
+            $flashy->info('Postuler à d\'autres annonces ',$this->generateUrl("app_annonce_search"));
+            return $this->redirectToRoute('app_annonce_show_id',['id'=>$annonce->getId()]);
+
         }
         $postulation = new Postulation();
         $postulation->setDatePostulation(new \DateTimeImmutable());
         $postulation->setAnnonce($annonce);
-        $postulation->setCandidat($this->getUser());
+        $postulation->setCandidat($candidat);
 
         //on persist la postulation
         $this->manager->persist($postulation);
@@ -63,11 +66,10 @@ class GestionCandidatureController extends AbstractController
 
         //rediriger vers la page courante.
 
-        $this->addFlash('success', 'Votre postulation à l\'annonce est éffective!!');
         if ($targetPath = $this->getTargetPath($request->getSession(), 'app_candidat_provider')) {
             return new RedirectResponse($targetPath);
         }
 
-        return $this->redirectToRoute('app_annonce_show');
+        return $this->redirectToRoute('app_annonce_show_id',['id'=>$annonce->getId()]);
     }
 }
