@@ -39,7 +39,11 @@ class CvthequeController extends AbstractController
     {
         $search = new CandidatSearch();
 
-        $form = $this->createForm(CandidatSearchType::class, $search);
+        $form = $this->createForm(CandidatSearchType::class, $search, [
+            'attr' => [
+                'class' => 'auto_submit_form'
+            ]
+        ]);
 //        $query = $this->manager->createQuery('SELECT u FROM MyProject\Model\User u WHERE u.age > 20');
 //        $valeur = $query->getResult();
 //

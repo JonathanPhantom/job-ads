@@ -5,14 +5,14 @@
 
 {% block body %}
     {{ include('fragments/_navEntreprise.html.twig') }}
-    <h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark mb-3">Publier votre annonce et démarrer le
-        recrutement</h1>
+    <h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark mb-3">Editer votre annonce {{ annonce.titreAnnonce }}
+    </h1>
     <div class="container col-md-6 bg-light text-dark pb-5">
         <h5 class="text-left pt-3 pb-2"></h5>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <div class="col-md-8 mt-5 mx-auto">
-            <button class="btn btn-block" style="background-color: #DB7300">Publier l'annonce</button>
+            <button class="btn btn-block" style="background-color: #DB7300">Modifier l'annonce</button>
         </div>
         {{ form_end(form) }}
 

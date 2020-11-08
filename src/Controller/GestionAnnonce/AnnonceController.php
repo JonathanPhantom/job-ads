@@ -12,6 +12,7 @@ use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -56,6 +57,7 @@ class AnnonceController extends AbstractController
 
         //declaration d'une nouvelle annonce
         $annonce = new Annonce();
+
         //formulaire
         $form = $this->createForm(AnnonceType::class, $annonce);
 
@@ -65,6 +67,8 @@ class AnnonceController extends AbstractController
         //traitement du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $annonce->setProprietaire($this->getUser());
+
+
             //Mise à jour de la date de publication
             $annonce->setDatePublication(new \DateTime());
             $this->manager->persist($annonce);
@@ -212,9 +216,10 @@ class AnnonceController extends AbstractController
      * @param Request $request
      *
      * @param Search|null $search
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function showAdsWithoutId(Request $request, ?Search $search)
+    public function showAdsWithoutId(Request $request, ?Search $search, PaginatorInterface $paginator)
     {
         if ($search == null) {
             $search = new Search();
@@ -223,7 +228,8 @@ class AnnonceController extends AbstractController
 
         $form->handleRequest($request);
 
-        $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
+        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 4);
+        //$annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
         /*$annonce = new Annonce();
@@ -263,4 +269,6 @@ class AnnonceController extends AbstractController
             'annonces' => $annonces
         ]);
     }
+
+
 }

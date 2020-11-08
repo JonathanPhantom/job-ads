@@ -24,7 +24,7 @@ class SearchType extends FormConfig
                 'required' => false,
                 'multiple' => false,
 
-                'placeholder' => "Rechercher par Ville ou Région"
+                'placeholder' => "Ville ou Région"
 
             ]))
             ->add('domaineEtude', EnumType::class, $this->getConfiguration('', '', [
@@ -32,7 +32,7 @@ class SearchType extends FormConfig
                 'label' => false,
                 'required' => false,
                 'multiple' => false,
-                'placeholder' => "Rechercher par le domaine d'étude"
+                'placeholder' => "Domaine d'étude"
 
             ]));
     }

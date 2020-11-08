@@ -38,6 +38,7 @@ class GestionCandidatureController extends AbstractController
     /**
      * @param Request $request
      * @param Annonce $annonce
+     * @return RedirectResponse
      * @throws \Exception
      * @Route("/gestion/annonce/{id}/postuler", name="app_candidat_postuler")
      */
