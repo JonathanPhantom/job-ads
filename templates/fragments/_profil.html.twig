@@ -36,11 +36,11 @@
 					<div class="dropdown-divider"></div>
 
 				{% elseif role=="ROLE_RECRUTEUR" %}
-					<a class="l1 mt-3" href="#">
+					<a class="l1 mt-3" href="{{ path('app_admin_recruteur') }}">
 						<img class="mr-2 ml-1" src="{{ asset('images/annonce.jpg') }}" style="width:20px" alt="settings"><span class="text-dark">Mes annonces</span>
 					</a>
 					<div class="dropdown-divider"></div>
-					<a class="l1 mt-3" href="#">
+					<a class="l1 mt-3" href="{{path('app_admin_recruteur_edit')}}">
 						<img class="mr-2 ml-1" src="{{ asset('images/setting.png') }}" style="width:20px" alt="settings"><span class="text-dark">Parametres</span>
 					</a>
 

@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Candidat;
 use App\Entity\CandidatSearch;
-use App\Entity\Search;
+use App\Entity\AnnonceSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -55,10 +55,10 @@ class CandidatRepository extends ServiceEntityRepository
     /*
     /**
      *
-     * @param Search $search
+     * @param AnnonceSearch $search
      * @return Query
      *//*
-    public function findAllAdsQuery(Search $search): Query
+    public function findAllAdsQuery(AnnonceSearch $search): Query
     {
         $query = $this->findAdsQuery();
 
@@ -133,7 +133,7 @@ class CandidatRepository extends ServiceEntityRepository
     }
 
 
-//    public function getAllAnnoncesSearch(Search $search){
+//    public function getAllAnnoncesSearch(AnnonceSearch $search){
 //        $query = $this->createQueryBuilder('a');
 //
 //        if ($search->getDomaineEtude()){

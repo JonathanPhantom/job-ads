@@ -12,6 +12,7 @@ use App\Entity\ExperienceProfessionnelle;
 use App\Form\CompteCandidatType;
 use App\Form\CompteEntrepriseType;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +26,7 @@ class AccountController extends AbstractController
 {
     public EntityManagerInterface $em;
     public UserPasswordEncoderInterface $passwordEncoder;
-    private $flashy;
+    private FlashyNotifier $flashy;
 
     public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, FlashyNotifier $flashy)
     {
@@ -38,7 +39,7 @@ class AccountController extends AbstractController
      * @Route("/createAccount",name="app_candidat_compte",methods={"GET","POST"})
      * @param Request $request
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function createAccount(Request $request): Response
     {
@@ -77,7 +78,7 @@ class AccountController extends AbstractController
      *
      * @param Request $request
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function createEntrepriseAccount(Request $request): Response
     {

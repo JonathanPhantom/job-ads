@@ -21,6 +21,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 abstract class User implements UserInterface, \Serializable
 {
+    const ROLE_CANDIDAT     = "ROLE_CANDIDAT";
+    const ROLE_RECRUTEUR    = "ROLE_RECRUTEUR";
+    const ROLE_ADMIN        = "ROLE_ADMIN";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -31,7 +35,7 @@ abstract class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message="Veuiller saisir votre email")
-     * 
+     *
      */
     private $email;
 
@@ -101,7 +105,7 @@ abstract class User implements UserInterface, \Serializable
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -128,7 +132,7 @@ abstract class User implements UserInterface, \Serializable
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -196,7 +200,7 @@ abstract class User implements UserInterface, \Serializable
     public function setPhotoProfilFile(File $photoProfilFile): User
     {
         $this->photoProfilFile = $photoProfilFile;
-        if ($this->photoProfilFile instanceof UploadedFile){
+        if ($this->photoProfilFile instanceof UploadedFile) {
             $this->updateAt = new \DateTime('now');
         }
         return $this;
@@ -238,7 +242,8 @@ abstract class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function serialize() {
+    public function serialize()
+    {
 
         return serialize(array(
             $this->id,
@@ -248,7 +253,8 @@ abstract class User implements UserInterface, \Serializable
 
     }
 
-    public function unserialize($serialized) {
+    public function unserialize($serialized)
+    {
 
         list (
             $this->id,
@@ -256,10 +262,6 @@ abstract class User implements UserInterface, \Serializable
             $this->password,
             ) = unserialize($serialized);
     }
-
-
-
-
 
 
 }

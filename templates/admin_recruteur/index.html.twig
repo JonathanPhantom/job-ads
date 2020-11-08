@@ -10,35 +10,40 @@
         <div class="row">
             <div class="col">
                 <div class="float-right ml-md-5 mt-5">
-                    <img src="{{ vich_uploader_asset(user) }}" alt="image de {{ user.nomEntreprise }}" style="height: 18rem; width: 25rem">
+                    <img src="{{ vich_uploader_asset(user) }}" alt="image de {{ user.nomEntreprise }}"
+                         style="height: 18rem; width: 25rem">
                     <br>&nbsp;
                     <h3 class="text-secondary">{{ user.nomEntreprise }}</h3>
                     <i>Adresse: <strong>{{ user.adresse }}</strong></i>
                     <br>
                     <i><strong class="text-warning">Adresse Mail</strong> :</i>
                     <strong>{{ user.email }}</strong><br>
-                    <span class="badge badge-light">{{ user.annonces | length }} annonces</span> &nbsp; {% if app.user %}<a href="{#{{ path('admin_ads', {id: user.id}) }}#}" >
-                        <span class="badge badge-info" >Administrer mes annonces</span>
-                    </a>&nbsp;<a href="{{ path('app_admin_modify') }}" class="badge badge-warning">Modifier profil</a><a href="{#{{ path('user_password') }}#}" class="badge badge-info ml-2">Modifier Mot de passe</a>{% endif %}
+                    <span class="badge badge-light">{{ user.annonces | length }} annonces</span>
+                    &nbsp; {% if app.user %}<a href="#{# {{ path('admin_ads', {id: user.id}) }} #}" >
+                            <span class="badge badge-info">Administrer mes annonces</span>
+                        </a>&nbsp;<a href="{{ path('app_admin_recruteur_edit') }}" class="badge badge-warning">Modifier profil</a>
+                    <a href="#{# {{ path('user_password') }} #}" class="badge badge-info ml-2">Modifier Mot de
+                            passe</a>{% endif %}
                 </div>
                 <h2 class="text-primary mt-5">Profil JoB-AdS {{ user.nomEntreprise }}: </h2>
                 <h3><u>Description</u>:</h3>
                 &nbsp;
-                <p>{{ user.secteurActivite.getvalue()}}</p>
+                <p>{{ user.secteurActivite.getvalue() }}</p>
                 <h3 class="text-primary"><u>Annonces JoB-AdS de {{ user.nomEntreprise }}</u>: </h3>
                 &nbsp;
                 {% if user.annonces | length >0 %}
                     {% for ad in user.annonces %}
                         <div style="width: 25rem" class="alert alert-dismissible alert-primary">
                             <strong>{{ ad.titreAnnonce }}</strong>, expire le {{ ad.dateLimite | date("m/d/Y") }}.<br>
-                            <a href="{#{{ path('show_one_ad', {id: ad.id}) }}#}" class="alert-link">Voir le contenu</a>
+                            <a href="{# {{ path('show_one_ad', {id: ad.id}) }} #}" class="alert-link">Voir le
+                                contenu</a>
                         </div>
                         <br>
                     {% endfor %} &nbsp;
                 {% else %}
-                    <i><h3 class="text-warning">{{ user.nomEntreprise }} n'a pas encore publié d'annonce</h3></i>
+                    <h3 class="text-warning"><i>{{ user.nomEntreprise }} n'a pas encore publié d'annonce</i></h3>
                 {% endif %}
-                <a href="{#{{ path('index_ads') }}#}" class="btn btn-secondary">
+                <a href="{{ path('app_espace_recruteur') }}{# {{ path('index_ads') }} #}" class="btn btn-secondary">
                     <i class="">Retour à l'accueil</i>
                 </a>
             </div>
