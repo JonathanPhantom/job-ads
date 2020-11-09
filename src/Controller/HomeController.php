@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -21,6 +22,7 @@ class HomeController extends AbstractController
      * @param Request $request
      * @param AnnonceRepository $annonceRepository
      * @param EntrepriseRepository $entrepriseRepository
+     * @param EntityManagerInterface $em
      * @return Response
      */
 
@@ -32,6 +34,11 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            /*$annonces = $annonceRepository->getAllAnnoncesSearch($search)->getResult();
+
+            return $this->forward('App\Controller\AnnonceController::showAds',[
+                'annonces_R'=>$annonces
+            ]);*/
             return $this->redirectToRoute("app_annonce_search");
         }
         $annonces = $annonceRepository->getAllAnnoncesSearch($search)->getResult();

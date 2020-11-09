@@ -101,8 +101,6 @@ class CandidatRepository extends ServiceEntityRepository
             }
         }
 
-
-
         if ($search->getNiveauFormation()){
             foreach ($search->getNiveauFormation() as $k => $niveauFormation){
                 $niveauForm = $niveauFormation->getValue();

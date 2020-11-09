@@ -15,16 +15,12 @@
                         annonce</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link h5 mr-2 dropdown-toggle" style="color: blue" data-toggle="dropdown" href="#">Services</a>
-                    <div class="dropdown-menu " >
-                        <a class="dropdown-item " href="{{ path('app_cvtheque') }}">Parcourir les profils</a>
-                        <div class="dropdown-divider"></div>
+                    <a class="nav-link h5 mr-2" href="{{ path('app_cvtheque') }}" style="color: #000">Parcourir les profils</a>
 
-                    </div>
                 </li>
-                <li class="nav-item">
+                {#<li class="nav-item">
                     <a class="nav-link h5" href="#" style="color: blue">Contact</a>
-                </li>
+                </li>#}
                 {{ include('fragments/_profil.html.twig',{role:"ROLE_RECRUTEUR"}) }}
 
             </ul>

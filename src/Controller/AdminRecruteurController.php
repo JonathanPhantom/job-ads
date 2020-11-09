@@ -119,13 +119,19 @@ class AdminRecruteurController extends AbstractController
         $candidatsRecommande = array();
 
         foreach ($pourcentage as $key => $value) {
-            if ($value >= 10)
+            if ($value >= 30)
                 array_push($candidatsRecommande, $candidatRepository->find($key));
         }
         $postulations = $annonce->getCandidatures();
+        $candidats = array();
+        foreach ($postulations as $candidature){
+            array_push($candidats,$candidature->getCandidat());
+        }
+        $candidats = array_diff($candidats,$candidatsRecommande);
         return $this->render('admin_recruteur/show_candidate.html.twig', [
             'annonce' => $annonce,
-            'recommanded'=>$candidatsRecommande
+            'recommanded'=>$candidatsRecommande,
+            'candidats'=>$candidats
         ]);
     }
 

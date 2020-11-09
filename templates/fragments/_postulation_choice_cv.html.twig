@@ -9,20 +9,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {% if app.user and app.user.mesCvs is not empty %}
-                <div class="col-md-8 container">
-                    <select class="custom-select" id="select">
-                        {% for cv in app.user.mesCvs %}
-                            <option value="{{ path('app_candidat_postuler',{id:annonce.id,id2:cv.id}) }}">{{ cv.titreCv }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            {% else %}
-                <div class="col-md-8 container">
-                    <a href="{{ path('app_candidat_cv_create') }}" type="button" class="btn btn-dark"
-                       data-dismiss="modal">Créer un cv</a>
-                </div>
+            {% if is_granted("ROLE_CANDIDAT") %}
+                {% if app.user.mesCvs is not empty %}
+                    <div class="col-md-8 container">
+                        <select class="custom-select" id="select">
+                            {% for cv in app.user.mesCvs %}
+                                <option value="{{ path('app_candidat_postuler',{id:annonce.id,id2:cv.id}) }}">{{ cv.titreCv }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% else %}
+                    <div class="col-md-8 container">
+                        <a href="{{ path('app_candidat_cv_create') }}" id="creerCv" onclick="sendCreate()" type="button"
+                           class="btn btn-dark"
+                        >Créer un cv</a>
+                    </div>
 
+                {% endif %}
             {% endif %}
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

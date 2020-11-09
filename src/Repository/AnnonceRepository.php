@@ -97,6 +97,15 @@ class AnnonceRepository extends ServiceEntityRepository
                  }
         }*/
         // dd($query->getQuery()->getResult());
+
+
+        if ($search->getTitreAnnonce()){
+            $name = $search->getTitreAnnonce();
+            $query = $query
+                ->andWhere('a.titreAnnonce LIKE :searchterm')
+                ->setParameter('searchterm', '%'.$name.'%');
+        }
+
         if ($search->getLocalites()){
            /* foreach ( as $k => $localite){
                 $localites = $localite->getValue();*/

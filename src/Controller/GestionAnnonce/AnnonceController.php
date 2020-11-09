@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AnnonceController extends AbstractController
@@ -203,18 +204,19 @@ class AnnonceController extends AbstractController
      *
      * @param Request $request
      *
-     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function showAdsWithoutId(Request $request, PaginatorInterface $paginator)
+    public function showAds(Request $request)
 
     {
+
+
         $search = new AnnonceSearch();
         $form = $this->createForm(AnnonceSearchType::class, $search);
 
         $form->handleRequest($request);
 
-//        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 8);
+        //        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 8);
         $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);

@@ -21,50 +21,52 @@
             <table class="table table-striped" id="mytable">
                 <thead>
                 <tr>
-                    <th><input type="checkbox" id="checkall"/></th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
                     <th>Tel</th>
-                    <th>Adress</th>
+                    <th>Adresse</th>
                     <th>CV</th>
                     <th>Contacter</th>
                 </tr>
                 </thead>
 
-                <tbody class="border-success border mt-2">
-
                 {% for candidat in recommanded %}
+                    {% if loop.first %}
+                        <tbody class="border-success border mt-2">
+                    {% endif %}
                     <tr>
-                        <td><input type="checkbox" class="checkthis" value="{{ candidat.email }}"/></td>
                         <td>{{ candidat.nom }}</td>
                         <td>{{ candidat.prenom }}</td>
                         <td>{{ candidat.email }}</td>
                         <td>{{ candidat.telephone }}</td>
                         <td>{{ candidat.localite.getValue() }}</td>
-                        <td><a href="{{ path('app_candidat_cv_show',{id:candidat.id,annonce_id:annonce.id}) }}" class="btn btn-primary">Voir le CV</a>
+                        <td><a href="{{ path('app_candidat_cv_show',{id:candidat.id,annonce_id:annonce.id}) }}"
+                               class="btn btn-primary">Voir le CV</a>
                         </td>
                         <td>
-                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidat.id, ad: annonce.id}) }}"
+                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidat.id, annonce_id: annonce.id}) }}"
                                class="btn btn-success">Contacter pour Entretien</a>
 
                         </td>
                     </tr>
+                    {% if loop.last %}
+                        </tbody>
+                    {% endif %}
                 {% endfor %}
-                </tbody>
                 <tbody>
 
-                {% for candidature in annonce.candidatures %}
+                {% for candidat in candidats %}
                     <tr>
-                        <td><input type="checkbox" class="checkthis" value="{{ candidature.candidat.email }}"/></td>
-                        <td>{{ candidature.candidat.nom }}</td>
-                        <td>{{ candidature.candidat.prenom }}</td>
-                        <td>{{ candidature.candidat.email }}</td>
-                        <td>{{ candidature.candidat.telephone }}</td>
-                        <td>{{ candidature.candidat.localite.getValue() }}</td>
-                        <td><a href="{{ path('app_candidat_cv_show',{id:candidature.candidat.id,annonce_id:annonce.id}) }}" class="btn btn-primary">Voir le CV</a></td>
+                        <td>{{ candidat.nom }}</td>
+                        <td>{{ candidat.prenom }}</td>
+                        <td>{{ candidat.email }}</td>
+                        <td>{{ candidat.telephone }}</td>
+                        <td>{{ candidat.localite.getValue() }}</td>
+                        <td><a href="{{ path('app_candidat_cv_show',{id:candidat.id,annonce_id:annonce.id}) }}"
+                               class="btn btn-primary">Voir le CV</a></td>
                         <td>
-                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidature.candidat.id, ad: annonce.id}) }}"
+                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidat.id, annonce_id: annonce.id}) }}"
                                class="btn btn-success">Contacter pour Entretien</a>
 
                         </td>

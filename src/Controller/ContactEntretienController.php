@@ -8,6 +8,8 @@ use App\Entity\ContactEntretien;
 use App\Form\ContactEntretienType;
 
 use MercurySeries\FlashyBundle\FlashyNotifier;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,15 +21,16 @@ use Symfony\Component\Mime\Email;
 class ContactEntretienController extends AbstractController
 {
     /**
-     * @Route("/espace-recruteur/adminCandidat/contact/{id}/{ad}", name="app_recruteur_contact_entretien")
+     * @Route("/espace-recruteur/adminCandidat/contact/{id}/{annonce_id}", name="app_recruteur_contact_entretien")
+     * @Entity("annonce", expr="repository.find(annonce_id)")
      * @param Candidat $candidat
      * @param Request $request
      * @param Annonce $annonce
      * @param FlashyNotifier $flashyNotifier
-     * @param \Swift_Mailer $mailer
+     * @param Swift_Mailer $mailer
      * @return Response
      */
-    public function contactCandidat(Candidat $candidat, Request $request, Annonce $annonce, FlashyNotifier $flashyNotifier, \Swift_Mailer $mailer): Response
+    public function contactCandidat(Candidat $candidat, Request $request, Annonce $annonce, FlashyNotifier $flashyNotifier, Swift_Mailer $mailer): Response
     {
         $contactEntretien = new ContactEntretien();
         $form = $this->createForm(ContactEntretienType::class, $contactEntretien);
@@ -47,7 +50,7 @@ class ContactEntretienController extends AbstractController
 
             $flashyNotifier->success('Email envoyé à l\'utilisateur');
 
-            $this->redirectToRoute('app_recruteur_home', [
+            return $this->redirectToRoute('app_admin_recruteur', [
                 'id' => $this->getUser()->getId()
             ]);
         }

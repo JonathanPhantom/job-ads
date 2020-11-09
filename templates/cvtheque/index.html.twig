@@ -35,23 +35,26 @@
             <div class="form-cvtheque mb-0 pl-2 pr-2">
                 <a href="" style="color: inherit">
                     <div class="row">
-                        <div class="col-1 pt-2">
-                            <img src="{{ vich_uploader_asset(candidat) }}" alt="profil">
+                        <div class="col pt-2">
+                            {% if candidat.photoProfilFile is not null %}
+                                <img src="{{ vich_uploader_asset(candidat) }}" alt="profil">
+                            {% else %}
+                                <img src="{{ asset('images/profil.png') }}" style="width: 60px; height: 50px" alt="profil">
+
+                            {% endif %}
                         </div>
-                        <div class="col-3 pt-2">
+                        <div class="col pt-2">
                             <span>
-                                {{ candidat.nom }} | {{ candidat.prenom }}
+                                {{ candidat.nom }} {{ candidat.prenom }}
                             </span>
                             <div class="">
-                                <p>Logiticien</p>
+                                <p></p>
                             </div>
                         </div>
-                        <div class="col-4 pt-2">
-                            <p class="text-center">Dakar</p>
+                        <div class="col pt-2">
+                            <p class="text-center">{{ candidat.localite.value }}</p>
                         </div>
-                        <div class="col-4 pt-2">
-                            <p class="text-right">Les domaines d'études</p>
-                        </div>
+
                     </div>
                 </a>
             </div>

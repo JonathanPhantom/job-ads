@@ -30,16 +30,21 @@
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CandidatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CandidatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CvShowType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvShowType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CvType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ContactEntretienController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContactEntretienController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact_entretien/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact_entretien/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cvtheque/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cvtheque/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -391,10 +396,11 @@
       <screen x="0" y="34" width="1920" height="994" />
     </state>
     <state x="1120" y="125" width="638" height="903" key="find.popup/0.34.1920.994@0.34.1920.994" timestamp="1604503584450" />
-    <state x="624" y="254" key="run.anything.popup" timestamp="1603842555016">
-      <screen x="0" y="34" width="1920" height="1046" />
+    <state x="624" y="243" key="run.anything.popup" timestamp="1604937538284">
+      <screen x="0" y="34" width="1920" height="994" />
     </state>
     <state x="624" y="254" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603842555016" />
+    <state x="624" y="243" key="run.anything.popup/0.34.1920.994@0.34.1920.994" timestamp="1604937538284" />
     <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1604907370470">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

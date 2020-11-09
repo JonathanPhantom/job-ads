@@ -74,7 +74,7 @@ class CandidatController extends AbstractController
 
         /** @var Candidat $candidat */
         $cv->setCandidat($candidat);
-        $form = $this->createForm(CvShowType::class, $cv);
+        $form = $this->createForm(CvType::class, $cv);
         $form2 = $this->createForm(CompteCandidatType::class, $candidat);
         $form->handleRequest($request);
         $form2->handleRequest($request);
@@ -107,6 +107,7 @@ class CandidatController extends AbstractController
         return $this->render('candidat/createCv.html.twig', [
             'form' => $form->createView(),
             'form2' => $form2->createView(),
+
         ]);
     }
 
