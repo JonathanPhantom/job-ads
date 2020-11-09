@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Quel Cv envoyé au recruteur ? </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% if app.user.mesCvs is not empty %}
+                <select class="custom-select" id="select">
+                    {% for cv in app.user.mesCvs %}
+                    <option value="{{ path('app_candidat_postuler',{id:annonce.id,id2:cv.id}) }}">{{ cv.titreCv }}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                    <a href="{{ path('app_candidat_cv_create') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Créer un cv</a>
+
+            {% endif %}
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button onclick="send()" id="envoyer" type="button" class="btn btn-primary">Envoyer</button>
+            </div>
+        </div>
+    </div>
+</div>
+

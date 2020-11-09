@@ -214,8 +214,8 @@ class AnnonceController extends AbstractController
 
         $form->handleRequest($request);
 
-        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 4);
-        //$annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
+//        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 8);
+        $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
         /*$annonce = new Annonce();

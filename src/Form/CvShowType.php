@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
-class CvType extends AbstractType
+class CvShowType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -30,16 +30,10 @@ class CvType extends AbstractType
                 ], 'attr' => [
                     'class' => 'col-md-6 ml-5',
                     'placeholder' => 'Titre du CV ',
-                    'autofocus' => 'autofocus'
+                    'autofocus' => 'autofocus',
+                    
 
                 ]
-            ])
-            ->add("photoProfilFile", FileType::class, [
-                'label_attr' => [
-                    'class' => 'col-form-label  text-dark  mt-1'
-                ],
-
-                'required'=>false
             ])
             ->add('SecteurEtudeSouhaite', EnumType::class, [
                 'enum_class' => DomaineEtude::class,
@@ -47,6 +41,8 @@ class CvType extends AbstractType
                     'class' => 'col-sm-3 col-form-label  text-dark  mt-1'
                 ], 'attr' => [
                     'class' => 'col-md-11 ml-5',
+                    
+
                 ],
                 'placeholder' => 'Sélectionnez...'
 
@@ -57,6 +53,8 @@ class CvType extends AbstractType
                     'class' => 'col-sm-3 col-form-label  text-dark  mt-1'
                 ], 'attr' => [
                     'class' => 'col-md-11 ml-5',
+                    
+
                 ],
                 'placeholder' => 'Sélectionnez...',
 
@@ -68,6 +66,8 @@ class CvType extends AbstractType
                 'enum_class' => NiveauDePoste::class,
                 'attr' => [
                     'class' => 'col-md-11 mt-1 ml-5',
+                    
+
                 ],
                 'placeholder' => 'Sélectionnez...'
 
@@ -82,7 +82,8 @@ class CvType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'col-md-11 ml-5',
-                    'onChange' => "displayDisponibility('cv_disponibilite')"
+                    'onChange' => "displayDisponibility('cv_disponibilite')",
+
                 ],
                 'placeholder' => 'Sélectionnez...'
 
@@ -91,6 +92,8 @@ class CvType extends AbstractType
             ->add('dateDisponibilite', DateType::class, [
                 'attr' => [
                     'class' => 'col-md-5 mt-2 ',
+                    
+
                 ],
                 'label' => false,
                 'widget' => 'single_text',
@@ -103,6 +106,8 @@ class CvType extends AbstractType
                 'enum_class' => AnneeExperience::class,
                 'attr' => [
                     'class' => 'col-md-11 mt-1 ml-5',
+                    
+
                 ],
                 'placeholder' => 'Sélectionnez...',
                 'required' => false
@@ -110,13 +115,15 @@ class CvType extends AbstractType
             ])
             ->add('salaire', NumberType::class, [
                 'label_attr' => [
-                    'class' => 'col-sm-3 col-form-label  text-dark  mt-1'
+                    'class' => 'col-sm-3 col-form-label  text-dark  mt-1',
                 ],
                 'attr' => [
                     'class' => 'col-md-11 mt-1 ml-5',
                     'min' => 0,
                     'data-type' => 'currency',
-                    'placeholder' => '100,000 FCFA'
+                    'placeholder' => '100,000 FCFA',
+                    
+
                 ],
                 'required' => false
 

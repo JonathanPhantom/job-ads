@@ -2,13 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Annonce;
+use App\Form\CvType;
+use App\Repository\PostulationRepository;
 use DateTime;
 use App\Entity\Cv;
-use App\Form\CvType;
+use App\Form\CvShowType;
 use App\Entity\Candidat;
 use App\Form\CompteCandidatType;
 use App\Repository\CvRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,7 +76,7 @@ class CandidatController extends AbstractController
         /** @var Candidat $candidat */
         $cv->setCandidat($candidat);
 
-        $form = $this->createForm(CvType::class, $cv);
+        $form = $this->createForm(CvShowType::class, $cv);
         $form2 = $this->createForm(CompteCandidatType::class, $candidat);
         $form->handleRequest($request);
         $form2->handleRequest($request);
@@ -110,6 +115,7 @@ class CandidatController extends AbstractController
     /**
      * @Route("/candidat/editCv/{id}", name="app_candidat_cv_edit",methods={"GET","PUT"})
      * @param Request $request
+     * @param Cv $cv
      * @return Response
      */
     public function editCv(Request $request,Cv $cv): Response
@@ -137,6 +143,43 @@ class CandidatController extends AbstractController
             'form' => $form->createView(),
             'form2' => $form2->createView(),
             'cv' => $cv
+        ]);
+    }
+
+    /**
+     * @Route ("/candidat/show/cv/{id<\d+>}/{annonce_id<\d+>}",name="app_candidat_cv_show")
+     * @Entity("annonce", expr="repository.find(annonce_id)")
+     * @param Annonce $annonce
+     * @param Candidat $candidat
+     * @param PostulationRepository $postulationRepository
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function showCV(Candidat $candidat,Annonce $annonce,PostulationRepository $postulationRepository,Request $request)
+    {
+        $cv = $postulationRepository->findOneBy(['annonce'=>$annonce,'candidat'=>$candidat])->getCvEnvoye();
+        $form = $this->createForm(CvShowType::class, $cv, [
+            'method' => 'PUT',
+            'attr'=>[
+                'disabled'=>true
+                ]
+        ]);
+        $form2 = $this->createForm(CompteCandidatType::class, $candidat, [
+            'method' => 'PUT',
+            'attr'=>[
+                'disabled'=>true
+            ]
+        ]);
+        $form->handleRequest($request);
+        $form2->handleRequest($request);
+
+
+        return $this->render('candidat/showCv.html.twig', [
+            'form' => $form->createView(),
+            'form2' => $form2->createView(),
+            'cv'=>$cv,
+            'candidat'=>$candidat,
+            'disabled'=>'disabled'
         ]);
     }
 }

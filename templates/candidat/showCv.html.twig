@@ -1,0 +1,714 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}  Cv de  {{ candidat.prenom }} {{ candidat.prenom }}- Job-Ads{% endblock %}
+
+{# form_theme permet de mettre au courant twig qu'on veut utiliser un theme particuler #}
+
+{% form_theme form _self %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+        footer {
+            position: relative;
+            bottom: 0.5em;
+            width: 100%;
+            height: 2.5rem;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .scroll {
+            transition: background-color 0.5s ease-out;
+        }
+
+        .nav {
+            position: fixed;
+            z-index: 1;
+            width: 100%
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {% include "fragments/_navCandidat.html.twig" %}
+    <fieldset {{ disabled }}>
+
+        <div class="container position-relative" style="top:8em;">
+            {{ form_start(form) }}
+            <h1 class=" text-center h2 font-weight-bold text-dark mb-5 ">{{ cv.titreCv }}</h1>
+            <div class="ml-5 pt-3 pl-3 bg-light shadow " style="height:180px">
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.titreCv,'Donner un titre à votre CV') }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form.titreCv) }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+                <h5 class="text-left pt-4 h4 pb-0">Informations personnelles</h5>
+                <hr>
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.nom,'Nom ',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.nom,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.prenom,'Prenom(s)  ',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.prenom,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.dateNaissance,'Date de naissance ',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.dateNaissance,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.localite,'Région de résidence ',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.localite,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.telephone,'Téléphone',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.telephone,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form2.adresse,'Adresse',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.adresse,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="form-group row  mx-auto " style="font-size:18px;display:none">
+                    {{ form_label(form2.email,'email',{
+                        'label_attr': {
+                            'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+                        }
+                    }) }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form2.email,{
+                            'attr' :{
+                                'class' : 'col-md-6 ml-5',
+                            }
+                        }) }}
+                    </div>
+                </div>
+            </div>
+            <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+                <h5 class="text-left pt-4 h4 pb-0">Mon Profil</h5>
+                <hr>
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.SecteurEtudeSouhaite,'Secteur d\'étude souhaité') }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form.SecteurEtudeSouhaite) }}
+                    </div>
+                </div>
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.statut,'Statut actuel') }}
+                    <div class="col-sm-9 ">
+                        {{ form_widget(form.statut) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.niveauPoste,'Niveau de poste actuel') }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form.niveauPoste) }}
+                    </div>
+                </div>
+
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.anneeExperience,'Années d\'expériences') }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form.anneeExperience) }}
+                    </div>
+                </div>
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.salaire,'Salaire souhaité') }}
+                    <div class="col-sm-8">
+                        {{ form_widget(form.salaire) }}
+
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">FCFA</span>
+                    </div>
+                </div>
+                {# <div class="form-group row  mx-auto pl-3" style="font-size:18px">
+                {{ form_label(form.photoProfilFile,'Photo de profil du CV') }}
+                <div class="" style="    position: relative;
+    max-width: 0;
+    left: 198px;">
+                    {{ form_widget(form.photoProfilFile) }}
+                </div>
+            </div> #}
+                <div class="form-group row  mx-auto " style="font-size:18px">
+                    {{ form_label(form.disponibilite,'Votre disponibilté en ce moment ') }}
+                    <div class="col-sm-9">
+                        {{ form_widget(form.disponibilite) }}
+                        <div class="disponibiliteYes mt-2 active container ml-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="disponibiliteYes" id="now"
+                                       value="now"
+                                       onchange="disableDateDisponible('notYet')" checked>
+                                <label class="form-check-label text-dark" for="now">
+                                    Actuellemement.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="disponibiliteYes" id="notYet"
+                                       value="notYet" onchange="disableDateDisponible('notYet')">
+                                <label class="form-check-label text-dark" for="notYet">
+                                    A partir du
+                                </label>
+                                {{ form_widget( form.dateDisponibilite) }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </fieldset>
+
+{% endblock %}
+
+{% block _cv_experiencesProfessionnelles_widget %}
+    <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+        <h5 class="text-left pt-4 h4 pb-0">Mes Expériences Professionnelles</h5>
+        <hr>
+
+
+        {{ form_widget(form) }}
+        <input type="hidden" id="widget-counters" value="0">
+        <div class="form-group col-md-12 text-center">
+            <button type="button" id="add-experience" class="btn btn-info mt-2">Ajouter une Expérience</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block _cv_experiencesProfessionnelles_entry_row %}
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.titrePoste,'Titre du poste') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.titrePoste) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.dateDebut,'Date de début') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.dateDebut) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.dateFin,'Date de fin') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.dateFin) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.nomEntreprise,'Nom de l\'entreprise') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nomEntreprise) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.secteurActivite,'Secteur d\'actitvite') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.secteurActivite) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.descriptionExperience,'Description') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.descriptionExperience) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.niveauPoste,'Niveau du poste') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.niveauPoste) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.localite,'Lieu') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.localite) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _cv_experiencesProfessionnelles_entry_widget %}
+    <div class="row" id="block_{{ id }}">
+        <div class="col mb-4">
+            {{ form_widget(form) }}
+        </div>
+        <div class="col-md-1" style="margin-top:24px">
+            <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger mt-4">X
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _cv_formations_widget %}
+    <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+        <h5 class="text-left pt-4 h4 pb-0">Diplômes et Formations</h5>
+        <hr>
+        {{ form_widget(form) }}
+        <input type="hidden" id="widget-counters" value="0">
+        <div class="form-group col-md-12 text-center">
+            <button type="button" id="add-formation" class="btn btn-info mt-2">Ajouter une formation</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block _cv_formations_entry_row %}
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.titreFormation,'Titre de la formation') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.titreFormation) }}
+        </div>
+    </div>
+
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.niveau,'Niveau d\'étude') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.niveau) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.dateDebut,'Date de début') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.dateDebut) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.dateFin,'Date de fin') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.dateFin) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.nomEtablissement,'Nom de l\'établissement') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nomEtablissement) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.localite,'Lieu') }}
+        <div class="col-sm-9">
+            {{ form_widget(form.localite) }}
+        </div>
+    </div>
+    <div class="form-group row  mx-auto " style="font-size:18px">
+        {{ form_label(form.justificatifFile,'Justificatif',{
+            'label_attr': {
+                'class' : 'col-sm-2 col-form-label  text-dark  mt-1'
+            }
+        }) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.justificatifFile,{
+                'attr' :{
+                    'class' : 'col-md-6 ml-5',
+                }
+            }) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block _cv_formations_entry_widget %}
+    <div class="row" id="block_{{ id }}">
+        <div class="col-md-11 mb-4">
+            <div class="col-md-1" style="margin-top:24px">
+                <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger mt-4">X
+                </button>
+            </div>
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _cv_competences_widget %}
+    <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+        <h5 class="text-left pt-4 h4 pb-0">Mes Compétences</h5>
+        <hr>
+        {{ form_widget(form) }}
+        <input type="hidden" id="widget-counters" value="0">
+        <div class="form-group col-md-12 text-center">
+            <button type="button" id="add-competence" class="btn btn-info mt-2">Ajouter une compétence</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _cv_competences_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _cv_competences_entry_widget %}
+    <div class="row" id="block_{{ id }}">
+        <div class="col mb-4">
+            {{ form_widget(form) }}
+        </div>
+        <div class="col-md-1" style="margin-top:-24px">
+            <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger mt-4">X
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _cv_langues_widget %}
+    <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
+        <h5 class="text-left pt-4 h4 pb-0">Mes Compétences linguistiques</h5>
+        <hr>
+        {{ form_widget(form) }}
+        <input type="hidden" id="widget-counters" value="0">
+        <div class="form-group col-md-12 text-center">
+            <button type="button" id="add-langue" class="btn btn-info mt-2">Ajouter une langue</button>
+        </div>
+    </div>
+    <div class="form-group container col-md-12 text-center">
+        <button class="btn btn-info col-md-11 rounded-1 mt-5 ml-5 mr-2" style="" type="submit">Editer le cv</button>
+    </div>
+{% endblock %}
+
+{% block _cv_langues_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _cv_langues_entry_widget %}
+    <div class="row" id="block_{{ id }}">
+        <div class="col mb-4">
+            {{ form_widget(form) }}
+        </div>
+        <div class="col-md-1" style="margin-top:-24px">
+            <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger mt-4">X
+            </button>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        // Pour faire scroller la nav bar
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("nav").classList.add('bg-dark');
+                document.getElementById("nav").classList.add('navbar-dark');
+                document.getElementById("nav").classList.add('scroll');
+            } else {
+                document.getElementById("nav").classList.remove('navbar-dark');
+                document.getElementById("nav").classList.remove('bg-dark');
+            }
+        }
+    </script>
+    {# Afficher la disponibilite #}
+    <script>
+        function displayDisponibility(id) {
+            const element = document.getElementById(id);
+            if (element.value === '1') {
+                document.querySelector(".disponibiliteYes").classList.remove("active");
+                document.querySelector("#now").checked = true;
+
+            } else {
+                document.querySelector(".disponibiliteYes").classList.add("active");
+                document.getElementById("cv_dateDisponibilite").value = null;
+            }
+            disableDateDisponible("notYet");
+        }
+
+        function disableDateDisponible(id) {
+
+            const notYet = document.getElementById(id);
+            document.querySelector("#cv_dateDisponibilite").disabled = !notYet.checked;
+
+
+        }
+    </script>
+    {# Ajouter une expérience #}
+    <script>
+        $('#add-experience').click(function () {
+
+            const index = +$('#widget-counters').val();
+// je recupère les prototypes des donnees
+            const tmpl = $('#cv_experiencesProfessionnelles').data('prototype').replace(/__name__/g, index);
+// j'injecte ce code au sein de la div
+            $('#cv_experiencesProfessionnelles').append(tmpl);
+            $('#cv_experiencesProfessionnelles').append('<hr>');
+// on veut dire a notre widget d'incrementer
+            $('#widget-counters').val(index + 1);
+// je gère le button supprimer
+            handleDeleteButton();
+        });
+
+        function handleDeleteButton() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
+        function updateCounter() {
+            const count = +$('#cv_experiencesProfessionnelles div.form-group').length;
+            $('#widget-counters').val(count);
+        }
+
+        updateCounter();
+
+        // au rechargement de la page
+        handleDeleteButton();
+    </script>
+
+    {# Ajouter une formation #}
+    <script>
+        $('#add-formation').click(function () {
+
+            const index = +$('#widget-counters').val();
+// je recupère les prototypes des donnees
+            const tmpl = $('#cv_formations').data('prototype').replace(/__name__/g, index);
+// j'injecte ce code au sein de la div
+            $('#cv_formations').append(tmpl);
+            $('#cv_formations').append('<hr>');
+// on veut dire a notre widget d'incrementer
+            $('#widget-counters').val(index + 1);
+// je gère le button supprimer
+            handleDeleteButton();
+        });
+
+        function handleDeleteButton() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
+        function updateCounter() {
+            const count = +$('#cv_formations div.form-group').length;
+            $('#widget-counters').val(count);
+        }
+
+        updateCounter();
+
+        // au rechargement de la page
+        handleDeleteButton();
+    </script>
+    {# Ajouter une compétence #}
+    <script>
+        $('#add-competence').click(function () {
+
+            const index = +$('#widget-counters').val();
+// je recupère les prototypes des donnees
+            const tmpl = $('#cv_competences').data('prototype').replace(/__name__/g, index);
+// j'injecte ce code au sein de la div
+            $('#cv_competences').append(tmpl);
+
+// on veut dire a notre widget d'incrementer
+            $('#widget-counters').val(index + 1);
+// je gère le button supprimer
+            handleDeleteButton();
+        });
+
+        function handleDeleteButton() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
+        function updateCounter() {
+            const count = +$('#cv_competences div.form-group').length;
+            $('#widget-counters').val(count);
+        }
+
+        updateCounter();
+
+        // au rechargement de la page
+        handleDeleteButton();
+    </script>
+
+    {# Ajouter une langue #}
+    <script>
+        $('#add-langue').click(function () {
+
+            const index = +$('#widget-counters').val();
+// je recupère les prototypes des donnees
+            const tmpl = $('#cv_langues').data('prototype').replace(/__name__/g, index);
+// j'injecte ce code au sein de la div
+            $('#cv_langues').append(tmpl);
+
+// on veut dire a notre widget d'incrementer
+            $('#widget-counters').val(index + 1);
+// je gère le button supprimer
+            handleDeleteButton();
+        });
+
+        function handleDeleteButton() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
+        function updateCounter() {
+            const count = +$('#cv_langues div.form-group').length;
+            $('#widget-counters').val(count);
+        }
+
+        updateCounter();
+
+        // au rechargement de la page
+        handleDeleteButton();
+    </script>
+    <script>// Jquery Dependency
+
+        // $("input[data-type='currency']").on({
+        // keyup: function () {
+        // formatCurrency($(this));
+        // },
+        // blur: function () {
+        // formatCurrency($(this), "blur");
+        // }
+        // });
+
+
+        // function formatNumber(n) { // format number 1000000 to 1,234,567
+        // return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        // }
+
+
+        // function formatCurrency(input, blur) {
+        // // appends $ to value, validates decimal side
+        // // and puts cursor back in right position.
+
+        // // get input value
+        // var input_val = input.val();
+
+        // // don't validate empty input
+        // if (input_val === "") {
+        // return;
+        // }
+
+        // // original length
+        // var original_len = input_val.length;
+
+        // // initial caret position
+        // var caret_pos = input.prop("selectionStart");
+
+        // // check for decimal
+        // if (input_val.indexOf(".") >= 0) {
+
+        // // get position of first decimal
+        // // this prevents multiple decimals from
+        // // being entered
+        // var decimal_pos = input_val.indexOf(".");
+
+        // // split number by decimal point
+        // var left_side = input_val.substring(0, decimal_pos);
+        // var right_side = input_val.substring(decimal_pos);
+
+        // // add commas to left side of number
+        // left_side = formatNumber(left_side);
+
+        // // validate right side
+        // right_side = formatNumber(right_side);
+
+        // // On blur make sure 2 numbers after decimal
+        // if (blur === "blur") {
+        // right_side += "00";
+        // }
+
+        // // Limit decimal to only 2 digits
+        // right_side = right_side.substring(0, 2);
+
+        // // join number by .
+        // input_val = left_side + "." + right_side + "CFA";
+
+        // } else {
+        // // no decimal entered
+        // // add commas to number
+        // // remove all non-digits
+        // input_val = formatNumber(input_val);
+        // input_val = input_val + " FCFA";
+
+        // // final formatting
+        // if (blur === "blur") {
+        // input_val += ".00";
+        // }
+        // }
+
+        // // send updated string to input
+        // input.val(input_val);
+
+        // // put caret back in the right position
+        // var updated_len = input_val.length;
+        // caret_pos = updated_len - original_len + caret_pos;
+        // input[0].setSelectionRange(caret_pos, caret_pos);
+        // }
+
+    </script>{% endblock %}

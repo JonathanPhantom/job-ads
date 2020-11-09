@@ -19,41 +19,42 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:gestionRecruteur" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum" />
-
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CvShowType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/candidat/showCv.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CandidatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CandidatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Candidat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Candidat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Cv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Postulation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Postulation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/CvType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/78ec4404-d7e0-4780-a42e-f48672f4a79f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103074919.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103080429.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201104070702.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201104215713.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201106064143.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201106085217.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201106133956.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,9 +64,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -185,8 +184,10 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-time-bundle" />
-
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-time-bundle" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/jsrouting-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -281,13 +282,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout des 5 classes énum" />
@@ -370,11 +370,11 @@
       <screen x="0" y="34" width="3286" height="1046" />
     </state>
     <state x="412" y="132" width="540" height="540" key="StructurePopup/0.34.3286.1046@0.34.3286.1046" timestamp="1604516176869" />
-    <state width="498" height="448" key="SwitcherDM" timestamp="1604851561643">
+    <state width="498" height="448" key="SwitcherDM" timestamp="1604907534645">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604571174024" />
-    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604851561643" />
+    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604907534645" />
     <state width="700" height="539" key="SwitcherDM/0.34.1920.994@0.34.1920.994" timestamp="1604503716578" />
     <state width="1199" height="568" key="SwitcherDM/0.34.3286.1046@0.34.3286.1046" timestamp="1604516941773" />
     <state x="761" y="236" width="387" height="649" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604853141357">
@@ -394,11 +394,11 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="624" y="254" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1603842555016" />
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1604797028192">
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1604907370470">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="1989" y="238" width="672" height="701" key="search.everywhere.popup/0.34.1366.734/1366.0.1920.1080@1366.0.1920.1080" timestamp="1604545624788" />
-    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1604797028192" />
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1604907370470" />
     <state x="623" y="253" width="672" height="645" key="search.everywhere.popup/0.34.1920.994@0.34.1920.994" timestamp="1604491327529" />
   </component>
 </project>

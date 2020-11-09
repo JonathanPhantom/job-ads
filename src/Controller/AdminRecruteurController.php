@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Annonce;
 use App\Entity\Entreprise;
-use App\Form\CompteEntrepriseType;
+use App\Entity\User;
+use App\Form\AnnonceType;
 use App\Form\ModifyCompteEntrepriseType;
+use App\Repository\CandidatRepository;
 use App\Repository\EntrepriseRepository;
+use App\Repository\PostulationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +20,10 @@ use Symfony\Component\Security\Core\Security;
 
 class AdminRecruteurController extends AbstractController
 {
+    const NIVEAU_FORMATION_CRITERIA = 70;
+    const ANNEE_EXPERIENCE_CRITERIA = 10;
+    const DOMAINE_ETUDE_CRITERIA = 20;
+
 
     /**
      * @var EntrepriseRepository
@@ -34,7 +41,6 @@ class AdminRecruteurController extends AbstractController
     }
 
     /**
-
      * @Route("/admin/recruteur", name="app_admin_recruteur")
      * @param Security $security
      * @return Response
@@ -90,7 +96,8 @@ class AdminRecruteurController extends AbstractController
      * @param Entreprise $user
      * @return Response
      */
-    public function adminAnnonce(Entreprise $user){
+    public function adminAnnonce(Entreprise $user)
+    {
         $annonces = $this->getUser()->getAnnonces();
 
         return $this->render('admin_recruteur/adminAnnonce.html.twig', [
@@ -102,11 +109,23 @@ class AdminRecruteurController extends AbstractController
     /**
      * @Route("/espace-recruteur/candidature/{id}", name="app_recruteur_candidature")
      * @param Annonce $annonce
+     * @param CandidatRepository $candidatRepository
+     * @param PostulationRepository $postulationRepository
      * @return Response
      */
-    public function candidatOfOneAnnonce(Annonce $annonce){
+    public function candidatsOfOneAnnonce(Annonce $annonce, CandidatRepository $candidatRepository,PostulationRepository $postulationRepository)
+    {
+        $pourcentage = $this->recommandationOf($annonce);
+        $candidatsRecommande = array();
+
+        foreach ($pourcentage as $key => $value) {
+            if ($value >= 10)
+                array_push($candidatsRecommande, $candidatRepository->find($key));
+        }
+        $postulations = $annonce->getCandidatures();
         return $this->render('admin_recruteur/show_candidate.html.twig', [
-            'annonce' => $annonce
+            'annonce' => $annonce,
+            'recommanded'=>$candidatsRecommande
         ]);
     }
 
@@ -114,6 +133,7 @@ class AdminRecruteurController extends AbstractController
      * @Route("/espace-recruteur/adminAnnonce/modify/{id}", name="app_recruteur_modifier_annonce")
      * @param Annonce $annonce
      * @param Request $request
+     * @param FlashyNotifier $flashyNotifier
      * @return Response
      */
     public function modifierAnnonce(Annonce $annonce, Request $request, FlashyNotifier $flashyNotifier)
@@ -121,7 +141,7 @@ class AdminRecruteurController extends AbstractController
         $form = $this->createForm(AnnonceType::class, $annonce);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->manager->flush();
 
             $flashyNotifier->success('Annonce modifiée avec succès');
@@ -138,5 +158,47 @@ class AdminRecruteurController extends AbstractController
 
     }
 
+    private function recommandationOf(Annonce $annonce)
+    {
+
+        $candidatures = $annonce->getCandidatures();
+        $candidats = array();
+
+        foreach ($candidatures as $candidature) {
+            array_push($candidats, $candidature->getCandidat());
+        }
+        //
+        $pourcentage = array();
+
+        $matching = 0;
+        foreach ($candidats as $candidat) {
+            $icv = 0;
+
+            foreach ($candidat->getMesCvs() as $cv) {
+                $i_form = 0;
+                if ($cv->getAnneeExperience() === $annonce->getAnneeExperience()) {
+                    $matching += $this::ANNEE_EXPERIENCE_CRITERIA;
+                }
+
+                if (in_array($cv->getSecteurEtudeSouhaite(), $annonce->getDomaineEtudes())) {
+                    $matching += $this::DOMAINE_ETUDE_CRITERIA;
+                }
+                foreach ($cv->getFormations() as $formation) {
+                    if ($formation->getNiveau() === $annonce->getNiveauFormation()) {
+                        $matching += $this::NIVEAU_FORMATION_CRITERIA;
+                    }
+                    $i_form++;
+                }
+                if ($i_form !== 0)
+                    $matching /= $i_form;
+                $icv++;
+            }
+            if ($icv !== 0)
+                $matching /= $icv;
+            $pourcentage[$candidat->getId()] = $matching;
+        }
+
+        return $pourcentage;
+    }
 
 }

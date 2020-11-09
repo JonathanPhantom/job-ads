@@ -58,7 +58,7 @@
 {% block body %}
     {{ include('fragments/_navCandidat.html.twig') }}
     {% set hasPostulate=false %}
-    {% if app.user %}
+    {% if app.user and is_granted("ROLE_CANDIDAT") %}
         {% for candidature in app.user.candidatures %}
             {% if annonce == candidature.annonce %}
                 {% set hasPostulate=true %}
@@ -67,7 +67,6 @@
     {% endif %}
     <div class="row mr-0 ml-0">
         <div class="col">
-
             <div class="conteneur float-right col-md-2 pt-2 pl-2" style="top:12em;left:-24%;background-color: #fff;">
                 <img class="d-block mx-auto logo" src="{{ vich_uploader_asset(annonce.proprietaire) }}"
                      alt="image de {{ annonce.proprietaire.nomEntreprise }}"
@@ -79,6 +78,7 @@
                 </div>
             </div>
             <div class=" col-md-7 position-relative" style="top:12em;">
+                {{ include('fragments/_postulation_choice_cv.html.twig') }}
 
                 <div class="ml-5 pt-3 pl-3 " style="background-color: #fff">
                     <h5 class="text-left text-dark pt-4 h4 pb-0">{{ annonce.titreAnnonce }}</h5>
@@ -136,18 +136,30 @@
 
                         </div>
                         {% if hasPostulate %}
+                            <div class="col postuler">
+                                <a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
+                                   class="btn btn-lg btn-info  active">Candidature envoyée</a>
 
-                            <div class="col"><a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
-                                                class="btn btn-lg btn-info  active">Candidature envoyée</a>
-                            </div>{% else %}
-                            <div class="col"><a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
-                                                class="btn btn-lg btn-primary  active">Postuler</a>
                             </div>
+                        {% else %}
+                            {% if app.user %}
+                                <div class="col postuler">
+                                    <a href="#"
+                                       class="btn btn-lg btn-primary  active" data-toggle="modal"
+                                       data-target="#exampleModalCenter">Postuler</a>
+                                </div>
+                            {% else %}
+                                <div class="col postuler">
+                                    <a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
+                                       class="btn btn-lg btn-primary  active" data-toggle="modal"
+                                       data-target="#exampleModalCenter">Postuler</a>
+                                </div>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
-                <div class="ml-5 mt-3 p-4 bg-light rounded" style="background-color: #fff">
-                    {{ annonce.description }}
+                <div class="ml-5 mt-3 p-4 rounded text-dark" style="background-color: #fff">
+                    {{ annonce.description|raw }}
                 </div>
                 <div class="ml-5 mt-3 pt-3 pl-3 " style="background-color: #fff">
                     <h5 class="text-left text-dark pt-4 h4 pb-0">{{ annonce.titreAnnonce }}</h5>
@@ -207,12 +219,25 @@
 
                         {% if hasPostulate %}
 
-                            <div class="col"><a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
-                                                class="btn btn-lg btn-info  active">Candidature envoyée</a>
-                            </div>{% else %}
-                            <div class="col"><a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
-                                                class="btn btn-lg btn-primary  active">Postuler</a>
+                            <div class="col postuler">
+                                <a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
+                                   class="btn btn-lg btn-info  active">Candidature envoyée</a>
+
                             </div>
+                        {% else %}
+                            {% if app.user %}
+                                <div class="col postuler">
+                                    <a href="#"
+                                       class="btn btn-lg btn-primary  active" data-toggle="modal"
+                                       data-target="#exampleModalCenter">Postuler</a>
+                                </div>
+                            {% else %}
+                                <div class="col postuler">
+                                    <a href="{{ path('app_candidat_postuler',{id:annonce.id}) }}"
+                                       class="btn btn-lg btn-primary  active" data-toggle="modal"
+                                       data-target="#exampleModalCenter">Postuler</a>
+                                </div>
+                            {% endif %}
                         {% endif %}
 
                     </div>
@@ -233,6 +258,16 @@
         function scrollFunction() {
             document.getElementById("nav").classList.add('bg-light');
             document.getElementById("nav").classList.add('scroll');
+        }
+
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+        function send() {
+
+            const path = document.getElementById('select').value;
+            document.location = path;
         }
     </script>
 {% endblock %}

@@ -33,12 +33,7 @@ class AnnonceSearchType extends FormConfig
                 'required' => false,
                 'multiple' => false,
                 'placeholder' => "Rechercher par le domaine d'étude"
-
-<<<<<<< HEAD:src/Form/SearchType.php
-                'placeholder' => "Ville ou Région"
-=======
             ]))
->>>>>>> master:src/Form/AnnonceSearchType.php
 
             ->add('niveauFormation', EnumType::class, $this->getConfiguration('Niveau de formation', 'niveau de formation', [
                 'enum_class' => NiveauFormation::class,
@@ -56,9 +51,6 @@ class AnnonceSearchType extends FormConfig
                 'label' => false,
                 'required' => false,
                 'multiple' => false,
-<<<<<<< HEAD:src/Form/SearchType.php
-                'placeholder' => "Domaine d'étude"
-=======
                 'placeholder' => "Rechercher par Ville ou Région",
                 'attr' => [
                     'label' => false,
@@ -80,7 +72,6 @@ class AnnonceSearchType extends FormConfig
                 ]
 
             ]))
->>>>>>> master:src/Form/AnnonceSearchType.php
 
         ;
     }

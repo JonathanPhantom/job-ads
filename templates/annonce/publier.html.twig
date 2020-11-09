@@ -3,83 +3,74 @@
 {% block title 'Publication - Job-Ads' %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	<style>
-		body {
-			background-color: #fff;
-		}
-		.scroll {
-			transition: background-color 0.3s ease;
-		}
-		.nav {
-			position: fixed;
-			top: 0;
-			z-index: 1;
-			width: 100%;
-		}
-		form label {
-			font-weight: bold;
-			font-size: 18px;
-			position: relative;
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #fff;
+        }
 
-		}
-		button {
-			background-color: #916319;
-		}
-	</style>
+        .scroll {
+            transition: background-color 0.3s ease;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+        }
+
+        form label {
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+
+        }
+
+        button {
+            background-color: #916319;
+        }
+    </style>
 {% endblock %}
 {% block body %}
-<<<<<<< HEAD
     {{ include('fragments/_navEntreprise.html.twig') }}
-    <h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark mb-3">Publier votre annonce et démarrer le
-        recrutement</h1>
-    <div class="container col-md-6 bg-light text-dark pb-5">
-        <h5 class="text-left pt-3 pb-2"> </h5>
-        {{ form_start(form) }}
+    <div class="position-relative" style="top:5em;">
+        <h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark mb-3 ">Publier votre annonce et démarrer le
+            recrutement</h1>
+        <div class="container text-dark pb-5">
+            <h5 class="text-left pt-3 pb-2"></h5>
+            {{ form_start(form) }}
             {{ form_widget(form) }}
-        <div class="col-md-8 mt-5 mx-auto">
-            <button class="btn btn-block" type="submit" style="background-color: #DB7300">Publier l'annonce</button>
+            <div class="col-md-8 mt-5 mx-auto">
+                <button class="btn btn-block" style="background-color: #DB7300">Publier l'annonce</button>
+            </div>
+            {{ form_end(form) }}
+
         </div>
-        {{ form_end(form) }}
-
     </div>
-
-=======
-	{{ include('fragments/_navEntreprise.html.twig') }}
-	<div class="position-relative" style="top:5em;">
-		<h1 class="mt-lg-5 text-center h2 font-weight-bold text-dark mb-3 ">Publier votre annonce et démarrer le recrutement</h1>
-		<div class="container text-dark pb-5">
-			<h5 class="text-left pt-3 pb-2"></h5>
-			{{ form_start(form) }}
-			{{ form_widget(form) }}
-			<div class="col-md-8 mt-5 mx-auto">
-				<button class="btn btn-block" style="background-color: #DB7300">Publier l'annonce</button>
-			</div>
-			{{ form_end(form) }}
->>>>>>> master
-
-		</div>
-	</div>
 {% endblock %}
 {% block javascripts %}
-	<script>
-		window.onscroll = function () {
-scrollFunction()
-};
-function scrollFunction() {
-if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-document.getElementById("nav").classList.add('bg-light');
-document.getElementById("nav").classList.add('scroll');
-} else {
-document.getElementById("nav").classList.remove('scroll');
-document.getElementById("nav").classList.remove('bg-light');
-}
-}
-function select() {
-document.getElementById('annonce_domaineEtude').classList.add('selectpicker');
-}
-$(function () {
-$('select').selectpicker;
-});
-	</script>
+    <script>
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("nav").classList.add('bg-light');
+                document.getElementById("nav").classList.add('scroll');
+            } else {
+                document.getElementById("nav").classList.remove('scroll');
+                document.getElementById("nav").classList.remove('bg-light');
+            }
+        }
+
+        function select() {
+            document.getElementById('annonce_domaineEtude').classList.add('selectpicker');
+        }
+
+        $(function () {
+            $('select').selectpicker;
+        });
+    </script>
 {% endblock %}

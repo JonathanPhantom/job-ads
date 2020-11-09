@@ -4,7 +4,7 @@ namespace App\Controller\GestionComptes;
 
 use DateTime;
 use App\Entity\Cv;
-use App\Form\CvType;
+use App\Form\CvShowType;
 use DateTimeImmutable;
 use App\Entity\Candidat;
 use App\Entity\Entreprise;

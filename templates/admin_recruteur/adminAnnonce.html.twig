@@ -23,7 +23,7 @@
             <tbody>
             {% for ad in annonces %}
                 <tr>
-                    <td>{{ ad.titreAnnonce }}</td>
+                    <td><a href="{{ path('app_annonce_show_id',{id:ad.id}) }}" class="text-dark"> {{ ad.titreAnnonce }}</a></td>
                     <td>
                         {% for categorie in ad.categories %}
                             <span>{{ categorie.nomCategorie }}</span>
