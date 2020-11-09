@@ -18,38 +18,34 @@
                     <br>
                     <i><strong class="text-warning">Adresse Mail</strong> :</i>
                     <strong>{{ user.email }}</strong><br>
-<<<<<<< HEAD
-                    <span class="badge badge-light">{{ user.annonces | length }} annonces</span> &nbsp; {% if app.user %}<a href="{{ path('app_recruteur_adminAnnonce', {id: user.id}) }}" >
-                        <span class="badge badge-info" >Administrer mes annonces</span>
-                    </a>&nbsp;<a href="{{ path('app_recruteur_modify') }}" class="badge badge-warning">Modifier profil</a><a href="{#{{ path('user_password') }}#}" class="badge badge-info ml-2">Modifier Mot de passe</a>{% endif %}
-=======
+
                     <span class="badge badge-light">{{ user.annonces | length }} annonces</span>
-                    &nbsp; {% if app.user %}<a href="#{# {{ path('admin_ads', {id: user.id}) }} #}" >
+                    &nbsp; {% if app.user %}<a href=" {{ path('app_recruteur_adminAnnonce', {id: user.id}) }}" >
                             <span class="badge badge-info">Administrer mes annonces</span>
-                        </a>&nbsp;<a href="{{ path('app_admin_recruteur_edit') }}" class="badge badge-warning">Modifier profil</a>
+                        </a>&nbsp;<a href="{{ path('app_admin_recruteur_edit') }}" class="badge badge-warning">Modifier
+                            profil</a>
                     <a href="#{# {{ path('user_password') }} #}" class="badge badge-info ml-2">Modifier Mot de
                             passe</a>{% endif %}
->>>>>>> master
                 </div>
                 <h2 class="text-primary mt-5">Profil JoB-AdS {{ user.nomEntreprise }}: </h2>
                 <h3><u>Description</u>:</h3>
                 &nbsp;
                 <p>{{ user.secteurActivite.getvalue() }}</p>
-                <h3 class="text-primary"><u>Annonces JoB-AdS de {{ user.nomEntreprise }}</u>: </h3>
+                <h3 class="text-dark"><u>Annonces JoB-AdS de {{ user.nomEntreprise }}</u>: </h3>
                 &nbsp;
                 {% if user.annonces | length >0 %}
                     {% for ad in user.annonces %}
                         <div style="width: 25rem" class="alert alert-dismissible alert-primary">
                             <strong>{{ ad.titreAnnonce }}</strong>, expire le {{ ad.dateLimite | date("m/d/Y") }}.<br>
-                            <a href="{# {{ path('show_one_ad', {id: ad.id}) }} #}" class="alert-link">Voir le
+                            <a href="{{ path('app_annonce_show_id', {id: ad.id}) }}" class="alert-link">Voir le
                                 contenu</a>
                         </div>
                         <br>
                     {% endfor %} &nbsp;
                 {% else %}
-                    <h3 class="text-warning"><i>{{ user.nomEntreprise }} n'a pas encore publié d'annonce</i></h3>
+                    <h3 class="text-dark "><i>{{ user.nomEntreprise }} n'a pas encore publié d'annonce</i>.<br><a href="{{ path('app_create_annonce') }}">Commencez vos publications</a></h3>
                 {% endif %}
-                <a href="{{ path('app_espace_recruteur') }}{# {{ path('index_ads') }} #}" class="btn btn-secondary">
+                <a href="{{ path('app_espace_recruteur') }}{# {{ path('index_ads') }} #}" class="mt-4 btn btn-secondary">
                     <i class="">Retour à l'accueil</i>
                 </a>
             </div>

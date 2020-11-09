@@ -89,7 +89,8 @@ class AnnonceType extends FormConfig
             ]))
             ->add('salaire', IntegerType::class, $this->getConfiguration('Salaire', '',[
                 'attr'=>[
-                    'class'=>'rounded-0 mt-3'
+                    'class'=>'rounded-0 mt-3',
+                    'min'=>0
                 ]
                 ,'required'=>false
             ]))

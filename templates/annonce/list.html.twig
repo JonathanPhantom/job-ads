@@ -94,18 +94,11 @@
                                                 {{ annonce.proprietaire.localite.value }}
                                             </div>
                                             <div class="">
-                                        <div class="d-flex">
-                            <span style="color: rgb(158,158,158);word-break: break-word;word-wrap: break-word;max-width: 100%">
-
-                            </span>{{ annonce.proprietaire.localite.value }}
-                                        </div>
-
 
                                                 {{ annonce.datePublication|date("d/m/y") }}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
                                     <div class="col-md-1" style="    position: relative;right: 60px;top: 18px;">
                                         <a class="btn btn-sm btn-secondary"
                                            href="{{ path('app_annonce_show_id',{id:annonce.id}) }}">Lire</a>
@@ -113,6 +106,7 @@
                                 </div>
                             </div>
                         </section>
+                                    <div class="dropdown-divider"></div>
                     {% endfor %}
                 </div>
             </div>

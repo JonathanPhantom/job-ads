@@ -2,19 +2,26 @@
 {% block title %}
     Affichage candidats
 {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        tbody:before {
+            content: "@";
+            display: block;
+            line-height: 10px;
+            text-indent: -99999px;
+        }
+    </style>
+{% endblock %}
 {% block body %}
     {{ include('fragments/_navEntreprise.html.twig') }}
-
-
-
-
     <div class="container  mt-4">
         <h3>Liste des candidatures à l'annonce {{ annonce.titreAnnonce }}</h3>
         {% if annonce.candidatures.count > 0 %}
             <table class="table table-striped" id="mytable">
                 <thead>
                 <tr>
-                    <th><input type="checkbox" id="checkall" /></th>
+                    <th><input type="checkbox" id="checkall"/></th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
@@ -24,22 +31,43 @@
                     <th>Contacter</th>
                 </tr>
                 </thead>
-                <tbody>
-                {% for candidat in annonce.candidatures %}
+
+                <tbody class="border-success border mt-2">
+
+                {% for candidat in recommanded %}
                     <tr>
-                        <td><input type="checkbox" class="checkthis"  value="{{ candidat.candidat.email }}"/></td>
-                        <td>{{ candidat.candidat.nom }}</td>
-                        <td>{{ candidat.candidat.prenom }}</td>
-                        <td>{{ candidat.candidat.email }}</td>
-                        <td>{{ candidat.candidat.telephone }}</td>
-                        <td>{{ candidat.candidat.localite.getValue() }}</td>
-                        <td><a href="{#{{ asset('uploads/' ~ candidat.cv) }}#}" class="btn btn-primary">Voir le Profil</a></td>
+                        <td><input type="checkbox" class="checkthis" value="{{ candidat.email }}"/></td>
+                        <td>{{ candidat.nom }}</td>
+                        <td>{{ candidat.prenom }}</td>
+                        <td>{{ candidat.email }}</td>
+                        <td>{{ candidat.telephone }}</td>
+                        <td>{{ candidat.localite.getValue() }}</td>
+                        <td><a href="{{ path('app_candidat_cv_show',{id:candidat.id,annonce_id:annonce.id}) }}" class="btn btn-primary">Voir le CV</a>
+                        </td>
                         <td>
-                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidat.candidat.id, ad: annonce.id}) }}" class="btn btn-success">Contacter pour Entretien</a>
+                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidat.id, ad: annonce.id}) }}"
+                               class="btn btn-success">Contacter pour Entretien</a>
 
                         </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tbody>
 
+                {% for candidature in annonce.candidatures %}
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" value="{{ candidature.candidat.email }}"/></td>
+                        <td>{{ candidature.candidat.nom }}</td>
+                        <td>{{ candidature.candidat.prenom }}</td>
+                        <td>{{ candidature.candidat.email }}</td>
+                        <td>{{ candidature.candidat.telephone }}</td>
+                        <td>{{ candidature.candidat.localite.getValue() }}</td>
+                        <td><a href="{{ path('app_candidat_cv_show',{id:candidature.candidat.id,annonce_id:annonce.id}) }}" class="btn btn-primary">Voir le CV</a></td>
+                        <td>
+                            <a href="{{ path('app_recruteur_contact_entretien', {id:candidature.candidat.id, ad: annonce.id}) }}"
+                               class="btn btn-success">Contacter pour Entretien</a>
 
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -50,54 +78,52 @@
             </div>
         {% endif %}
     </div>
-{#    {% if annonce.candidatures.count > 0 %}#}
-{#        <div class="text-right">#}
-{#            <a href="{{ path('app_recruteur_contact_entretien', {emails: }) }}" class="btn btn-success" id="entretien"">Contacter pour Entretien</a>#}
-{#        </div>#}
-{#    {% endif %}#}
+    {# {% if annonce.candidatures.count > 0 %} #}
+    {# <div class="text-right"> #}
+    {# <a href="{{ path('app_recruteur_contact_entretien', {emails: }) }}" class="btn btn-success" id="entretien"">Contacter pour Entretien</a> #}
+    {# </div> #}
+    {# {% endif %} #}
 
 {% endblock %}
 {% block javascripts %}
 
-<script>
-    console.log(document.getElementById('choix'+1).checked)
-    $(document).ready(function(){
-        $("#mytable #checkall").click(function () {
-            if ($("#mytable #checkall").is(':checked')) {
-                $("#mytable input[type=checkbox]").each(function () {
-                    $(this).prop("checked", true);
-                });
+    <script>
+        console.log(document.getElementById('choix' + 1).checked)
+        $(document).ready(function () {
+            $("#mytable #checkall").click(function () {
+                if ($("#mytable #checkall").is(':checked')) {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", true);
+                    });
 
-            } else {
-                $("#mytable input[type=checkbox]").each(function () {
-                    $(this).prop("checked", false);
-                });
-            }
+                } else {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", false);
+                    });
+                }
+            });
+
+            $("[data-toggle=tooltip]").tooltip();
         });
 
-        $("[data-toggle=tooltip]").tooltip();
-    });
-
-    let i = {{ annonce.candidatures.count }};
-    let emails = [];
-    console.log(i)
-    let elmt = document.getElementById('choix'+i).value;
-    if (document.getElementById('choix'+i).checked === true) {
-        emails.push(elmt)
-    }
+        let i = {{ annonce.candidatures.count }};
+        let emails = [];
+        console.log(i)
+        let elmt = document.getElementById('choix' + i).value;
+        if (document.getElementById('choix' + i).checked === true) {
+            emails.push(elmt)
+        }
 
 
+        // let radios = document.getElementsByName('choix');
+        // let valeur;
+        // for(let i = 0; i < boutons.length; i++){
+        //     if(boutons[i].checked){
+        //         valeur = boutons[i].value;
+        //     }
+        // }
 
-
-    // let radios = document.getElementsByName('choix');
-    // let valeur;
-    // for(let i = 0; i < boutons.length; i++){
-    //     if(boutons[i].checked){
-    //         valeur = boutons[i].value;
-    //     }
-    // }
-
-</script>
+    </script>
 {% endblock %}
 
 

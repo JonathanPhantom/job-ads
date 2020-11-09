@@ -3,6 +3,7 @@
 namespace App\Controller\GestionCandidature;
 
 use App\Entity\Annonce;
+use App\Entity\Cv;
 use App\Entity\Postulation;
 use App\Entity\User;
 use App\Repository\CandidatRepository;
@@ -18,9 +19,9 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class GestionCandidatureController extends AbstractController
 {
-    const NIVEAU_FORMATION_CRITERIA = 70;
+    /*const NIVEAU_FORMATION_CRITERIA = 70;
     const ANNEE_EXPERIENCE_CRITERIA = 10;
-    const DOMAINE_ETUDE_CRITERIA = 20;
+    const DOMAINE_ETUDE_CRITERIA = 20;*/
 
     use TargetPathTrait;
 
@@ -39,12 +40,13 @@ class GestionCandidatureController extends AbstractController
     /**
      * @param Request $request
      * @param Annonce $annonce
+     * @param Cv|null $cv
      * @param PostulationRepository $postulationRepository
      * @param FlashyNotifier $flashy
      * @return RedirectResponse
-     * @Route("/gestion/annonce/{id<\d+>}/postuler", name="app_candidat_postuler")
+     * @Route("/gestion/annonce/{id<\d+>}/cv/{id2<\d+>}/postuler", name="app_candidat_postuler", defaults={"id2"=0})
      */
-    public function postuler(Request $request, Annonce $annonce, PostulationRepository $postulationRepository, FlashyNotifier $flashy)
+    public function postuler(Request $request, Annonce $annonce,?Cv $cv,PostulationRepository $postulationRepository, FlashyNotifier $flashy)
     {
         //on ajoute envoie l'utilisateur à l'annonce
 
@@ -58,14 +60,18 @@ class GestionCandidatureController extends AbstractController
             return $this->redirectToRoute('app_annonce_show_id', ['id' => $annonce->getId()]);
 
         }
+        if ($cv != null){
+
         $postulation = new Postulation();
         $postulation->setDatePostulation(new DateTimeImmutable());
         $postulation->setAnnonce($annonce);
         $postulation->setCandidat($candidat);
+        $postulation->setCvEnvoye($cv);
 
         //on persist la postulation
         $this->manager->persist($postulation);
         $this->manager->flush();
+        }
 
         //rediriger vers la page courante.
 
@@ -76,25 +82,9 @@ class GestionCandidatureController extends AbstractController
         return $this->redirectToRoute('app_annonce_show_id', ['id' => $annonce->getId()]);
     }
 
-    /**
-     * @Route("/annonce/recommanded/{id<\d+>}",name="app_annonce_recommanded")
-     * @param Annonce $annonce
-     * @param CandidatRepository $candidatRepository
-     */
-    public function recommandedAds(Annonce $annonce,CandidatRepository $candidatRepository)
-    {
-        $pourcentage = $this->recommander($annonce);
-        $candidatsRecommande = array();
-
-        foreach ($pourcentage as $key => $value){
-            array_push($candidatsRecommande, $candidatRepository->find($key));
-        }
-
-        dd($candidatsRecommande);
-    }
 
     // Annonce : toutes les candidatures, verification
-    private function recommander(Annonce $annonce)
+    /*private function recommander(Annonce $annonce)
     {
 
         $candidatures = $annonce->getCandidatures();
@@ -108,27 +98,32 @@ class GestionCandidatureController extends AbstractController
 
         $matching = 0;
         foreach ($candidats as $candidat) {
+            $icv = 0;
 
             foreach ($candidat->getMesCvs() as $cv) {
-                if ($cv->getAnneeExperience >= $annonce->getAnneeExperience()){
+                $i_form = 0;
+                if ($cv->getAnneeExperience() === $annonce->getAnneeExperience()) {
                     $matching += $this::ANNEE_EXPERIENCE_CRITERIA;
                 }
 
-                if (in_array($cv->getSecteurEtudeSouhaite(),$annonce->getDomaineEtudes())) {
+                if (in_array($cv->getSecteurEtudeSouhaite(), $annonce->getDomaineEtudes())) {
                     $matching += $this::DOMAINE_ETUDE_CRITERIA;
                 }
-                foreach ($cv->getFormations() as $formation){
-                    if ($formation->getNiveau() === $annonce->getNiveauFormation()){
+                foreach ($cv->getFormations() as $formation) {
+                    if ($formation->getNiveau() === $annonce->getNiveauFormation()) {
                         $matching += $this::NIVEAU_FORMATION_CRITERIA;
                     }
+                    $i_form++;
                 }
-                $matching /= ($cv->getFormations())->length();
-
+                if ($i_form !== 0)
+                    $matching /= $i_form;
+                $icv++;
             }
-            $matching /= ($candidat->getMesCvs())->length();
+            if ($icv !== 0)
+                $matching /= $icv;
             $pourcentage[$candidat->getId()] = $matching;
         }
 
         return $pourcentage;
-    }
+    }*/
 }

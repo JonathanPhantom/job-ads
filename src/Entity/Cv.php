@@ -108,10 +108,16 @@ class Cv
      */
     private $langues = [];
 
+    /**
+     * @ORM\OneToMany(targetEntity=Postulation::class, mappedBy="cvEnvoye")
+     */
+    private $postulations;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
         $this->experiencesProfessionnelles = new ArrayCollection();
+        $this->postulations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -203,12 +209,12 @@ class Cv
 
     public function getSecteurEtudeSouhaite()
     {
-        return $this->SecteurEtudeSouhaite;
+        return $this->secteurEtudeSouhaite;
     }
 
     public function setSecteurEtudeSouhaite($secteurEtudeSouhaite): self
     {
-        $this->SecteurEtudeSouhaite = $secteurEtudeSouhaite;
+        $this->secteurEtudeSouhaite = $secteurEtudeSouhaite;
 
         return $this;
     }
@@ -364,6 +370,36 @@ class Cv
     public function setLangues(?array $langues): self
     {
         $this->langues = $langues;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Postulation[]
+     */
+    public function getPostulations(): Collection
+    {
+        return $this->postulations;
+    }
+
+    public function addPostulation(Postulation $postulation): self
+    {
+        if (!$this->postulations->contains($postulation)) {
+            $this->postulations[] = $postulation;
+            $postulation->setCvEnvoye($this);
+        }
+
+        return $this;
+    }
+
+    public function removePostulation(Postulation $postulation): self
+    {
+        if ($this->postulations->removeElement($postulation)) {
+            // set the owning side to null (unless already changed)
+            if ($postulation->getCvEnvoye() === $this) {
+                $postulation->setCvEnvoye(null);
+            }
+        }
 
         return $this;
     }

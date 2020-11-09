@@ -35,6 +35,12 @@ class Postulation
      */
     private $candidat;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Cv::class, inversedBy="postulations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cvEnvoye;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +78,18 @@ class Postulation
     public function setCandidat(?Candidat $candidat): self
     {
         $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    public function getCvEnvoye(): ?Cv
+    {
+        return $this->cvEnvoye;
+    }
+
+    public function setCvEnvoye(?Cv $cvEnvoye): self
+    {
+        $this->cvEnvoye = $cvEnvoye;
 
         return $this;
     }
