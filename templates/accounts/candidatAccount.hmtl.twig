@@ -73,29 +73,29 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script>
-        function displayDisponibility(id) {
-            const element = document.getElementById(id);
-            if (element.value === '1') {
-                document.querySelector(".disponibiliteYes").classList.remove("active");
-                document.querySelector("#now").checked = true;
+     <script>
+        //     function displayDisponibility(id) {
+        //         const element = document.getElementById(id);
+        //         if (element.value === '1') {
+        //             document.querySelector(".disponibiliteYes").classList.remove("active");
+        //             document.querySelector("#now").checked = true;
 
-            } else {
-                document.querySelector(".disponibiliteYes").classList.add("active");
-                document.getElementById("compte_candidat_dateDisponibilite").value = null;
-            }
-            disableDateDisponible("notYet");
-        }
+        //         } else {
+        //             document.querySelector(".disponibiliteYes").classList.add("active");
+        //             document.getElementById("compte_candidat_dateDisponibilite").value = null;
+        //         }
+        //         disableDateDisponible("notYet");
+        //     }
 
-        function disableDateDisponible(id) {
+        //     function disableDateDisponible(id) {
 
-            notYet = document.getElementById(id);
-            if (notYet.checked)
-                document.querySelector("#compte_candidat_dateDisponibilite").disabled = false;
-            else
-                document.querySelector("#compte_candidat_dateDisponibilite").disabled = true;
+        //         notYet = document.getElementById(id);
+        //         if (notYet.checked)
+        //             document.querySelector("#compte_candidat_dateDisponibilite").disabled = false;
+        //         else
+        //             document.querySelector("#compte_candidat_dateDisponibilite").disabled = true;
 
-        }
+        //     }
     </script>
 
 {% endblock %}

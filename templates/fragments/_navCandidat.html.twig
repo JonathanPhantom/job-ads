@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="
+<nav id="nav" class="navbar nav navbar-expand-lg navbar-light " style="
 			    height: 82px;">
-    <div class="container">
+    <div class="container" style="">
         <a class="navbar-brand" href="{{ path('app_home_candidat') }}"
            style="font-size: 3rem;color: #DB7300;">Job-Ads</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link  btn btn-outline-info mr-2 rounded-0" aria-current="page" href="#">Offres
+                    <a class="nav-link  btn btn-outline-info mr-2 rounded-0" aria-current="page" href="{{path('app_annonce_search')}}">Offres
                         d'emplois</a>
                 </li>
                 <li class="nav-item">

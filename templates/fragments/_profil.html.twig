@@ -1,64 +1,67 @@
 {% if app.user and is_granted(role) %}
 
-    <li class="nav-item ml-5">
-        <div class="dropdown d-flex">
-            {% if role == "ROLE_RECRUTEUR" %}
-                <a href="#" data-toggle="dropdown"
-                   class="dropdown-toggle color-a text-menu mt-2 mr-4"> {{ app.user.nomEntreprise|capitalize }}
-                    <i class="fa fa-caret-down icon-small"></i></a>
-            {% elseif role == "ROLE_CANDIDAT" %}
-                <a href="#" data-toggle="dropdown"
-                   class="dropdown-toggle color-a text-menu mt-2 mr-4"> {{ app.user.prenom|capitalize }} {{ app.user.nom }}
-                    <i class="fa fa-caret-down icon-small"></i></a>
-            {% endif %}
-            <div class="" data-toggle="dropdown">
-                <div id="user-initial">
-                    <a class="l1" href="#">
-                        <img class="img " src="{{ asset('images/profil.png') }}"
-                             style="width:40px; float: right;margin-top: -10px"
-                             alt="logo user">
-                    </a>
-                </div>
-            </div>
-            <!--Menu-->
+	<li class="nav-item ml-5">
+		<div class="dropdown d-flex">
+			{% if role == "ROLE_RECRUTEUR" %}
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle color-a text-menu mt-2 mr-4">
+					{{ app.user.nomEntreprise|capitalize }}
+					<i class="fa fa-caret-down icon-small"></i>
+				</a>
+			{% elseif role == "ROLE_CANDIDAT" %}
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle color-a text-menu mt-2 mr-4">
+					{{ app.user.prenom|capitalize }}
+					{{ app.user.nom }}
+					<i class="fa fa-caret-down icon-small"></i>
+				</a>
+			{% endif %}
+			<div class="" data-toggle="dropdown">
+				<div id="user-initial">
+					<a class="l1" href="#">
+						<img class="img " src="{{ asset('images/profil.png') }}" style="width:40px; float: right;margin-top: -10px" alt="logo user">
+					</a>
+				</div>
+			</div>
+			<!--Menu-->
 
-            <div id="dropdown" class="dropdown-menu dropdown-primary">
-                {% if role == "ROLE_CANDIDAT" %}
-                    <a class="l1 mt-3" href="#">
-                        <img class="mr-2 ml-1" src="{{ asset('images/setting.png') }}"
-                             style="width:20px" alt="settings"><span class="text-dark">Parametres</span></a>
+			<div id="dropdown" class="dropdown-menu dropdown-primary">
+				{% if role == "ROLE_CANDIDAT" %}
+					<a class="l1 mt-3" href="{{path('app_candidat_cv_list')}}">
+						<img class="mr-2 ml-1" src="{{ asset('images/cv.jpg') }}" style="width:20px" alt="cv"><span class="text-dark">Mes Vs</span>
+					</a>
 
-                    <div class="dropdown-divider"></div>
+					<div class="dropdown-divider"></div>
+					<a class="l1 mt-3" href="#">
+						<img class="mr-2 ml-1" src="{{ asset('images/setting.png') }}" style="width:20px" alt="settings"><span class="text-dark">Parametres</span>
+					</a>
+					<div class="dropdown-divider"></div>
 
-                {% elseif role=="ROLE_RECRUTEUR" %}
-                    <a class="l1 mt-3" href="#">
-                        <img class="mr-2 ml-1" src="{{ asset('images/annonce.jpg') }}"
-                             style="width:20px" alt="settings"><span class="text-dark">Mes annonces</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="l1 mt-3" href="#">
-                        <img class="mr-2 ml-1" src="{{ asset('images/setting.png') }}"
-                             style="width:20px" alt="settings"><span class="text-dark">Parametres</span></a>
+				{% elseif role=="ROLE_RECRUTEUR" %}
+					<a class="l1 mt-3" href="{{ path('app_admin_recruteur') }}">
+						<img class="mr-2 ml-1" src="{{ asset('images/annonce.jpg') }}" style="width:20px" alt="settings"><span class="text-dark">Mes annonces</span>
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="l1 mt-3" href="{{path('app_admin_recruteur_edit')}}">
+						<img class="mr-2 ml-1" src="{{ asset('images/setting.png') }}" style="width:20px" alt="settings"><span class="text-dark">Parametres</span>
+					</a>
 
 
-                    <div class="dropdown-divider"></div>
-                {% endif %}
-                <a class="l1 mt-3" href="{{ path('app_logout') }}">
-                    <img class="mr-1" src="{{ asset('images/logout.png') }}"
-                         style="width:25px"
-                         alt="logout"><span
-                            class="text-dark">Déconnexion</span></a>
-                {# <a href="#" >Dark Mode
-                                <label class="switch ml-2">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                            </a> #}
-            </div>
-        </div>
-    </li>
+					<div class="dropdown-divider"></div>
+				{% endif %}
+				<a class="l1 mt-3" href="{{ path('app_logout') }}">
+					<img class="mr-1" src="{{ asset('images/logout.png') }}" style="width:25px" alt="logout"><span class="text-dark">Déconnexion</span>
+				</a>
+				{# <a href="#" >Dark Mode
+								                                <label class="switch ml-2">
+								                                    <input type="checkbox">
+								                                    <span class="slider round"></span>
+								                                </label>
+								                            </a> #}
+			</div>
+		</div>
+	</li>
 
 {% else %}
-    <li class="nav-item">
-        <a class="btn btn-outline-primary ml-5 rounded-0" href="{{ path('app_login') }}">Connexion</a>
-    </li>
+	<li class="nav-item">
+		<a class="btn btn-outline-primary ml-5 rounded-0" href="{{ path('app_login') }}">Connexion</a>
+	</li>
 {% endif %}

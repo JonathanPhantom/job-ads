@@ -62,16 +62,16 @@ class CompteCandidatType extends FormConfig
                 ],
                 'label' => false,
                 'required' => false
-                ]))
-                ->add('adresse', TextType::class, $this->getConfiguration('', 'Veuillez saisir votre adresse', [
-                    'label' => false
-                    ]))
-                ->add('localite', EnumType::class, $this->getConfiguration('Localité / Ville', '', [
-                        'attr' => [
-                            'class' => 'custom-select rounded-0'
-                        ],
-                        'enum_class' => Localites::class
-                        ]))
+            ]))
+            ->add('adresse', TextType::class, $this->getConfiguration('', 'Veuillez saisir votre adresse', [
+                'label' => false
+            ]))
+            ->add('localite', EnumType::class, $this->getConfiguration('Localité / Ville', '', [
+                'attr' => [
+                    'class' => 'custom-select rounded-0'
+                ],
+                'enum_class' => Localites::class
+            ]))
             // ->add('disponibilite', ChoiceType::class, $this->getConfiguration('', '', [
             //     'choices' => [
             //         'Je ne suis pas encore disponible' => false,
@@ -112,12 +112,12 @@ class CompteCandidatType extends FormConfig
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
-                    /*new Length([
-                    'min' => 6,
-                    'minMessage' => 'Votre mot {{ limit }} characters',
-                    // max length allowed by Symfony for security reasons
-                    'max' => 4096,
-                ]),*/
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -129,7 +129,6 @@ class CompteCandidatType extends FormConfig
                     ]),
                 ],
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

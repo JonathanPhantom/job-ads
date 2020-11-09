@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
-class Search
+class AnnonceSearch
 {
+    /**
+     * @var
+     */
+    private $titreAnnonce;
 
     /**
      * @var Localites|null
@@ -28,7 +32,23 @@ class Search
     /**
      * @var NiveauFormation|null
      */
-    private $niveauEtude;
+    private $niveauFormation;
+
+    /**
+     * @return mixed
+     */
+    public function getTitreAnnonce()
+    {
+        return $this->titreAnnonce;
+    }
+
+    /**
+     * @param mixed $titreAnnonce
+     */
+    public function setTitreAnnonce($titreAnnonce): void
+    {
+        $this->titreAnnonce = $titreAnnonce;
+    }
 
     /**
      * @return Localites|null
@@ -40,9 +60,9 @@ class Search
 
     /**
      * @param Localites|null $localites
-     * @return Search
+     * @return AnnonceSearch
      */
-    public function setLocalites(?Localites $localites): Search
+    public function setLocalites(?Localites $localites): AnnonceSearch
     {
         $this->localites = $localites;
         return $this;
@@ -58,9 +78,9 @@ class Search
 
     /**
      * @param DomaineEtude|null $domaineEtude
-     * @return Search
+     * @return AnnonceSearch
      */
-    public function setDomaineEtude(?DomaineEtude $domaineEtude): Search
+    public function setDomaineEtude(?DomaineEtude $domaineEtude): AnnonceSearch
     {
         $this->domaineEtude = $domaineEtude;
         return $this;
@@ -76,9 +96,9 @@ class Search
 
     /**
      * @param TypeContrat|null $typeContrat
-     * @return Search
+     * @return AnnonceSearch
      */
-    public function setTypeContrat(?TypeContrat $typeContrat): Search
+    public function setTypeContrat(?TypeContrat $typeContrat): AnnonceSearch
     {
         $this->typeContrat = $typeContrat;
         return $this;
@@ -87,23 +107,20 @@ class Search
     /**
      * @return NiveauFormation|null
      */
-    public function getNiveauEtude(): ?TypeContrat
+    public function getNiveauFormation(): ?NiveauFormation
     {
-        return $this->niveauEtude;
+        return $this->niveauFormation;
     }
 
     /**
-     * @param NiveauFormation|null $niveauEtude
-     * @return Search
+     * @param NiveauFormation|null $niveauFormation
+     * @return AnnonceSearch
      */
-    public function setNiveauEtude(?NiveauFormation $niveauEtude): Search
+    public function setNiveauFormation(?NiveauFormation $niveauFormation): AnnonceSearch
     {
-        $this->niveauEtude = $niveauEtude;
+        $this->niveauFormation = $niveauFormation;
         return $this;
     }
-
-
-
 
 
 }

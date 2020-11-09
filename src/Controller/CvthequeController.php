@@ -31,17 +31,19 @@ class CvthequeController extends AbstractController
     }
 
     /**
-     * @Route("/cvtheque", name="cvtheque")
+     * @Route("/cvtheque", name="app_cvtheque")
      * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      */
     public function showUsers(Request $request, PaginatorInterface $paginator): Response
     {
         $search = new CandidatSearch();
 
-        $form = $this->createForm(CandidatSearchType::class, $search, [
-            'attr' => [
-                'class' => 'auto_submit_form'
+
+        $form = $this->createForm(CandidatSearchType::class, $search,[
+            'attr'=>[
+                'class'=>'auto_submit_form'
             ]
         ]);
 //        $query = $this->manager->createQuery('SELECT u FROM MyProject\Model\User u WHERE u.age > 20');
@@ -52,10 +54,8 @@ class CvthequeController extends AbstractController
         $form->handleRequest($request);
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
 
-        $candidats = $paginator->paginate($this->repository->findAllCandidat($search)->getResult(), $request->query->getInt('page', 1), 1);
+        $candidats = $paginator->paginate($this->repository->findAllCandidat($search)->getResult(), $request->query->getInt('page', 1), 6);
         //$candidats = $this->repository->findAllCandidat($search)->getResult();
-
-        dump($candidats);
 
 
         return $this->render('cvtheque/index.html.twig', [

@@ -7,12 +7,9 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-.jumbotron:first-of-type{
-    background-repeat: no-repeat;
-    background-image: url('/images/jumbotron.jpg');
-    background-size: cover;
-    width: auto;
+    background-color: #ededee;
+    font-size: 14px;
+    color: #656d6d;
 }
 
 .list-ul {
@@ -23,7 +20,6 @@ body {
 .list-li h3 {
     font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
-
 
 .list-img img {
     width: 200px;
@@ -44,7 +40,6 @@ body {
 .list-li:hover {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
 }
 
 .list-a {
@@ -54,3 +49,19 @@ body {
 }
 
 
+<<<<<<< HEAD
+=======
+/*NAVBAR RECRUTEUR*/
+
+a:hover {
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    position: relative;
+    bottom: 0.5em;
+    width: 100%;
+    height: 2.5rem;
+}
+>>>>>>> master

@@ -15,7 +15,7 @@ window.flashy = flashy;
 
 import $ from 'jquery';
 
-$('.custom-file-input').on('change', function (event) {
+$('.custom-file-input').on('change', function(event) {
     var inputFile = event.currentTarget;
     $(inputFile).parent()
         .find('.custom-file-label')

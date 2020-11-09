@@ -4,16 +4,15 @@ namespace App\Controller\GestionAnnonce;
 
 use App\Entity\Annonce;
 
-use App\Entity\Categorie;
-use App\Entity\Search;
+use App\Entity\AnnonceSearch;
+use App\Entity\User;
+use App\Form\AnnonceSearchType;
 use App\Form\AnnonceType;
-use App\Form\SearchType;
-use App\Repository\AdsRepository;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,11 +32,13 @@ class AnnonceController extends AbstractController
      * @var EntityManagerInterface
      */
     private EntityManagerInterface $manager;
+    private FlashyNotifier $flashy;
 
-    public function __construct(AnnonceRepository $repository, EntityManagerInterface $manager)
+    public function __construct(AnnonceRepository $repository, EntityManagerInterface $manager, FlashyNotifier $flashy)
     {
         $this->repository = $repository;
         $this->manager = $manager;
+        $this->flashy = $flashy;
     }
 
 
@@ -51,7 +52,7 @@ class AnnonceController extends AbstractController
      */
     public function createAnnonce(Request $request): Response
     {
-        if (!$this->isGranted("ROLE_RECRUTEUR")) {
+        if (!$this->isGranted(User::ROLE_RECRUTEUR)) {
             return $this->redirectToRoute("app_login");
         }
 
@@ -66,6 +67,12 @@ class AnnonceController extends AbstractController
 
         //traitement du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les valeurs des enum 
+            $domaines = [];
+            foreach ($form->get('domaineEtudes')->getData() as $domaine) {
+                $domaines[] = $domaine->getValue();
+            }
+            $annonce->setDomaineEtudes($domaines);
             $annonce->setProprietaire($this->getUser());
 
 
@@ -74,9 +81,9 @@ class AnnonceController extends AbstractController
             $this->manager->persist($annonce);
             $this->manager->flush();
             $id = $annonce->getId();
-            $this->addFlash('success', 'Annonce créée avec succès');
+            $this->flashy->success('Annonce créée avec succès');
             //on redirige vers la page d'affichage des annonces ou la page d'admin des annonces
-            return $this->redirectToRoute('app_annonce_show', [
+            return $this->redirectToRoute('app_annonce_show_id', [
                 'id' => $id
             ]);
         }
@@ -84,22 +91,6 @@ class AnnonceController extends AbstractController
         return $this->render('annonce/publier.html.twig', [
             'annonce' => $annonce,
             'form' => $form->createView()
-        ]);
-    }
-
-
-    //test affiche une annonce
-
-    /**
-     * @Route("/annonce/{id<\d+>}", name="app_annonce_details")
-     * @param Annonce $annonce
-     * @return Response
-     */
-    public function showOneAd(Annonce $annonce)
-    {
-        return $this->render("annonce/oneannonce.html.twig", [
-            'current_menu' => 'annonce',
-            'annonce' => $annonce
         ]);
     }
 
@@ -115,6 +106,9 @@ class AnnonceController extends AbstractController
      */
     public function edit(Annonce $annonce, Request $request)
     {
+        if (!$this->isGranted(User::ROLE_RECRUTEUR)) {
+            return $this->redirectToRoute("app_login");
+        }
         $form = $this->createForm(AnnonceType::class, $annonce);
 
         $form->handleRequest($request);
@@ -126,7 +120,7 @@ class AnnonceController extends AbstractController
             $this->addFlash('success', 'Annonce modifer avec succès');
             $id = $this->getUser()->getId();
             //au lieu de home retourner la route d'admin des annonces de chaque user
-            return $this->redirectToRoute('show_one_ad', [
+            return $this->redirectToRoute('app_annonce_show_id', [
                 'id' => $id
             ]);
         }
@@ -147,6 +141,10 @@ class AnnonceController extends AbstractController
      */
     public function delete(Annonce $annonce, Request $request)
     {
+        if (!$this->isGranted(User::ROLE_RECRUTEUR)) {
+            return $this->redirectToRoute("app_login");
+        }
+
         if ($this->isCsrfTokenValid('delete' . $annonce->getId(), $request->get('_token'))) {
             $this->manager->remove($annonce);
             $this->manager->flush();
@@ -165,27 +163,19 @@ class AnnonceController extends AbstractController
 
     //lister tous les annonces
     //implémenter le paginator pour les annonces
-    //et aussi implémenter les la recherche avec Search
+    //et aussi implémenter les la recherche avec AnnonceSearch
     //Page d'acceuil
 
     /**
-     * @Route("/annonce/show/{id<\d+>}", name="app_annonce_show2")
+     * @Route("/annonce/show/{id<\d+>}", name="app_annonce_show_id")
      *
      * @param Request $request
      *
-     * @param Search|null $search
+     * @param Annonce $annonce
      * @return Response
      */
-    public function showAds(Request $request,Annonce $annonce, ?Search $search)
+    public function showAd(Request $request, Annonce $annonce)
     {
-        if ($search == null) {
-            $search = new Search();
-        }
-        $form = $this->createForm(SearchType::class, $search);
-
-        $form->handleRequest($request);
-
-        $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
         /*$annonce = new Annonce();
@@ -200,31 +190,27 @@ class AnnonceController extends AbstractController
           /* if ($page>$nbpages){
                throw $this->createNotFoundException("Page ".$page. " inexistante");
            }**///
-        return $this->render('annonce/list.html.twig', [
+        return $this->render('annonce/annonce.html.twig', [
             //'listesAnnonces'=> $annonces,//$listesAnnonces,
             /* 'nbpages'=>$nbpages,
             'page'=>$page,*/
-            'annonces' => $annonces,
-            'annonce'=>$annonce,
-            'form' => $form->createView()
+            'annonce' => $annonce,
         ]);
     }
 
     /**
-     * @Route("/annonce/show", name="app_annonce_show"  )
+     * @Route("/annonce/search", name="app_annonce_search"  )
      *
      * @param Request $request
      *
-     * @param Search|null $search
      * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function showAdsWithoutId(Request $request, ?Search $search, PaginatorInterface $paginator)
+    public function showAdsWithoutId(Request $request, PaginatorInterface $paginator)
+
     {
-        if ($search == null) {
-            $search = new Search();
-        }
-        $form = $this->createForm(SearchType::class, $search);
+        $search = new AnnonceSearch();
+        $form = $this->createForm(AnnonceSearchType::class, $search);
 
         $form->handleRequest($request);
 
@@ -244,7 +230,6 @@ class AnnonceController extends AbstractController
           /* if ($page>$nbpages){
                throw $this->createNotFoundException("Page ".$page. " inexistante");
            }**///
-
         return $this->render('annonce/list.html.twig', [
             //'listesAnnonces'=> $annonces,//$listesAnnonces,
             /* 'nbpages'=>$nbpages,
@@ -260,7 +245,7 @@ class AnnonceController extends AbstractController
     public function showMyAds(): Response
     {
         if (!$this->isGranted("ROLE_RECRUTEUR")) {
-            return $this->redirectToRoute('app_espace_recruteur');
+            return $this->redirectToRoute('app_login');
         }
 
         $annonces = $this->getUser()->getAnnonces();

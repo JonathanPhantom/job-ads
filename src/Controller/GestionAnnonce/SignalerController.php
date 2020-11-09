@@ -19,11 +19,11 @@ class SignalerController extends AbstractController
     /**
      * @var SignalerRepository
      */
-    private $repository;
+    private SignalerRepository $repository;
     /**
      * @var EntityManagerInterface
      */
-    private $manager;
+    private EntityManagerInterface $manager;
 
     public function __construct(SignalerRepository $repository, EntityManagerInterface $manager)
     {

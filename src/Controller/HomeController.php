@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\GestionAnnonce\AnnonceController;
-use App\Entity\Search;
-use App\Form\SearchType;
+use App\Entity\AnnonceSearch;
+use App\Form\AnnonceSearchType;
 use App\Repository\AnnonceRepository;
 use App\Repository\EntrepriseRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,13 +26,13 @@ class HomeController extends AbstractController
 
     public function homePage(Request $request,AnnonceRepository $annonceRepository, EntrepriseRepository $entrepriseRepository,EntityManagerInterface  $em) : Response
     {
-        $search = new Search();
-        $form = $this->createForm(SearchType::class,$search);
+        $search = new AnnonceSearch();
+        $form = $this->createForm(AnnonceSearchType::class,$search);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            return $this->redirectToRoute("app_annonce_show");
+            return $this->redirectToRoute("app_annonce_search");
         }
         $annonces = $annonceRepository->getAllAnnoncesSearch($search)->getResult();
         $entreprises = $entrepriseRepository->findWithMaxResult();

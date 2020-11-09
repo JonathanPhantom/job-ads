@@ -65,4 +65,5 @@ final class DomaineEtude extends Enum
             self::Management,
         ];
     }
+    
 }

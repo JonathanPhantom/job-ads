@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Annonce;
-use App\Entity\Search;
+use App\Entity\AnnonceSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -87,18 +87,18 @@ class AnnonceRepository extends ServiceEntityRepository
         return $query;
     }
 
-    public function getAllAnnoncesSearch(Search $search){
+    public function getAllAnnoncesSearch(AnnonceSearch $search){
         $query = $this->createQueryBuilder('a');
 
-        if ($search->getDomaineEtude()){
-            /*foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
-                $domaineEtudes = $domaineEtude->getValue();*/
+        /*if ($search->getDomaineEtude()){
+            foreach ($search->getDomaineEtude() as $k => $domaineEtude ){
+                $domaineEtudes = $domaineEtude->getValue();
                 $query = $query
-                    ->andWhere("a.domaineEtude = '".$search->getDomaineEtude()->getValue()."'")
-                    ;
-           /* }*/
-        }
-
+                ->andWhere($query->expr()->in('a.domaineEtudes',':do'))
+                ->setParameter('do',$search->getDomaineEtude()->getValue());
+                 }
+        }*/
+        // dd($query->getQuery()->getResult());
         if ($search->getLocalites()){
            /* foreach ( as $k => $localite){
                 $localites = $localite->getValue();*/
@@ -116,15 +116,14 @@ class AnnonceRepository extends ServiceEntityRepository
                     ;
             /*}*/
         }
-        if ($search->getNiveauEtude()){
+        if ($search->getNiveauFormation()){
             /*foreach ($search->getNiveauEtude() as $k => $niveauFormation){
                 $niveauFormations = $niveauFormation->getValue();*/
                 $query = $query
-                    ->andWhere("a.niveauFormation = '".$search->getNiveauEtude()->getValue()."'")
+                    ->andWhere("a.niveauFormation = '".$search->getNiveauFormation()->getValue()."'")
                     ;
            /* }*/
         }
-
         return $query->getQuery();
     }
 

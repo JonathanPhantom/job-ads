@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Mes CVs - Job-Ads' %}
+
+{# form_theme permet de mettre au courant twig qu'on veut utiliser un theme particuler #}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+
+		footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 2.5rem;
+
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+		.scroll {
+			transition: background-color 0.5s ease-out;
+		}
+		.nav {
+			position: fixed;
+			z-index: 1;
+			width: 100%
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	{% include "fragments/_navCandidat.html.twig" %}
+	{% set cv = "1" %}
+	<div class="container position-relative" style="top:8em;">
+		<div class="col-md-12 text-center ml-5 pt-3 pl-0 bg-light shadow " style="height:180px">
+			<h1 class=" text-left h2 text-dark ml-2  pl-3">Mes Cvs</h1><hr>
+			{% if mesCvs is empty %}
+				<p>Aucun CV pour l'instant. Créez-en une
+					<a href="{{path('app_candidat_cv_create')}}">ici .</a>
+				</p>
+			{% else %}
+				<select class="custom-select col-sm-9 mt-3 text-center" name="" id="select" onchange="editCv()">
+					<option value="" disabled selected hidden>Choisissez un CV</option>
+					{% for cv in mesCvs %}
+
+						<option value="{{cv.id}}">{{cv.titreCv}}</option>
+					{% endfor %}
+				</select>
+
+				<form id="form" action="{{path('app_candidat_cv_edit')}}" method="post">
+                    <input type="hidden" name="idcv"/ >
+											<input type="hidden" name="_method" value="PUT"></form>
+
+                </form>
+
+			{% endif %}
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		function editCv(id) {
+            document.querySelector('[name=idcv]').value=document.getElementById('select').value;
+        document.getElementById('form').submit();
+}
+	</script>
+{% endblock %}

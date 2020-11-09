@@ -2,15 +2,17 @@
 
 namespace App\Controller\GestionComptes;
 
+use DateTime;
 use App\Entity\Cv;
-use App\Entity\Profil;
+use App\Form\CvType;
 use DateTimeImmutable;
 use App\Entity\Candidat;
-use App\Form\ProfilType;
 use App\Entity\Entreprise;
+use App\Entity\ExperienceProfessionnelle;
 use App\Form\CompteCandidatType;
 use App\Form\CompteEntrepriseType;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +26,9 @@ class AccountController extends AbstractController
 {
     public EntityManagerInterface $em;
     public UserPasswordEncoderInterface $passwordEncoder;
-    private $flashy;
+    private FlashyNotifier $flashy;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder,FlashyNotifier $flashy)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, FlashyNotifier $flashy)
     {
         $this->em = $em;
         $this->passwordEncoder = $passwordEncoder;
@@ -37,7 +39,7 @@ class AccountController extends AbstractController
      * @Route("/createAccount",name="app_candidat_compte",methods={"GET","POST"})
      * @param Request $request
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function createAccount(Request $request): Response
     {
@@ -62,56 +64,11 @@ class AccountController extends AbstractController
             $candidat->setUpdateAt(new DateTimeImmutable("now"));
             $this->em->persist($candidat);
             $this->em->flush();
-            
-            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous",$this->generateUrl("app_login"));
-            return $this->redirectToRoute("app_home_candidat");
+
+            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous", $this->generateUrl("app_login"));
+            return $this->redirectToRoute('app_login');
         }
         return $this->render("accounts/candidatAccount.hmtl.twig", [
-                'form' => $form->createView()
-            ]
-        );
-    }
-
-    /**
-     * @Route("/createAccount/createCv", name="app_candidat_cv")
-     * @param Request $request
-     * @return Response
-     * @IsGranted("ROLE_CANDIDAT")
-     */
-    public function createCv(Request $request): Response
-    {
-        $Cv = new Cv();
-
-        $form = $this->createForm(CvType::class, $Cv);
-        $form->handleRequest($request);
-
-        //TODO: Mise en place de la gestion du controller de Cv (accountController)
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            //pour mettre les diplomes dans Cv
-            foreach ($Cv->getDiplomes() as $diplome) {
-                $diplome->setCv($Cv);
-                $this->em->persist($diplome);
-            }
-            //TODO:mise en place de la gestion des fichiers insérer par le user (pdf)
-            //TODO:les assertions
-
-            $candidat = $this->getUser();
-            $Cv->setCandidat($candidat);
-
-            $Cv->setIsPrincipal(true);
-            $this->em->persist($Cv);
-            $this->em->flush();
-
-            $this->flashy->success('success',
-                'Cv Créée avec succès');
-
-            return $this->redirectToRoute('app_home_candidat');
-
-        }
-
-        return $this->render('accounts/createProfil.html.twig', [
-            'controller_name' => 'AccountController',
             'form' => $form->createView()
         ]);
     }
@@ -121,7 +78,7 @@ class AccountController extends AbstractController
      *
      * @param Request $request
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function createEntrepriseAccount(Request $request): Response
     {
@@ -145,6 +102,7 @@ class AccountController extends AbstractController
 
             $this->em->persist($entreprise);
             $this->em->flush();
+            $this->flashy->success("Vous avez désormais votre compte! Connectez-vous", $this->generateUrl("app_login"));
 
             return $this->redirectToRoute('app_login');
         }
