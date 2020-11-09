@@ -29,33 +29,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change afterPath="$PROJECT_DIR$/src/Form/CvShowType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/candidat/showCv.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CandidatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CandidatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Cv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Postulation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Postulation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CvShowType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvShowType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/CvType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/adminAnnonce.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/show_candidate.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/annonce/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_postulation_choice_cv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +185,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.18.4" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.44" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/candidat/editCv.html.twig" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -209,7 +193,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/templates/candidat/editCv.html.twig" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -282,7 +267,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="gestionRecruteur" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -333,10 +330,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="588" y="64" width="753" height="760" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603893949290" />
-    <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl" timestamp="1603737187846">
+    <state x="100" y="134" width="1720" height="846" key="DiffContextDialog" timestamp="1604929699095">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1603737187846" />
+    <state x="100" y="134" width="1720" height="846" key="DiffContextDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1604929699095" />
+    <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl" timestamp="1604929581552">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1604929581552" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604833267404">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -361,11 +362,11 @@
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604833267404" />
     <state width="1316" height="159" key="GridCell.Tab.0.right/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604850680064">
+    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604929571402">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="375" y="34" width="900" height="734" key="SettingsEditor/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604394674615" />
-    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604850680064" />
+    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604929571402" />
     <state x="412" y="132" width="540" height="540" key="StructurePopup" timestamp="1604516176869">
       <screen x="0" y="34" width="3286" height="1046" />
     </state>

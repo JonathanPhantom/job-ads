@@ -31,7 +31,7 @@ class CvShowType extends AbstractType
                     'class' => 'col-md-6 ml-5',
                     'placeholder' => 'Titre du CV ',
                     'autofocus' => 'autofocus',
-                    
+
 
                 ]
             ])
@@ -41,7 +41,7 @@ class CvShowType extends AbstractType
                     'class' => 'col-sm-3 col-form-label  text-dark  mt-1'
                 ], 'attr' => [
                     'class' => 'col-md-11 ml-5',
-                    
+
 
                 ],
                 'placeholder' => 'Sélectionnez...'
@@ -53,7 +53,7 @@ class CvShowType extends AbstractType
                     'class' => 'col-sm-3 col-form-label  text-dark  mt-1'
                 ], 'attr' => [
                     'class' => 'col-md-11 ml-5',
-                    
+
 
                 ],
                 'placeholder' => 'Sélectionnez...',
@@ -66,7 +66,7 @@ class CvShowType extends AbstractType
                 'enum_class' => NiveauDePoste::class,
                 'attr' => [
                     'class' => 'col-md-11 mt-1 ml-5',
-                    
+
 
                 ],
                 'placeholder' => 'Sélectionnez...'
@@ -92,7 +92,7 @@ class CvShowType extends AbstractType
             ->add('dateDisponibilite', DateType::class, [
                 'attr' => [
                     'class' => 'col-md-5 mt-2 ',
-                    
+
 
                 ],
                 'label' => false,
@@ -106,7 +106,7 @@ class CvShowType extends AbstractType
                 'enum_class' => AnneeExperience::class,
                 'attr' => [
                     'class' => 'col-md-11 mt-1 ml-5',
-                    
+
 
                 ],
                 'placeholder' => 'Sélectionnez...',
@@ -122,7 +122,7 @@ class CvShowType extends AbstractType
                     'min' => 0,
                     'data-type' => 'currency',
                     'placeholder' => '100,000 FCFA',
-                    
+
 
                 ],
                 'required' => false

@@ -199,31 +199,30 @@
                     {{ form_widget(form.photoProfilFile) }}
                 </div>
             </div>
-        <div class="form-group row  mx-auto " style="font-size:18px">
-            {{ form_label(form.disponibilite,'Votre disponibilté en ce moment ') }}
-            <div class="col-sm-9">
-                {{ form_widget(form.disponibilite) }}
-                <div class="disponibiliteYes mt-2 active container ml-5">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="disponibiliteYes" id="now" value="now"
-                               onchange="disableDateDisponible('notYet')" checked>
-                        <label class="form-check-label text-dark" for="now">
-                            Actuellemement.
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="disponibiliteYes" id="notYet"
-                               value="notYet" onchange="disableDateDisponible('notYet')">
-                        <label class="form-check-label text-dark" for="notYet">
-                            A partir du
-                        </label>
-                        {{ form_widget( form.dateDisponibilite) }}
+            <div class="form-group row  mx-auto " style="font-size:18px">
+                {{ form_label(form.disponibilite,'Votre disponibilté en ce moment ') }}
+                <div class="col-sm-9">
+                    {{ form_widget(form.disponibilite) }}
+                    <div class="disponibiliteYes mt-2 active container ml-5">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="disponibiliteYes" id="now" value="now"
+                                   onchange="disableDateDisponible('notYet')" checked>
+                            <label class="form-check-label text-dark" for="now">
+                                Actuellemement.
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="disponibiliteYes" id="notYet"
+                                   value="notYet" onchange="disableDateDisponible('notYet')">
+                            <label class="form-check-label text-dark" for="notYet">
+                                A partir du
+                            </label>
+                            {{ form_widget( form.dateDisponibilite) }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
 
         {{ form_end(form) }}
     </div>
@@ -233,8 +232,6 @@
     <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
         <h5 class="text-left pt-4 h4 pb-0">Mes Expériences Professionnelles</h5>
         <hr>
-
-
         {{ form_widget(form) }}
         <input type="hidden" id="widget-counters" value="0">
         <div class="form-group col-md-12 text-center">

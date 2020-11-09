@@ -221,7 +221,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -233,8 +232,6 @@
     <div class="ml-5 pl-3 pb-3 mt-3 bg-light shadow " style="height:auto">
         <h5 class="text-left pt-4 h4 pb-0">Mes Expériences Professionnelles</h5>
         <hr>
-
-
         {{ form_widget(form) }}
         <input type="hidden" id="widget-counters" value="0">
         <div class="form-group col-md-12 text-center">
@@ -445,6 +442,7 @@
         </div>
     </div>
 {% endblock %}
+
 {% block javascripts %}
     <script>
         // Pour faire scroller la nav bar
@@ -481,7 +479,7 @@
         function disableDateDisponible(id) {
 
             const notYet = document.getElementById(id);
-            document.querySelector("#cv_dateDisponibilite").disabled = notYet.checked ? false : true;
+            document.querySelector("#cv_dateDisponibilite").disabled = !notYet.checked;
 
 
         }

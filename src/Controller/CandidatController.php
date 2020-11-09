@@ -69,18 +69,16 @@ class CandidatController extends AbstractController
         if (!$this->isGranted("ROLE_CANDIDAT")) {
             return $this->redirectToRoute('app_login');
         }
-        // Pour la modification
         $cv = new Cv();
         $candidat = $this->getUser();
 
         /** @var Candidat $candidat */
         $cv->setCandidat($candidat);
-
         $form = $this->createForm(CvShowType::class, $cv);
         $form2 = $this->createForm(CompteCandidatType::class, $candidat);
         $form->handleRequest($request);
         $form2->handleRequest($request);
-        //TODO: Mise en place de la gestion du controller de cv (accountController)
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             //pour mettre les diplomes dans cv

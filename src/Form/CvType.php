@@ -38,7 +38,6 @@ class CvType extends AbstractType
                 'label_attr' => [
                     'class' => 'col-form-label  text-dark  mt-1'
                 ],
-
                 'required'=>false
             ])
             ->add('SecteurEtudeSouhaite', EnumType::class, [

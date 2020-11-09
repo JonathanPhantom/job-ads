@@ -45,8 +45,8 @@
                         <a href="{{ path('app_candidat_cv_create') }}">ici .</a>
                     </p>
                 {% else %}
-                    <label for="select">Choisissez un Cv</label><select class="custom-select col-sm-9 mt-3 text-center" name="" id="select"
-                                                        onchange="document.location.href=this.value">
+                    <select class="custom-select col-sm-9 mt-3 text-center" name="" id="select"
+                            onchange="document.location.href=this.value">
                         <option value="" disabled selected hidden>Choisissez un CV</option>
                         {% for cv in mesCvs %}
 
@@ -60,8 +60,9 @@
     left: -32%;
     margin-top: 6px;">
 
-                <a href="{{ path('app_candidat_cv_create') }}" class="d-block "><img src="{{ asset('images/add.png') }}" style="width: 30px"
-                                                 alt="add_cv">Ajouter un cv</a>
+                <a href="{{ path('app_candidat_cv_create') }}" class="d-block "><img src="{{ asset('images/add.png') }}"
+                                                                                     style="width: 30px"
+                                                                                     alt="add_cv">Ajouter un cv</a>
 
             </div>
         </div>
