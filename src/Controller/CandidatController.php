@@ -14,7 +14,6 @@ use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -35,11 +34,10 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/mesCvs", name="app_candidat_cv_list")
-     * @param Request $request
      * @param Security $security
      * @return Response
      */
-    public function mesCvs(Request $request, Security $security): Response
+    public function mesCvs(Security $security): Response
     {
         if (!$this->isGranted("ROLE_CANDIDAT")) {
             return $this->redirectToRoute('app_login');
@@ -61,7 +59,7 @@ class CandidatController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function createEditCv(Request $request): Response
+    public function createCv(Request $request): Response
     {
         if (!$this->isGranted("ROLE_CANDIDAT")) {
             return $this->redirectToRoute('app_login');
@@ -110,24 +108,14 @@ class CandidatController extends AbstractController
     }
 
     /**
-     * @Route("/candidat/editCv", name="app_candidat_cv_edit",methods={"GET","PUT"})
+     * @Route("/candidat/editCv/{id}", name="app_candidat_cv_edit",methods={"GET","PUT"})
      * @param Request $request
      * @return Response
      */
-    public function editCv(Request $request): Response
+    public function editCv(Request $request,Cv $cv): Response
     {
         if (!$this->isGranted("ROLE_CANDIDAT")) {
             return $this->redirectToRoute('app_login');
-        }
-        $session = $request->getSession();
-        // Pour la modification
-        $cv = new Cv;
-        $cv_array = $this->cvRepository->findBy(['id' => $request->get('idcv')]);
-        if (!empty($cv_array)) {
-            $cv = $cv_array[0];
-            $session->set('cv', $cv);
-        } else {
-            $cv = $session->get('cv');
         }
         $form = $this->createForm(CvType::class, $cv, [
             'method' => 'PUT'
@@ -141,7 +129,6 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //pour mettre les diplomes dans cv
             $this->em->flush();
-
             $this->flashy->success('Cv editéee avec succès');
 
             return $this->redirectToRoute('app_candidat_cv_list');

@@ -5,9 +5,7 @@ namespace App\Repository;
 use App\Entity\Annonce;
 use App\Entity\AnnonceSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -126,6 +124,5 @@ class AnnonceRepository extends ServiceEntityRepository
         }
         return $query->getQuery();
     }
-
 
 }

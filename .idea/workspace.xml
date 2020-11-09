@@ -22,45 +22,40 @@
     <select />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum" />
-=======
+
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
-      <change afterPath="$PROJECT_DIR$/templates/annonce/annonce.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/job-ads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-ads.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminRecruteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CandidatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CandidatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CvthequeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CvthequeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/AnnonceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionAnnonce/SignalerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionAnnonce/SignalerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionComptes/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AnnonceSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Candidat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Candidat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Cv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cv.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CvType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SearchRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SearchRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_recruteur/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/78ec4404-d7e0-4780-a42e-f48672f4a79f.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103074919.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103080429.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201104070702.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201104215713.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106064143.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106085217.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106133956.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cvtheque/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cvtheque/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_profil.html.twig" afterDir="false" />
     </list>
->>>>>>> master
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +63,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -187,10 +184,9 @@
       <path value="$PROJECT_DIR$/vendor/mercuryseries/flashy-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
-<<<<<<< HEAD
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-time-bundle" />
-=======
->>>>>>> master
+
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-time-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQX0ZQzfKzWeQUaqRJ8lhkwq2z" />
@@ -202,7 +198,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.4" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.44" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -212,11 +208,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ProjetJobAds\ProjetJob\job-ads" />
       <recent name="$PROJECT_DIR$/src/Controller" />
     </key>
   </component>
@@ -265,23 +262,32 @@
       <workItem from="1604824486124" duration="1858000" />
       <workItem from="1604826390004" duration="1795000" />
       <workItem from="1604828198224" duration="695000" />
+      <workItem from="1604829873202" duration="1836000" />
+      <workItem from="1604845771394" duration="1442000" />
+      <workItem from="1604847627570" duration="630000" />
+      <workItem from="1604848720372" duration="1569000" />
+      <workItem from="1604850517211" duration="1795000" />
+      <workItem from="1604852327299" duration="12304000" />
+      <workItem from="1604829873202" duration="1359000" />
+      <workItem from="1604832975127" duration="2113000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout des 5 classes énum" />
@@ -331,42 +337,50 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="703" y="299" width="504" height="522" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1603737187846" />
-    <state width="1316" height="159" key="GridCell.Tab.0.bottom" timestamp="1604365517733">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604833267404">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604833267404" />
     <state width="1316" height="159" key="GridCell.Tab.0.bottom/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526272" />
-    <state width="1316" height="159" key="GridCell.Tab.0.center" timestamp="1604365517733">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604833267403">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604833267403" />
     <state width="1316" height="159" key="GridCell.Tab.0.center/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state width="1316" height="159" key="GridCell.Tab.0.left" timestamp="1604365517733">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604833267403">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604833267403" />
     <state width="1316" height="159" key="GridCell.Tab.0.left/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526270" />
-    <state width="1316" height="159" key="GridCell.Tab.0.right" timestamp="1604365517733">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604833267404">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604833267404" />
     <state width="1316" height="159" key="GridCell.Tab.0.right/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604811774347">
+    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604850680064">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="375" y="34" width="900" height="734" key="SettingsEditor/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604394674615" />
-    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604811774347" />
+    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604850680064" />
     <state x="412" y="132" width="540" height="540" key="StructurePopup" timestamp="1604516176869">
       <screen x="0" y="34" width="3286" height="1046" />
     </state>
     <state x="412" y="132" width="540" height="540" key="StructurePopup/0.34.3286.1046@0.34.3286.1046" timestamp="1604516176869" />
-    <state width="498" height="448" key="SwitcherDM" timestamp="1604825620876">
+    <state width="498" height="448" key="SwitcherDM" timestamp="1604851561643">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604571174024" />
-    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604825620876" />
+    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604851561643" />
     <state width="700" height="539" key="SwitcherDM/0.34.1920.994@0.34.1920.994" timestamp="1604503716578" />
     <state width="1199" height="568" key="SwitcherDM/0.34.3286.1046@0.34.3286.1046" timestamp="1604516941773" />
+    <state x="761" y="236" width="387" height="649" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604853141357">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="761" y="236" width="387" height="649" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1604853141357" />
     <state x="737" y="469" width="446" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604796439474">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

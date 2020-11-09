@@ -6,7 +6,6 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints\Length;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -35,8 +34,7 @@ abstract class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\NotBlank(message="Veuiller saisir votre email")
-     *
+     * @Assert\NotBlank(message="Veuillez saisir votre email")
      */
     private $email;
 
