@@ -23,6 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e249bdb8-b58a-4445-8a61-fe25b4f12d2e" name="Default Changelist" comment="Ajout des 5 classes énum">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CandidatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CandidatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GestionCandidature/GestionCandidatureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Candidat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Candidat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Cv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AnnonceSearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CvType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CvType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnonceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CandidatRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/entrepriseAccount.html.twig" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/78ec4404-d7e0-4780-a42e-f48672f4a79f.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20201103074919.php" beforeDir="false" />
@@ -33,6 +46,13 @@
       <change beforePath="$PROJECT_DIR$/migrations/Version20201106085217.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20201106133956.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/annonce/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/annonce/publier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/annonce/publier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/createCv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/editCv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/candidat/mesCvs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navCandidat.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fragments/_navEntreprise.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +204,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -238,6 +258,12 @@
       <workItem from="1604824486124" duration="1858000" />
       <workItem from="1604826390004" duration="1795000" />
       <workItem from="1604828198224" duration="695000" />
+      <workItem from="1604829873202" duration="1836000" />
+      <workItem from="1604845771394" duration="1442000" />
+      <workItem from="1604847627570" duration="630000" />
+      <workItem from="1604848720372" duration="1569000" />
+      <workItem from="1604850517211" duration="1795000" />
+      <workItem from="1604852327299" duration="12304000" />
       <workItem from="1604829873202" duration="1359000" />
       <workItem from="1604832975127" duration="2113000" />
     </task>
@@ -331,22 +357,26 @@
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604833267404" />
     <state width="1316" height="159" key="GridCell.Tab.0.right/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604365517733" />
     <state width="1288" height="262" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1603837526271" />
-    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604811774347">
+    <state x="750" y="183" width="900" height="734" key="SettingsEditor" timestamp="1604850680064">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="375" y="34" width="900" height="734" key="SettingsEditor/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604394674615" />
-    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604811774347" />
+    <state x="750" y="183" width="1037" height="736" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1604850680064" />
     <state x="412" y="132" width="540" height="540" key="StructurePopup" timestamp="1604516176869">
       <screen x="0" y="34" width="3286" height="1046" />
     </state>
     <state x="412" y="132" width="540" height="540" key="StructurePopup/0.34.3286.1046@0.34.3286.1046" timestamp="1604516176869" />
-    <state width="498" height="448" key="SwitcherDM" timestamp="1604829188991">
+    <state width="498" height="448" key="SwitcherDM" timestamp="1604851561643">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.34.1366.734/1366.0.1920.1080@0.34.1366.734" timestamp="1604571174024" />
-    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604829188991" />
+    <state width="498" height="448" key="SwitcherDM/0.34.1920.1046@0.34.1920.1046" timestamp="1604851561643" />
     <state width="700" height="539" key="SwitcherDM/0.34.1920.994@0.34.1920.994" timestamp="1604503716578" />
     <state width="1199" height="568" key="SwitcherDM/0.34.3286.1046@0.34.3286.1046" timestamp="1604516941773" />
+    <state x="761" y="236" width="387" height="649" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604853141357">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="761" y="236" width="387" height="649" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1604853141357" />
     <state x="737" y="469" width="446" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604796439474">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

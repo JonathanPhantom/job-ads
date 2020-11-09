@@ -2,17 +2,11 @@
 
 namespace App\Entity;
 
-use App\Entity\Cv;
-use App\Entity\User;
 use DateTimeInterface;
-use App\Entity\Signaler;
-use App\Entity\Entreprise;
-use App\Entity\Postulation;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CandidatRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=CandidatRepository::class)
@@ -66,7 +60,7 @@ class Candidat extends User
     private $entreprisesRecruteurs;
 
     /**
-     * @ORM\OneToMany(targetEntity=Postulation::class, mappedBy="candidat", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Postulation::class, mappedBy="candidat", orphanRemoval=true,cascade={"persist"})
      */
     private $candidatures;
 
@@ -128,12 +122,12 @@ class Candidat extends User
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance(DateTimeInterface $dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
 
