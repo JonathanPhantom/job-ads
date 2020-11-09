@@ -61,7 +61,8 @@ class CandidatSearchType extends FormConfig
                     'placeholder' => 'Niveau de formation',
                     'style' => 'border-radius: 0',
                     'selected' => false
-                ]
+                ],
+                'placeholder' => "Rechercher par le niveau de formation"
             ]))
         ;
     }

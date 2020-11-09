@@ -4,16 +4,15 @@ namespace App\Controller\GestionAnnonce;
 
 use App\Entity\Annonce;
 
-use App\Entity\Categorie;
 use App\Entity\AnnonceSearch;
 use App\Entity\User;
-use App\Form\AnnonceType;
 use App\Form\AnnonceSearchType;
+use App\Form\AnnonceType;
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Knp\Component\Pager\PaginatorInterface;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,6 +58,7 @@ class AnnonceController extends AbstractController
 
         //declaration d'une nouvelle annonce
         $annonce = new Annonce();
+
         //formulaire
         $form = $this->createForm(AnnonceType::class, $annonce);
 
@@ -74,6 +74,8 @@ class AnnonceController extends AbstractController
             }
             $annonce->setDomaineEtudes($domaines);
             $annonce->setProprietaire($this->getUser());
+
+
             //Mise à jour de la date de publication
             $annonce->setDatePublication(new \DateTime());
             $this->manager->persist($annonce);
@@ -201,16 +203,19 @@ class AnnonceController extends AbstractController
      *
      * @param Request $request
      *
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function searchAds(Request $request)
+    public function showAdsWithoutId(Request $request, PaginatorInterface $paginator)
+
     {
         $search = new AnnonceSearch();
         $form = $this->createForm(AnnonceSearchType::class, $search);
 
         $form->handleRequest($request);
 
-        $annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
+        $annonces = $paginator->paginate($this->repository->getAllAnnoncesSearch($search)->getResult(), $request->query->getInt('page', 1), 4);
+        //$annonces = $this->repository->getAllAnnoncesSearch($search)->getResult();
 
         //$ads = $paginator->paginate($this->repository->findAllAdsQuery($search), $request->query->getInt('page', 1), 3);
         /*$annonce = new Annonce();
@@ -249,4 +254,6 @@ class AnnonceController extends AbstractController
             'annonces' => $annonces
         ]);
     }
+
+
 }

@@ -18,12 +18,18 @@
                     <br>
                     <i><strong class="text-warning">Adresse Mail</strong> :</i>
                     <strong>{{ user.email }}</strong><br>
+<<<<<<< HEAD
+                    <span class="badge badge-light">{{ user.annonces | length }} annonces</span> &nbsp; {% if app.user %}<a href="{{ path('app_recruteur_adminAnnonce', {id: user.id}) }}" >
+                        <span class="badge badge-info" >Administrer mes annonces</span>
+                    </a>&nbsp;<a href="{{ path('app_recruteur_modify') }}" class="badge badge-warning">Modifier profil</a><a href="{#{{ path('user_password') }}#}" class="badge badge-info ml-2">Modifier Mot de passe</a>{% endif %}
+=======
                     <span class="badge badge-light">{{ user.annonces | length }} annonces</span>
                     &nbsp; {% if app.user %}<a href="#{# {{ path('admin_ads', {id: user.id}) }} #}" >
                             <span class="badge badge-info">Administrer mes annonces</span>
                         </a>&nbsp;<a href="{{ path('app_admin_recruteur_edit') }}" class="badge badge-warning">Modifier profil</a>
                     <a href="#{# {{ path('user_password') }} #}" class="badge badge-info ml-2">Modifier Mot de
                             passe</a>{% endif %}
+>>>>>>> master
                 </div>
                 <h2 class="text-primary mt-5">Profil JoB-AdS {{ user.nomEntreprise }}: </h2>
                 <h3><u>Description</u>:</h3>

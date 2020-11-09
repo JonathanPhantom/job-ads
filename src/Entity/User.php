@@ -232,7 +232,7 @@ abstract class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param string $photoProfil
+     * @param string|null $photoProfil
      * @return User
      */
     public function setPhotoProfil(?string $photoProfil): User

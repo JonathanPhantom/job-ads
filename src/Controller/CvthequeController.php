@@ -40,6 +40,7 @@ class CvthequeController extends AbstractController
     {
         $search = new CandidatSearch();
 
+
         $form = $this->createForm(CandidatSearchType::class, $search,[
             'attr'=>[
                 'class'=>'auto_submit_form'

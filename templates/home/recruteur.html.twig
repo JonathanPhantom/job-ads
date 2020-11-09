@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Job-Ads - Espace Recruteur' %}
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		.home-box {
+			background-repeat: no-repeat;
+			background-image: url('/images/espace.jpg');
+			background-size: cover;
+			width: auto;
+			height: 100vh
+		}
+		.scroll {
+			transition: background-color 0.3s ease;
+		}
+		.nav {
+			position: fixed;
+			z-index: 1;
+			width: 100%
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		footer {
+			text-align: center;
+			position: relative;
+			bottom: 0.5em;
+			width: 100%;
+			height: 2.5rem;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<div class="home-box">
+		{{ include('fragments/_navEntreprise.html.twig') }}
+		<section style="padding: 200px 0 150px 0;">
+			<div class="h1 text-body text-wrap" style="width:30%;margin-left:110px;margin-top:6%">
+				Publiez vos annonces & recrutez les meilleurs profils!
+			</div>
+			<a href="{{path('app_create_annonce')}}" class="btn btn-block rounded-pill mt-5 p-2 h2 text-white" style="background-color:#DB7300;width:20%;margin-left:5%">Poster votre annonce</a>
+		</section>
+	</div>
+	<footer class="container-fluid text-muted bg-dark pt-2" style="background-color:#fff; ">
+		<p class=" text-light" style="text-align: center; margin-top: 2px;">&#169;Copyright Job-Ads 2020</p>
+	</footer>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onload = function () {
+scrollFunction()
+};
+
+function scrollFunction() {
+document.getElementById("nav").classList.add('bg-light');
+document.getElementById("nav").classList.add('scroll');
+}
+	</script>
+{% endblock %}

@@ -88,11 +88,19 @@
                                   style="color: rgb(158,158,158);">{{ annonce.proprietaire.nomEntreprise }}</span>
                                             <ul style="margin-right: -4px;list-style: none;padding-left: 0"></ul>
                                         </div>
+
                                         <div class="d-inline-flex">
                                             <div class="" style="margin-left: 50px;margin-right: 100px">
                                                 {{ annonce.proprietaire.localite.value }}
                                             </div>
                                             <div class="">
+                                        <div class="d-flex">
+                            <span style="color: rgb(158,158,158);word-break: break-word;word-wrap: break-word;max-width: 100%">
+
+                            </span>{{ annonce.proprietaire.localite.value }}
+                                        </div>
+
+
                                                 {{ annonce.datePublication|date("d/m/y") }}
                                             </div>
                                         </div>
@@ -132,4 +140,3 @@
         }
     </script>
 {% endblock %}
-

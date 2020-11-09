@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des annonces{% endblock %}
+
+{% block body %}
+    {{ include('fragments/_navEntreprise.html.twig') }}
+    <div class="container mt-4">
+        <h1>Gestion des annonces</h1>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <table class="table table-bordred table-striped">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Catégorie</th>
+                <th>Date Expiration</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ad in annonces %}
+                <tr>
+                    <td>{{ ad.titreAnnonce }}</td>
+                    <td>
+                        {% for categorie in ad.categories %}
+                            <span>{{ categorie.nomCategorie }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>Expire le {{ ad.dateLimite | date('d/m/y') }}</td>
+                    <td>
+                        <a href="{{ path('app_recruteur_modifier_annonce', {id: ad.id}) }}" class="btn btn-warning">Editer</a>
+                        <form action="{{ path('app_annonce_delete', {id: ad.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Etes vous vraiment sûr?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ad.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                        <a href="{{ path('app_recruteur_candidature', {id: ad.id}) }}" class="btn btn-secondary">Voir les candidatures</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-right">
+            <a href="{{ path('app_create_annonce') }}" class="btn btn-success">Publier une nouvelle annonce</a>
+        </div>
+    </div>
+{% endblock %}
