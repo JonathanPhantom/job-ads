@@ -5,15 +5,13 @@ namespace App\Form;
 use App\Entity\AnneeExperience;
 use App\Entity\Cv;
 use App\Entity\Statut;
-use App\Entity\Candidat;
 use App\Entity\DomaineEtude;
 use App\Entity\NiveauDePoste;
-use App\MesEnumType\DomaineEtudeType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Security\Core\Security;
 use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,6 +41,13 @@ class CvType extends AbstractType
 
                 ]
             ])
+            ->add("photoProfilFile", FileType::class, [
+                'label_attr' => [
+                    'class' => 'col-form-label  text-dark  mt-1'
+                ],
+
+                'required'=>false
+            ])
             ->add('SecteurEtudeSouhaite', EnumType::class, [
                 'enum_class' => DomaineEtude::class,
                 'label_attr' => [
@@ -61,7 +66,6 @@ class CvType extends AbstractType
                     'class' => 'col-md-11 ml-5',
                 ],
                 'placeholder' => 'Sélectionnez...',
-                
 
             ])
             ->add('niveauPoste', EnumType::class, [
@@ -108,7 +112,7 @@ class CvType extends AbstractType
                     'class' => 'col-md-11 mt-1 ml-5',
                 ],
                 'placeholder' => 'Sélectionnez...',
-                'required'=>false
+                'required' => false
 
             ])
             ->add('salaire', NumberType::class, [
@@ -121,7 +125,7 @@ class CvType extends AbstractType
                     'data-type' => 'currency',
                     'placeholder' => '100,000 FCFA'
                 ],
-                'required'=>false
+                'required' => false
 
             ])
             ->add('experiencesProfessionnelles', CollectionType::class, [

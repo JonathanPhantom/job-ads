@@ -4,9 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Candidat;
 use App\Entity\CandidatSearch;
-use App\Entity\AnnonceSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -174,4 +172,9 @@ class CandidatRepository extends ServiceEntityRepository
 //        return $query->getQuery();
 //    }
 
+     /*public function getRightCandidats(){
+        $query = $this->createQueryBuilder('c');
+
+        $query->leftJoin('c.candidatures', 'p')->addSelect('p')->
+     }*/
 }

@@ -8,7 +8,6 @@ use App\Entity\NiveauFormation;
 use App\Entity\AnnonceSearch;
 use App\Entity\TypeContrat;
 use Elao\Enum\Bridge\Symfony\Form\Type\EnumType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -56,7 +55,19 @@ class AnnonceSearchType extends FormConfig
                 'placeholder' => "Rechercher par Ville ou Région",
                 'attr' => [
                     'label' => false,
-                    'placeholder' => 'Niveau de formation',
+                    'selected' => false,
+                    'class'=>'d-none rounded-0'
+                ]
+
+            ]))
+            ->add('typeContrat', EnumType::class, $this->getConfiguration('', '', [
+                'enum_class' => TypeContrat::class,
+                'label' => false,
+                'required' => false,
+                'multiple' => false,
+                'placeholder' => "Le type de contrat de l'annonce",
+                'attr' => [
+                    'label' => false,
                     'selected' => false,
                     'class'=>'d-none rounded-0'
                 ]

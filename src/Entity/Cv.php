@@ -2,11 +2,9 @@
 
 namespace App\Entity;
 
-use App\Entity\Diplome;
-use App\Entity\Candidat;
 use App\Repository\CvRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\ExperienceProfessionnelle;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,7 +29,7 @@ class Cv
     private ?string $titreCv;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="mesCvs")
+     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="mesCvs",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Candidat $candidat;
@@ -58,7 +56,7 @@ class Cv
     /**
      * @ORM\Column(type="domaineEtude")
      */
-    private $SecteurEtudeSouhaite;
+    private $secteurEtudeSouhaite;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -68,7 +66,7 @@ class Cv
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private ?\DateTimeInterface $dateDisponibilite;
+    private ?DateTimeInterface $dateDisponibilite;
 
     /**
      * @ORM\OneToMany(targetEntity=Diplome::class, mappedBy="cv", orphanRemoval=true)
@@ -208,9 +206,9 @@ class Cv
         return $this->SecteurEtudeSouhaite;
     }
 
-    public function setSecteurEtudeSouhaite($SecteurEtudeSouhaite): self
+    public function setSecteurEtudeSouhaite($secteurEtudeSouhaite): self
     {
-        $this->SecteurEtudeSouhaite = $SecteurEtudeSouhaite;
+        $this->SecteurEtudeSouhaite = $secteurEtudeSouhaite;
 
         return $this;
     }
@@ -227,12 +225,12 @@ class Cv
         return $this;
     }
 
-    public function getDateDisponibilite(): ?\DateTimeInterface
+    public function getDateDisponibilite(): ?DateTimeInterface
     {
         return $this->dateDisponibilite;
     }
 
-    public function setDateDisponibilite(?\DateTimeInterface $dateDisponibilite): self
+    public function setDateDisponibilite(?DateTimeInterface $dateDisponibilite): self
     {
         $this->dateDisponibilite = $dateDisponibilite;
 
